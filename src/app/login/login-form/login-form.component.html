@@ -1,0 +1,21 @@
+<form action="/login" class="form" (submit)="logIn()">
+
+  <div class="image-container">
+      <img src="../assets/user.svg">
+  </div>
+
+
+    <div class="text">
+        <span class="login-text">LOGIN</span>
+
+        <span class="subtitle">Username</span> 
+        <input [(ngModel)]="username"  class="user-input" type="text" name="un"/><br>
+
+        <span class="subtitle">Password</span> 
+        <input [(ngModel)]="password"  class="user-input" type="password" name="un"/><br>
+
+        <input class="submit-button" type="submit" value="Log In">
+        <a href="http://www.google.com" class="bottom left">Forgot Password</a>
+        <a routerLink="/signup" class="bottom right">Register</a>
+    </div>
+</form>

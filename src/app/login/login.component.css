@@ -1,0 +1,20 @@
+body, html{
+    height: 100%;
+    margin: 0;
+}
+
+.background{
+    height: 100vh;
+    background-image: url('../../assets/login.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+app-login-form {
+    position: absolute;
+    width: 30%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

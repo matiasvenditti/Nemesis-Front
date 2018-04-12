@@ -14,8 +14,8 @@ import { SignupFormComponent } from './signup/signup-form/signup-form.component'
 
 var appRoutes = [
   { path: 'login', component: LoginComponent},
-  { path: 'home', component: HomeComponent},
-  { path: 'signup', component: SignupComponent}
+  { path: 'signup', component: SignupComponent},
+  { path: '', component: HomeComponent}
 ]
 
 

@@ -1,3 +1,6 @@
+*{
+    font-family: 'Open Sans Condensed', sans-serif;
+}
 .form{
     display: inline-block;
     width: 100%;
@@ -11,13 +14,13 @@
     display: block;
     text-align: center;
     font-size: 30px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    font-family: 'Lobster', cursive;
 }
 
 .text span{
     display: block;
-    font-size: 18px;
-    font-weight: bold;
+    font-size: 20px;
     margin-bottom: 8px;
 }
 

@@ -1,6 +1,7 @@
 <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
-<form action="/login" class="form" (submit)="logIn()">
+
+<form (ngSubmit)="onSubmit(f)" class="form" #f="ngForm">
 
   <div class="image-container">
       <img src="../assets/user.svg">
@@ -10,13 +11,13 @@
     <div class="text">
         <span class="login-text">Log In</span>
 
-        <span class="subtitle">Username</span> 
-        <input [(ngModel)]="username"  class="user-input" type="text" name="un"/><br>
+        <span class="subtitle">Email</span> 
+        <input required email ngModel [(ngModel)]="email"  class="user-input" type="text" name="email"/><br>
 
         <span class="subtitle">Password</span> 
-        <input [(ngModel)]="password"  class="user-input" type="password" name="un"/><br>
+        <input required ngModel [(ngModel)]="password"  class="user-input" type="password" name="password"/><br>
 
-        <input class="submit-button" type="submit" value="Log In">
+        <button class="submit-button" type="submit" >Log In</button>
         <a href="http://www.google.com" class="bottom left">Forgot Password</a>
         <a routerLink="/signup" class="bottom right">Register</a>
     </div>

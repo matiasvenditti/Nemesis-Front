@@ -10,6 +10,8 @@ import { HomeComponent } from './home/home.component';
 import { LoginFormComponent } from './login/login-form/login-form.component';
 import { SignupComponent } from './signup/signup.component';
 import { SignupFormComponent } from './signup/signup-form/signup-form.component';
+import { HomeLabelComponent } from './home/home-label/home-label.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 var appRoutes = [
@@ -26,12 +28,14 @@ var appRoutes = [
     HomeComponent,
     LoginFormComponent,
     SignupComponent,
-    SignupFormComponent
+    SignupFormComponent,
+    HomeLabelComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

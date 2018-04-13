@@ -103,3 +103,8 @@ span{
 .user-input:focus{
     border-bottom: 1px solid transparent;
 }
+
+.user-input.ng-touched.ng-invalid{
+    border-bottom: 1px solid #FA5858;
+    color: #FA5858;
+}

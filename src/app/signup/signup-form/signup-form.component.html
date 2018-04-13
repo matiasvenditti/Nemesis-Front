@@ -1,23 +1,23 @@
 <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
-<form action="/login" class="form">
+<form (ngSubmit)="signUp(f)" class="form" #f>
 
   <div class="text">
       <label>Create Your Account</label>
 
       <span class="subtitle">Name</span> 
-      <input [(ngModel)]="name"  class="user-input" type="text" name="un"/><br>
+      <input required ngModel [(ngModel)]="name"  class="user-input" type="text" name="name"/><br>
 
       <span class="subtitle">Surname</span> 
-      <input [(ngModel)]="surname"  class="user-input" type="text" name="un"/><br>
+      <input required ngModel [(ngModel)]="surname"  class="user-input" type="text" name="surname"/><br>
 
-      <span class="subtitle">User Name</span> 
-      <input [(ngModel)]="username"  class="user-input" type="text" name="un"/><br>
+      <span class="subtitle">Email</span> 
+      <input required email ngModel [(ngModel)]="email"  class="user-input" type="text" name="email"/><br>
 
       <span class="subtitle">Password</span> 
-      <input [(ngModel)]="password"  class="user-input" type="password" name="un"/><br>
+      <input required ngModel [(ngModel)]="password"  class="user-input" type="password" name="password"/><br>
 
-      <input class="submit-button" type="submit" value="Sign Up">
+      <button class="submit-button" type="submit">Sign Up</button>
       <a routerLink="/login" class="bottom left">Already registered</a>
       <a routerLink="/" class="bottom right">Home</a>
   </div>

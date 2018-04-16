@@ -1,27 +1,28 @@
 import { Component, OnInit } from '@angular/core';
-import { InputElement, Elements, ButtonElement } from '../../signup/signup.component';
 import { NgForm } from '@angular/forms';
+import { AuthenticationService } from '../../../services/authentication.service';
 
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
+  providers: [AuthenticationService],
   styleUrls: ['./login-form.component.css']
 })
 export class LoginFormComponent implements OnInit {
 
-  inputs;
+
+  private url: string = '172.22.37.145:8080';
   private email: string;
   private password: string;
 
-  constructor() { }
+  constructor(public auth: AuthenticationService) { }
 
   ngOnInit() {
   }
 
   logIn(form: NgForm){
-    console.log(this.email, this.password);
     console.log(form);
-    
+    this.auth.postLogIn(this.url + '/auth', this.email, this.password);
   }
 
 }

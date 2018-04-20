@@ -11,7 +11,7 @@ import { AuthenticationService } from '../../../services/authentication.service'
 export class LoginFormComponent implements OnInit {
 
 
-  private url: string = '172.22.37.145:8080';
+  private url: string = 'http://localhost:8080';
   private email: string;
   private password: string;
 
@@ -22,7 +22,7 @@ export class LoginFormComponent implements OnInit {
 
   logIn(form: NgForm){
     console.log(form);
-    this.auth.postLogIn(this.url + '/auth', this.email, this.password);
+    this.auth.postLogIn(this.url + '/auth', this.email, this.password)
+      .subscribe((res: Response) => this.auth.logIn(res));
   }
-
 }

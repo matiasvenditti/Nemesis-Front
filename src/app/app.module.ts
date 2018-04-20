@@ -12,11 +12,13 @@ import { SignupComponent } from './signup/signup.component';
 import { SignupFormComponent } from './signup/signup-form/signup-form.component';
 import { HomeLabelComponent } from './home/home-label/home-label.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthGuard } from '../model/guard';
+import { AuthenticationService } from '../services/authentication.service';
 
 
 var appRoutes = [
   { path: 'login', component: LoginComponent},
-  { path: 'signup', component: SignupComponent},
+  { path: 'signup', component: SignupComponent, canActivate: [AuthGuard]},
   { path: '', component: HomeComponent}
 ]
 
@@ -37,7 +39,10 @@ var appRoutes = [
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    AuthGuard,
+    AuthenticationService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -19,7 +19,7 @@ import { AuthenticationService } from '../services/authentication.service';
 var appRoutes = [
   { path: 'login', component: LoginComponent},
   { path: 'signup', component: SignupComponent, canActivate: [AuthGuard]},
-  { path: '', component: HomeComponent}
+  { path: '', component: HomeComponent, canActivate:[AuthGuard]}
 ]
 
 

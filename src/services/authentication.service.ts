@@ -1,24 +1,27 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Injectable } from "@angular/core";
+import { Injectable, OnInit } from "@angular/core";
 import { User } from "../model/user";
-import {Observable} from 'rxjs/Rx';
+import {Observable, BehaviorSubject} from 'rxjs/Rx';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-@Injectable()
-export class AuthenticationService{
 
-    private logged: boolean = false;
+@Injectable()
+export class AuthenticationService implements OnInit {
+
+    private loginSubject = new BehaviorSubject<boolean>(false);
+    login = this.loginSubject.asObservable();
 
     constructor(private http: HttpClient){}
+
+    ngOnInit(): void {}
 
     postLogIn(url: string, username: string, password: string): Observable<any>{
         const body = {
             username: username,
             password: password
         };
-
         const headers = new HttpHeaders().set('Content-Type', 'application/json');
         const options = {
             headers: headers,
@@ -26,27 +29,19 @@ export class AuthenticationService{
         return this.http.post(url, body, options);
     }
 
-    postSignUp(url: string, user: User){
-        this.http.post(url, user)
-    }
-
-    loggedIn(){
-        return this.logged;
+    isLoggedIn(): boolean{
+        return this.loginSubject.getValue();
     }
 
     logIn(res: Response){
-        this.logged = true;
-        console.log('User logged in: ' + this.logged);
-        
-        const key = Object.values(res)[0];
-        localStorage.setItem('token', key);
+        this.loginSubject.next(true);
+        localStorage.setItem('token', Object.values(res)[0]);
+        console.log('Logged from Service: ' + this.loginSubject.getValue());
     }
 
     logOut(){
-        this.logged = false;
-        localStorage.removeItem('token');
+        this.loginSubject.next(false);
+        localStorage.clear();
+        // localStorage.removeItem('token');
     }
-
-    
-
 }

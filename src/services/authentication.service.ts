@@ -36,12 +36,15 @@ export class AuthenticationService implements OnInit {
     logIn(res: Response){
         this.loginSubject.next(true);
         localStorage.setItem('token', Object.values(res)[0]);
-        console.log('Logged from Service: ' + this.loginSubject.getValue());
     }
 
     logOut(){
         this.loginSubject.next(false);
         localStorage.clear();
         // localStorage.removeItem('token');
+    }
+
+    signUp(name: string, surname: string, password: string){
+
     }
 }

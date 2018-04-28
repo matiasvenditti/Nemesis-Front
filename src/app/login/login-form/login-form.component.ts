@@ -23,7 +23,7 @@ export class LoginFormComponent implements OnInit {
   }
 
   logIn(form: NgForm){
-    this.auth.postLogIn(this.url + '/auth', this.email, this.password)
+    this.auth.postLogIn(this.url + '/login', this.email, this.password)
       .subscribe((res: Response) => {
         this.auth.logIn(res)
         this.router.navigate(['/'])

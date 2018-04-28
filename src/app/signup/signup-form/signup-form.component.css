@@ -4,24 +4,27 @@
 .form{
     display: inline-block;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    color: white;
-    border-radius: 2px;
+    background-color: #FFFFFF;
+    color: #333333;
+    border-radius: 10px;
     padding: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
 }
 
 .text label{
     display: block;
+    font-size: 25px;
+    display: block;
     text-align: center;
-    font-size: 30px;
     margin-bottom: 20px;
-    font-family: 'Lobster', cursive;
+    font-family: 'Oswald', sans-serif;
 }
 
 .text span{
-    display: block;
     font-size: 20px;
     margin-bottom: 8px;
+    color: #BCBCBC;
+    display: block;
 }
 
 .text .tag{
@@ -34,7 +37,8 @@
     text-decoration: none;
     background-color: transparent;
     border: none;
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid #BCBCBC;
+    color: #262626;
     outline: none;
     width: 100%;
     transition: 0.3s all;
@@ -43,11 +47,13 @@
 
 .text .user-input:focus{
     border-bottom: 1px solid transparent;
+    border-image: linear-gradient(90deg, #22D2FE, #B228FF);
+    border-image-slice: 1;
 }
 
 .text .submit-button{
     text-decoration: none;
-    background: linear-gradient(45deg, #50A1FD 0%, #41BCFC 25%, #36CDFA 51%, #08E1FB 100%);
+    background: linear-gradient(90deg, #22D2FE 0%, #44AAFE 25%, #6D7BFE 51%, #B228FF 100%);
     width: 50%;
     border-radius: 30px;
     padding: 12px;
@@ -74,7 +80,7 @@
     font-size: 15px;
     margin: 20px 0px 10px 0px;
     text-decoration: none;
-    color: white;
+    color: #333333;
     display: block;
 }
 
@@ -90,3 +96,9 @@
     border-bottom: 1px solid #FA5858;
     color: #FA5858;
 }
+
+.active{
+    border-bottom: 1px solid #FA5858 !important;
+    color: #FA5858 !important;
+}
+

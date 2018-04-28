@@ -12,6 +12,7 @@ export class SignupFormComponent implements OnInit {
   name: string;
   surname: string;
   password: string;
+  confirmPassword: string;
 
   constructor() { }
 
@@ -20,6 +21,10 @@ export class SignupFormComponent implements OnInit {
 
   signUp(form: NgForm){
     console.log(form);
+  }
+
+  check(): string{
+    if (this.confirmPassword != undefined && this.password != this.confirmPassword) return "active";
   }
 
 }

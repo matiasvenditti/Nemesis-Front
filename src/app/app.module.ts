@@ -14,12 +14,14 @@ import { HomeLabelComponent } from './home/home-label/home-label.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthGuard } from '../model/guard';
 import { AuthenticationService } from '../services/authentication.service';
+import { TestComponent } from './test/test.component';
 
 
 var appRoutes = [
   { path: 'login', component: LoginComponent},
-  { path: 'signup', component: SignupComponent, canActivate: [AuthGuard]},
-  { path: '', component: HomeComponent, canActivate:[AuthGuard]}
+  { path: 'signup', component: SignupComponent},
+  { path: '', component: HomeComponent, canActivate:[AuthGuard]},
+  { path: 'test', component: TestComponent}
 ]
 
 
@@ -31,7 +33,8 @@ var appRoutes = [
     LoginFormComponent,
     SignupComponent,
     SignupFormComponent,
-    HomeLabelComponent
+    HomeLabelComponent,
+    TestComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

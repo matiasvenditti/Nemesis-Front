@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { AuthenticationService } from '../../../services/authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup-form',
@@ -11,20 +13,31 @@ export class SignupFormComponent implements OnInit {
   username: string;
   name: string;
   surname: string;
+  email: string;
   password: string;
   confirmPassword: string;
+  url: string = "http://localhost:8080";
 
-  constructor() { }
+  constructor(private auth: AuthenticationService, private router: Router) { }
 
   ngOnInit() {
   }
 
-  signUp(form: NgForm){
-    console.log(form);
-  }
-
   check(): string{
     if (this.confirmPassword != undefined && this.password != this.confirmPassword) return "active";
+  }
+
+  signUp(){
+    this.auth.signUp(this.url + '/signup', this.name, this.surname, this.username, this.email, this.password).subscribe(() => {
+      this.auth.postLogIn(this.url + '/login', this.username, this.password).subscribe((res: Response) => {
+        this.auth.logIn(res)
+        this.router.navigate(['/'])
+      })
+    });
+    // this.auth.postLogIn(this.url + '/login', this.username, this.password).subscribe((res: Response) => {
+    //   this.auth.logIn(res)
+    //   this.router.navigate(['/'])
+    // })
   }
 
 }

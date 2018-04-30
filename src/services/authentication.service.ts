@@ -44,7 +44,18 @@ export class AuthenticationService implements OnInit {
         // localStorage.removeItem('token');
     }
 
-    signUp(name: string, surname: string, password: string){
-
+    signUp(url: string,name: string, surname: string,username: string, email:string, password: string){
+        const body = {
+            name: name,
+            surname: surname,
+            email: email,
+            username: username,
+            password: password
+        }
+        const headers = new HttpHeaders().set('Content-Type', 'application/json');
+        const options = {
+            headers: headers,
+        }
+        return this.http.post(url, body, options)
     }
 }

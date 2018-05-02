@@ -64,10 +64,17 @@ a:hover{
 }
 
 span{
-    float: left;
     font-family: 'Lobster', cursive;
     display: inline-block;
     text-align: center;
     width: 8%;
     font-size: 20px;
+}
+
+.left{
+    float: left;
+}
+
+app-search{
+    height: inherit;
 }

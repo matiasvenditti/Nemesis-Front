@@ -44,7 +44,7 @@ export class AuthenticationService implements OnInit {
         // localStorage.removeItem('token');
     }
 
-    signUp(url: string,name: string, surname: string,username: string, email:string, password: string){
+    signUp(url: string, name: string, surname: string,username: string, email:string, password: string){
         const body = {
             name: name,
             surname: surname,

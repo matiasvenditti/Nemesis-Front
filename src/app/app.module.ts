@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthGuard } from '../model/guard';
 import { AuthenticationService } from '../services/authentication.service';
 import { TestComponent } from './test/test.component';
+import { SearchComponent } from './home/search/search.component';
 
 
 var appRoutes = [
@@ -34,7 +35,8 @@ var appRoutes = [
     SignupComponent,
     SignupFormComponent,
     HomeLabelComponent,
-    TestComponent
+    TestComponent,
+    SearchComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

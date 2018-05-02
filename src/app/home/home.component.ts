@@ -13,10 +13,6 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
-  redirect(){
-    this.router.navigate(['/signup']);
-  }
-
   @HostListener('window: scroll')
   scrollHandler(){
     var nav = document.getElementById("nav");

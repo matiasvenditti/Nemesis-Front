@@ -1,16 +1,19 @@
-<video autoplay muted loop id="background-video">
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+<video autoplay loop id="background-video">
   <source src="../../assets/video.mp4">
 </video>
-<app-home-label></app-home-label>
+<app-home-label id="label"></app-home-label>
 
 <div id="nav" class="navbar">
+  <span>Nemesis</span>
   <ul>
-    <li>Hello</li>
-    <li>Hello</li>
-    <li>Hello</li>
-    <li>Hello</li>
+    <a routerLink="">About</a>
+    <a routerLink="">Profile</a>
+    <a routerLink="/signup">Sign up</a>
+    <a routerLink="/login">Log in</a>
   </ul>
 </div>
 
 <div id="space" class="space" (scroll)="scrollHandler()"></div>
-<button (click)="redirect()">Sign Up</button>

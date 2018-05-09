@@ -41,7 +41,6 @@ export class AuthenticationService implements OnInit {
     logOut(){
         this.loginSubject.next(false);
         localStorage.clear();
-        // localStorage.removeItem('token');
     }
 
     signUp(url: string, name: string, surname: string,username: string, email:string, password: string){

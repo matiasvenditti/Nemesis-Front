@@ -1,0 +1,11 @@
+.delete{
+    background-color: transparent;
+    text-decoration: none;
+    color: #FA5858;
+}
+
+a{
+    display: block;
+    text-align: center;
+    text-decoration: none;
+}

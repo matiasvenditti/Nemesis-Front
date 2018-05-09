@@ -19,6 +19,9 @@ import { SearchComponent } from './home/search/search.component';
 import { SearchService } from '../services/search.service';
 import { ProfileComponent } from './profile/profile.component';
 import { StoreLabelComponent } from './profile/store-label/store-label.component';
+import { ProfileService } from '../services/profile.service';
+import { SettingsComponent } from './profile/settings/settings.component';
+
 
 
 
@@ -43,7 +46,8 @@ var appRoutes = [
     TestComponent,
     SearchComponent,
     ProfileComponent,
-    StoreLabelComponent
+    StoreLabelComponent,
+    SettingsComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -54,7 +58,8 @@ var appRoutes = [
   providers: [
     AuthGuard,
     AuthenticationService,
-    SearchService
+    SearchService,
+    ProfileService
   ],
   bootstrap: [AppComponent]
 })

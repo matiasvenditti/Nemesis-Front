@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ProfileService } from '../../services/profile.service';
 
 
 @Component({
@@ -10,24 +11,34 @@ import { HttpClient } from '@angular/common/http';
 export class ProfileComponent implements OnInit {
 
   username: string;
-  url: string = 'http://localhost:8080/user/';
+  url: string = 'http://localhost:8080';
   id: string;
   stores: string[] = ['Starbucks', 'Apple', 'Adidas', 'Nike'];
-  closed: boolean = false;
+  settingsVisible: boolean = false;
   
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private profile: ProfileService) {
   }
 
   ngOnInit() {
-    this.http.get(this.url + localStorage.getItem('username')).subscribe(value => 
+    this.http.get(this.url + '/user/' + localStorage.getItem('username')).subscribe(value => 
       {
       console.log(value);
       this.username = this.capitalize(value['username']);
       this.id = value['id'];
       }
     );
-    // console.log(this.http.get(this.url + localStorage.getItem('username')).subscribe());
+  }
+
+  toggleSettings(){
+    var settings = document.querySelector('app-settings') as HTMLElement;
+    
+    if (this.settingsVisible){
+      settings.style.setProperty('display', 'none');
+    } else{
+      settings.style.setProperty('display', 'inline-block');
+    }
+    this.settingsVisible = !this.settingsVisible;
     
   }
 
@@ -36,6 +47,7 @@ export class ProfileComponent implements OnInit {
   }
 
   addStore(name: string){
+    this.profile.addStore(this.url + '/profile/add', 'Starbucks');
     this.stores.push(name);
   }
 

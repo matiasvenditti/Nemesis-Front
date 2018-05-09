@@ -78,6 +78,26 @@ app-store-label{
     border-radius: 5px;
 }
 
+.settings{
+    position: absolute;
+    right: 0;
+    height: 30px;
+    margin: 20px;
+    top: 0;
+}
+
+.settings:hover{
+    cursor: pointer;
+}
+
+app-settings{
+    display: none;
+    position: absolute;
+    right: 0px;
+    top: 10%;
+    padding: 20px;
+}
+
 
 
 

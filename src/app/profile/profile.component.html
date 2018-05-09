@@ -1,0 +1,25 @@
+<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+
+<div class="container">
+    <div class="background"></div>
+    <div class="content">
+        <img src="../../assets/perfil.jpg" alt="">
+        <span>Welcome {{ username }}</span>
+    </div>
+
+    <div class="data-container">
+        <span>Check out your Stores</span>
+        <div class="label-container">
+            <app-store-label *ngFor="let store of stores"></app-store-label>
+        </div>
+    </div>
+
+    <div class="data-container">
+        <span>Check out your Stores</span>
+        <div class="label-container">
+            <app-store-label *ngFor="let store of stores"></app-store-label>
+        </div>
+    </div>
+</div>
+
+

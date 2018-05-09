@@ -1,0 +1,83 @@
+html, body{
+    height: 100%;
+    position: relative;
+}
+
+body{
+    height: 100%;
+}
+
+
+.background{
+    background: linear-gradient(45deg, #22D2FE 0%, #44AAFE 25%, #6D7BFE 51%, #B228FF 100%);
+    height: 400px;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.container{
+    width: 100%;
+    padding: 0;
+    height: 100%;
+}
+
+.content{
+    display: inline-block;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.content span{
+    color: white;
+    display: block;
+    text-align: center;
+    font-family: 'Oswald', sans-serif;
+    font-size: 25px;
+    margin-top: 30px;
+}
+
+.content img{
+    width: 200px;
+    border-radius: 50%;
+    border: 5px solid white;
+}
+
+.data-container{
+    /* background-color: white; */
+    background-color: #F2F2F2;
+    font-family: 'Oswald', sans-serif;
+    width: 75%;
+    margin: auto;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+    transition: height 0.5s;
+    height: 60px;
+    overflow: scroll;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.data-container span{
+    display: block;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.data-container:hover{
+    height: 400px;
+}
+
+app-store-label{
+    float: left;
+}
+
+.label-container{
+    display: inline-block;
+    border-radius: 5px;
+}
+
+
+
+

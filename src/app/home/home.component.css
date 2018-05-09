@@ -4,7 +4,7 @@
 }
 
 #background-video{
-    position: absolute;
+    position: relative;
     left: 0;
     bottom: 0;
     min-width: 100%; 
@@ -36,6 +36,7 @@ button{
     position: fixed;
     width: 100%;
     opacity: 0;
+    z-index: 1;
 }
 
 .navbar ul{
@@ -77,4 +78,20 @@ span{
 
 app-search{
     height: inherit;
+}
+
+.content-container{
+    font-family: 'Oswald', sans-serif;
+    width: 75%;
+    display: inline-block;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+    margin-top: 30px;
+}
+
+.content-container p{
+    font-size: 20px;
+    color: #BCBCBC;
+    margin-top: 30px;
 }

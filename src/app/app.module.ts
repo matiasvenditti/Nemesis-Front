@@ -16,13 +16,18 @@ import { AuthGuard } from '../model/guard';
 import { AuthenticationService } from '../services/authentication.service';
 import { TestComponent } from './test/test.component';
 import { SearchComponent } from './home/search/search.component';
+import { SearchService } from '../services/search.service';
+import { ProfileComponent } from './profile/profile.component';
+import { StoreLabelComponent } from './profile/store-label/store-label.component';
+
 
 
 var appRoutes = [
   { path: 'login', component: LoginComponent},
   { path: 'signup', component: SignupComponent},
   { path: '', component: HomeComponent, canActivate:[AuthGuard]},
-  { path: 'test', component: TestComponent}
+  { path: 'test', component: TestComponent},
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]}
 ]
 
 
@@ -36,7 +41,9 @@ var appRoutes = [
     SignupFormComponent,
     HomeLabelComponent,
     TestComponent,
-    SearchComponent
+    SearchComponent,
+    ProfileComponent,
+    StoreLabelComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -46,7 +53,8 @@ var appRoutes = [
   ],
   providers: [
     AuthGuard,
-    AuthenticationService
+    AuthenticationService,
+    SearchService
   ],
   bootstrap: [AppComponent]
 })

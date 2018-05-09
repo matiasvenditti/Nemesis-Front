@@ -12,10 +12,19 @@
   
   <ul>
     <a routerLink="">About</a>
-    <a routerLink="">Profile</a>
+    <a routerLink="/profile">Profile</a>
     <a routerLink="/signup">Sign up</a>
-    <a routerLink="/login">Log in</a>
+    <a routerLink="/login" (click)="logOut()">Log out</a>
   </ul>
 </div>
+<div class="content-container">
+  <h2>Get to know our top Stores</h2>
+  <p>These are some of the best stores selected from huge variety of excelente quality brands</p>
+  <hr>
+  <h2>Most wanted products</h2>
+  <p>Browse for the best products made especially for you</p>
+</div>
+
+
 
 <div id="space" class="space" (scroll)="scrollHandler()"></div>

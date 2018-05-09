@@ -1,5 +1,6 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthenticationService } from '../../services/authentication.service';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private auth: AuthenticationService) { }
 
   ngOnInit() {
   }
@@ -19,6 +20,10 @@ export class HomeComponent implements OnInit {
     var scroll = window.scrollY;
     var opacity = 2*scroll/window.innerHeight;
     nav.style.setProperty("opacity", "" + opacity);
+  }
+
+  logOut(){
+    this.auth.logOut();
   }
 
 }

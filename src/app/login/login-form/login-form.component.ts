@@ -11,8 +11,8 @@ import { Router } from '@angular/router';
 export class LoginFormComponent implements OnInit {
 
 
-  private url: string = 'http://localhost:8080';
-  private email: string;
+  private url: string = 'http://localhost:8080/user';
+  private userName: string;
   private password: string;
 
 
@@ -23,9 +23,10 @@ export class LoginFormComponent implements OnInit {
   }
 
   logIn(){
-    this.auth.postLogIn(this.url + '/login', this.email, this.password)
+    this.auth.postLogIn(this.url + '/login', this.userName, this.password)
       .subscribe((res: Response) => {
         this.auth.logIn(res)
+        localStorage.setItem('username', this.userName)
         this.router.navigate(['/'])
       })
   }

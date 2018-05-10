@@ -14,6 +14,7 @@
         <span>Check out your Stores</span>
         <div class="label-container">
             <app-store-label *ngFor="let store of stores"></app-store-label>
+            <app-add (click)="showForm()"></app-add>
         </div>
     </div>
 
@@ -24,5 +25,7 @@
         </div>
     </div>
 </div>
+<app-store-form tabindex="0" *ngIf="formVisible" (focusout)="hideForm()"></app-store-form>
+
 
 

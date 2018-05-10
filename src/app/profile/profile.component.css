@@ -73,6 +73,10 @@ app-store-label{
     float: left;
 }
 
+app-add{
+    display: inline-block;
+}
+
 .label-container{
     display: inline-block;
     border-radius: 5px;
@@ -97,6 +101,24 @@ app-settings{
     top: 10%;
     padding: 20px;
 }
+
+.blur{
+    filter: blur(50px);
+}
+
+app-store-form{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+}
+
+app-store-form:focus{
+    outline: none;
+}
+
+
 
 
 

@@ -1,0 +1,15 @@
+
+<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+
+<form (ngSubmit)="logIn()" class="form" #f="ngForm" autocomplete="off">
+
+    <div class="text">
+        <span class="form-text">Create Your Store</span>
+
+        <span class="subtitle">Store name</span> 
+        <input required ngModel [(ngModel)]="userName"  class="user-input" type="text" name="email"/><br>
+
+        <button class="submit-button" type="submit" >Send</button>
+    </div>
+</form>

@@ -13,8 +13,9 @@ export class ProfileComponent implements OnInit {
   username: string;
   url: string = 'http://localhost:8080';
   id: string;
-  stores: string[] = ['Starbucks', 'Apple', 'Adidas', 'Nike'];
+  stores: string[] = ['Apple', 'Adidas', 'Nike'];
   settingsVisible: boolean = false;
+  formVisible: boolean = false;
   
 
   constructor(private http: HttpClient, private profile: ProfileService) {
@@ -31,7 +32,7 @@ export class ProfileComponent implements OnInit {
   }
 
   toggleSettings(){
-    var settings = document.querySelector('app-settings') as HTMLElement;
+    let settings = document.querySelector('app-settings') as HTMLElement;
     
     if (this.settingsVisible){
       settings.style.setProperty('display', 'none');
@@ -42,8 +43,35 @@ export class ProfileComponent implements OnInit {
     
   }
 
-  capitalize(word: string): string {
+  toggleForm(){
+    let container = document.querySelector('.container');
+    if (!this.formVisible){
+      container.classList.add('blur');
+    } else if (this.focusedBody()){
+      container.classList.remove('blur');
+    } 
+    this.formVisible = !this.formVisible;
+  }
+
+  showForm(){
+    document.querySelector('.container').classList.add('blur');
+    this.formVisible = true;
+  }
+
+  hideForm(){
+      document.querySelector('.container').classList.remove('blur');
+      this.formVisible = false;
+  }
+
+  private capitalize(word: string): string {
     return word.charAt(0).toUpperCase() + word.slice(1);
+  }
+
+  private focusedBody(): boolean{
+    let body = document.body;
+    console.log(document.activeElement);
+    
+    return document.activeElement === body;
   }
 
   addStore(name: string){

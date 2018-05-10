@@ -21,8 +21,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { StoreLabelComponent } from './profile/store-label/store-label.component';
 import { ProfileService } from '../services/profile.service';
 import { SettingsComponent } from './profile/settings/settings.component';
-
-
+import { AddComponent } from './profile/add/add.component';
+import { StoreFormComponent } from './profile/store-form/store-form.component';
 
 
 var appRoutes = [
@@ -47,7 +47,9 @@ var appRoutes = [
     SearchComponent,
     ProfileComponent,
     StoreLabelComponent,
-    SettingsComponent
+    SettingsComponent,
+    AddComponent,
+    StoreFormComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

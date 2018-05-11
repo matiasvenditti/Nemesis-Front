@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ProfileService } from '../../../services/profile.service';
 
 @Component({
   selector: 'app-store-label',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StoreLabelComponent implements OnInit {
 
+  @Input() name;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  removeStore(name: string, stores: string[]){
+    let index = stores.indexOf(name);
+    if (index !== -1){
+      stores.slice(index, 1);
+    }
   }
 
 }

@@ -95,7 +95,7 @@ app-add{
 }
 
 app-settings{
-    display: none;
+    display: inline-block;
     position: absolute;
     right: 0px;
     top: 10%;

@@ -3,6 +3,7 @@
     transition: all 0.3s;
     padding: 20px 20px 20px 30px;
     width: 100%;
+    border-radius: 5px;
 }
 
 .container:hover{
@@ -34,6 +35,12 @@
     float: right;
     padding: 5px;
     visibility: hidden;
+}
+
+.container .label-button:hover{
+    cursor: pointer;
+    filter: invert(.5) sepia(1) saturate(5) hue-rotate(200deg);
+    transform: scale(1.15);
 }
 
 .container .description{

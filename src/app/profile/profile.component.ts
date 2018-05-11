@@ -32,25 +32,7 @@ export class ProfileComponent implements OnInit {
   }
 
   toggleSettings(){
-    let settings = document.querySelector('app-settings') as HTMLElement;
-    
-    if (this.settingsVisible){
-      settings.style.setProperty('display', 'none');
-    } else{
-      settings.style.setProperty('display', 'inline-block');
-    }
     this.settingsVisible = !this.settingsVisible;
-    
-  }
-
-  toggleForm(){
-    let container = document.querySelector('.container');
-    if (!this.formVisible){
-      container.classList.add('blur');
-    } else if (this.focusedBody()){
-      container.classList.remove('blur');
-    } 
-    this.formVisible = !this.formVisible;
   }
 
   showForm(){
@@ -59,8 +41,8 @@ export class ProfileComponent implements OnInit {
   }
 
   hideForm(){
-      document.querySelector('.container').classList.remove('blur');
-      this.formVisible = false;
+    document.querySelector('.container').classList.remove('blur');
+    this.formVisible = false;
   }
 
   private capitalize(word: string): string {
@@ -73,17 +55,4 @@ export class ProfileComponent implements OnInit {
     
     return document.activeElement === body;
   }
-
-  addStore(name: string){
-    this.profile.addStore(this.url + '/profile/add', 'Starbucks');
-    this.stores.push(name);
-  }
-
-  removeStore(name: string){
-    let index = this.stores.indexOf(name);
-    if (index !== -1){
-      this.stores.slice(index, 1);
-    }
-  }
-
 }

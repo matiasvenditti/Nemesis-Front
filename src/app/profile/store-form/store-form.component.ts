@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ProfileService } from '../../../services/profile.service';
 
 @Component({
   selector: 'app-store-form',
@@ -7,10 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StoreFormComponent implements OnInit {
 
-  constructor() { }
+  storeName: string;
+  url: string = 'http://localhost:8080';
+
+  @Input() stores;
+
+  constructor(private profile: ProfileService) { }
 
   ngOnInit() {
   }
-  
 
+  addStore(){
+    this.profile.addStore(this.url + '/profile/add', this.storeName);
+    this.stores.push(this.storeName);
+    console.log(this.stores);
+    
+  }
 }

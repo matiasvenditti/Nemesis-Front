@@ -45,7 +45,6 @@ body{
 }
 
 .data-container{
-    /* background-color: white; */
     background-color: #F2F2F2;
     font-family: 'Oswald', sans-serif;
     width: 75%;
@@ -53,7 +52,6 @@ body{
     border-radius: 5px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
     transition: height 0.5s;
-    height: 60px;
     overflow: scroll;
     padding: 20px;
     margin-bottom: 20px;
@@ -63,10 +61,6 @@ body{
     display: block;
     text-align: center;
     margin-bottom: 20px;
-}
-
-.data-container:hover{
-    height: 400px;
 }
 
 app-store-label{
@@ -88,6 +82,14 @@ app-add{
     height: 30px;
     margin: 20px;
     top: 0;
+}
+
+.home{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 30px;
+    margin: 20px;
 }
 
 .settings:hover{

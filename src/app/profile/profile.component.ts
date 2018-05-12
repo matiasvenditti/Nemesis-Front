@@ -13,7 +13,7 @@ export class ProfileComponent implements OnInit {
   username: string;
   url: string = 'http://localhost:8080';
   id: string;
-  stores: string[] = ['Apple', 'Adidas', 'Nike'];
+  storeList: string[] = ['Apple', 'Adidas', 'Nike'];
   settingsVisible: boolean = false;
   formVisible: boolean = false;
   
@@ -47,12 +47,5 @@ export class ProfileComponent implements OnInit {
 
   private capitalize(word: string): string {
     return word.charAt(0).toUpperCase() + word.slice(1);
-  }
-
-  private focusedBody(): boolean{
-    let body = document.body;
-    console.log(document.activeElement);
-    
-    return document.activeElement === body;
   }
 }

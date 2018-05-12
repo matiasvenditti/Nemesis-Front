@@ -1,7 +1,7 @@
 .container{
     font-family: 'Oswald', sans-serif;
     transition: all 0.3s;
-    padding: 20px 20px 20px 30px;
+    padding: 20px;
     width: 100%;
     border-radius: 5px;
 }
@@ -26,8 +26,17 @@
 }
 
 .container span{
+    position: relative;
+    display: inline-block;
     text-align: center;
-    float: left;
+    left: 50%;
+    transform: translate(-50%);
+    transition: 0.5s;
+}
+
+.container:hover span{
+    left: 0;
+    transform: translate(0);
 }
 
 .container .label-button{

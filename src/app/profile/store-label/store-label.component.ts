@@ -9,17 +9,22 @@ import { ProfileService } from '../../../services/profile.service';
 export class StoreLabelComponent implements OnInit {
 
   @Input() name;
+  @Input() stores;
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  removeStore(name: string, stores: string[]){
-    let index = stores.indexOf(name);
+  removeStore(){
+    let index = this.stores.indexOf(this.name, 0);
+    console.log(index);
+    
     if (index !== -1){
-      stores.slice(index, 1);
+      this.stores.splice(index, 1);
     }
+    console.log(this.stores);
+    
   }
 
 }

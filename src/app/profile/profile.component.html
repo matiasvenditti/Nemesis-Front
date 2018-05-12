@@ -7,25 +7,19 @@
         <span>Welcome {{ username }}</span>
     </div>
 
+    <a routerLink="/"><img class="home" src="../../assets/back.svg" alt="" (click)="goHome()"></a>
     <img class="settings" src="../../assets/settings.svg" alt="" (click)="toggleSettings()">
     <app-settings *ngIf="settingsVisible"></app-settings>
 
     <div class="data-container">
         <span>Check out your Stores</span>
         <div class="label-container">
-            <app-store-label *ngFor="let store of stores" [name]="store"></app-store-label>
+            <app-store-label *ngFor="let store of storeList" [name]="store" [stores]="storeList"></app-store-label>
             <app-add (click)="showForm()"></app-add>
         </div>
     </div>
-
-    <div class="data-container">
-        <span>Check out your Stores</span>
-        <div class="label-container">
-            <app-store-label *ngFor="let store of stores"></app-store-label>
-        </div>
-    </div>
 </div>
-<app-store-form tabindex="0" *ngIf="formVisible" (blur)="hideForm()" [stores]="stores"></app-store-form>
+<app-store-form tabindex="0" *ngIf="formVisible" (blur)="hideForm()" [stores]="storeList"></app-store-form>
 
 
 

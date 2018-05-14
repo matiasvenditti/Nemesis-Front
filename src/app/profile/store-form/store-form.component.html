@@ -10,6 +10,10 @@
         <span class="subtitle">Store name</span> 
         <input required ngModel [(ngModel)]="storeName"  class="user-input" type="text" name="storeName"/><br>
 
+        <span class="subtitle">Choose store image</span>
+        <input required type="file" accept="image/*" class="file-input" name="file" id="file">
+        <label class="file-label" for="file">Choose store image...</label>
+
         <button class="submit-button" type="submit" >Send</button>
     </div>
 </form>

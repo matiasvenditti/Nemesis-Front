@@ -35,7 +35,8 @@ export class AuthenticationService implements OnInit {
 
     logIn(res: Response){
         this.loginSubject.next(true);
-        localStorage.setItem('token', Object.values(res)[0]);
+        localStorage.setItem('token', res.headers.get('token'));
+        // localStorage.setItem('token', Object.values(res)[0]);
     }
 
     logOut(){

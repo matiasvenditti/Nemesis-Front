@@ -28,16 +28,12 @@ export class SignupFormComponent implements OnInit {
   }
 
   signUp(){
-    this.auth.signUp(this.url + '/signup', this.name, this.surname, this.username, this.email, this.password).subscribe(() => {
-      this.auth.postLogIn(this.url + '/login', this.username, this.password).subscribe((res: Response) => {
+    this.auth.signUp(this.url + '/auth/sign-up', this.name, this.surname, this.username, this.email, this.password).subscribe(() => {
+      this.auth.postLogIn(this.url + '/auth/login', this.username, this.password).subscribe((res: Response) => {
         this.auth.logIn(res)
         this.router.navigate(['/'])
       })
     });
-    // this.auth.postLogIn(this.url + '/login', this.username, this.password).subscribe((res: Response) => {
-    //   this.auth.logIn(res)
-    //   this.router.navigate(['/'])
-    // })
   }
 
 }

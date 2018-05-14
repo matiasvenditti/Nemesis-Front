@@ -83,11 +83,11 @@ span{
     color: #FA5858;
 }
 
-/* .cancel{
-    height: 10px;
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: 20px;
+
+/* .file-input{
+    display: none;
 } */
 
+.file-label:hover{
+    cursor: pointer;
+}

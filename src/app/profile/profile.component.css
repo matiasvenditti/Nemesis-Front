@@ -65,15 +65,20 @@ body{
 
 app-store-label{
     float: left;
+    width: 215px;
+    height: 215px;
 }
 
 app-add{
     display: inline-block;
+    width: 215px;
+    height: 215px;
 }
 
 .label-container{
     display: inline-block;
     border-radius: 5px;
+    padding: 20px;
 }
 
 .settings{

@@ -9,3 +9,7 @@ a{
     text-align: center;
     text-decoration: none;
 }
+
+span:hover{
+    cursor: pointer;
+}

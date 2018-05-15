@@ -61,7 +61,7 @@ var appRoutes = [
     AuthGuard,
     AuthenticationService,
     SearchService,
-    ProfileService
+    ProfileService,
   ],
   bootstrap: [AppComponent]
 })

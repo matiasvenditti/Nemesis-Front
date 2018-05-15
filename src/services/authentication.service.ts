@@ -5,6 +5,7 @@ import {Observable, BehaviorSubject} from 'rxjs/Rx';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import { Router } from "@angular/router";
 
 
 @Injectable()
@@ -13,7 +14,7 @@ export class AuthenticationService implements OnInit {
     private loginSubject = new BehaviorSubject<boolean>(false);
     login = this.loginSubject.asObservable();
 
-    constructor(private http: HttpClient){}
+    constructor(private http: HttpClient, private router: Router){}
 
     ngOnInit(): void {}
 
@@ -22,11 +23,9 @@ export class AuthenticationService implements OnInit {
             username: username,
             password: password
         };
-        const headers = new HttpHeaders().set('Content-Type', 'application/json');
-        const options = {
-            headers: headers,
-        }
-        return this.http.post(url, body, options);
+        const headers = new HttpHeaders();
+        headers.append('Content-Type', 'application/json')
+        return this.http.post(url, body, {headers: headers});
     }
 
     isLoggedIn(): boolean{
@@ -35,13 +34,13 @@ export class AuthenticationService implements OnInit {
 
     logIn(res: Response){
         this.loginSubject.next(true);
-        localStorage.setItem('token', res.headers.get('token'));
-        // localStorage.setItem('token', Object.values(res)[0]);
+        localStorage.setItem('token', Object.values(res)[0]);
     }
 
     logOut(){
         this.loginSubject.next(false);
         localStorage.clear();
+        this.router.navigate(['/login']);
     }
 
     signUp(url: string, name: string, surname: string,username: string, email:string, password: string){
@@ -57,5 +56,9 @@ export class AuthenticationService implements OnInit {
             headers: headers,
         }
         return this.http.post(url, body, options)
+    }
+
+    getToken(){
+        return localStorage.getItem('token');
     }
 }

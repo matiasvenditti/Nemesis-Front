@@ -31,6 +31,7 @@ export class SignupFormComponent implements OnInit {
     this.auth.signUp(this.url + '/auth/sign-up', this.name, this.surname, this.username, this.email, this.password).subscribe(() => {
       this.auth.postLogIn(this.url + '/auth/login', this.username, this.password).subscribe((res: Response) => {
         this.auth.logIn(res)
+        localStorage.setItem('username', this.username);
         this.router.navigate(['/'])
       })
     });

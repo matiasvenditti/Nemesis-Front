@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ProfileService } from '../../services/profile.service';
+import { User } from '../../model/user';
 
 
 @Component({
@@ -16,6 +17,7 @@ export class ProfileComponent implements OnInit {
   storeList: string[] = ['Apple', 'Adidas', 'Nike'];
   settingsVisible: boolean = false;
   formVisible: boolean = false;
+  user: User;
   
 
   constructor(private http: HttpClient, private profile: ProfileService) {
@@ -24,9 +26,9 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     this.http.get(this.url + '/user/' + localStorage.getItem('username')).subscribe(value => 
       {
-      console.log(value);
-      this.username = this.capitalize(value['username']);
-      this.id = value['id'];
+      this.user = value as User;
+      this.username = this.capitalize(this.user.username);
+      
       }
     );
   }

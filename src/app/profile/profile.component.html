@@ -9,7 +9,7 @@
 
     <a routerLink="/"><img class="home" src="../../assets/back.svg" alt=""></a>
     <img class="settings" src="../../assets/settings.svg" alt="" (click)="toggleSettings()">
-    <app-settings *ngIf="settingsVisible"></app-settings>
+    <app-settings *ngIf="settingsVisible" [user]="user"></app-settings>
 
     <div class="data-container">
         <span>Check out your Stores</span>

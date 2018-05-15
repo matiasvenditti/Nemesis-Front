@@ -84,10 +84,24 @@ span{
 }
 
 
-/* .file-input{
+.file-input{
     display: none;
-} */
+}
 
-.file-label:hover{
+.file-button{
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+    margin: 20px 0px 20px 0px;
+    border-radius: 15px;
+    border: 1px solid #BCBCBC;
+    color: #BCBCBC;
+    padding: 10px;
+    outline: none;
+}
+
+.file-button:hover{
     cursor: pointer;
+    border: 1px solid #8068FF;
+    color: #8068FF
 }

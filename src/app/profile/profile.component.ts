@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ProfileService } from '../../services/profile.service';
 import { User } from '../../model/user';
+import { Store } from '../../model/store';
 
 
 @Component({
@@ -13,8 +14,7 @@ export class ProfileComponent implements OnInit {
 
   username: string;
   url: string = 'http://localhost:8080';
-  id: string;
-  storeList: string[] = ['Apple', 'Adidas', 'Nike'];
+  storeList: Store[];
   settingsVisible: boolean = false;
   formVisible: boolean = false;
   user: User;
@@ -28,7 +28,7 @@ export class ProfileComponent implements OnInit {
       {
       this.user = value as User;
       this.username = this.capitalize(this.user.username);
-      
+      this.storeList = this.user.stores;
       }
     );
   }

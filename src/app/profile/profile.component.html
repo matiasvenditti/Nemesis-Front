@@ -14,12 +14,12 @@
     <div class="data-container">
         <span>Check out your Stores</span>
         <div class="label-container">
-            <app-store-label *ngFor="let store of storeList" [name]="store" [stores]="storeList"></app-store-label>
+            <app-store-label *ngFor="let store of storeList" [name]="store.name" [stores]="storeList"></app-store-label>
             <app-add (click)="showForm()"></app-add>
         </div>
     </div>
 </div>
-<app-store-form tabindex="0" *ngIf="formVisible" (blur)="hideForm()" [stores]="storeList"></app-store-form>
+<app-store-form tabindex="0" *ngIf="formVisible" [stores]="storeList" [user]="user"></app-store-form>
 
 
 

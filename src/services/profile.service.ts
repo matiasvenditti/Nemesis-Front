@@ -1,15 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { AuthenticationService } from './authentication.service';
 
 @Injectable()
 export class ProfileService {
 
-  
+  constructor(private http: HttpClient) { }
 
-  constructor(private http: HttpClient, private login: AuthenticationService) { }
-
-  addStore(name: string, url: string){
+  addStore(url: string, name: string){
     const body = {
       name: name
     }
@@ -18,6 +15,6 @@ export class ProfileService {
     const options = {
       headers: headers
     }
-    this.http.post(url, body, options)
+    return this.http.post(url, body, options);
   }
 }

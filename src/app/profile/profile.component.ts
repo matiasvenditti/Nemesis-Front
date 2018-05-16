@@ -24,7 +24,7 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.http.get(this.url + '/user/' + localStorage.getItem('username')).subscribe(value => 
+    this.http.get(this.url + '/users/' + localStorage.getItem('username')).subscribe(value => 
       {
       this.user = value as User;
       this.username = this.capitalize(this.user.username);

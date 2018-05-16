@@ -14,7 +14,7 @@
     <div class="data-container">
         <span>Check out your Stores</span>
         <div class="label-container">
-            <app-store-label *ngFor="let store of storeList" [stores]="storeList" [name]="store.name"></app-store-label>
+            <app-store-label *ngFor="let store of storeList" [stores]="storeList" [name]="store.name" [store]="store" [user]="user"></app-store-label>
             <app-add (click)="showForm()"></app-add>
         </div>
     </div>

@@ -15,25 +15,24 @@ export class StoreService {
     const body = {
       name: name
     }
-    const headers = new HttpHeaders();
-    headers.append('Content-Type', 'application/json');
-    headers.append('token', this.auth.getToken());
-
+    const headers = new HttpHeaders()
+    .set('Content-Type', 'application/json')
+    .set('Authorization', 'Bearer ' + this.auth.getToken());
     const options = {
       headers: headers
     }
-    return this.http.post(this.url + `/user/${id}/addStore`, body, options);
+    return this.http.post(this.url + `/users/${id}/stores`, body, options);
   }
 
-  removeStore(id: number, store: Store){
+  removeStore(userId: number, storeId: number){
     const headers = new HttpHeaders()
-    headers.append('Content-Type', 'application/json');
-    headers.append('token', this.auth.getToken());
+    .set('Content-Type', 'application/json')
+    .set('Authorization', `Bearer ${this.auth.getToken()}`);
 
     const options = {
       headers: headers
     }
-    return this.http.delete(this.url + `/store/${id}`, options);
+    return this.http.delete(this.url + `/users/${userId}/stores/${storeId}`, options);
   }
 
 }

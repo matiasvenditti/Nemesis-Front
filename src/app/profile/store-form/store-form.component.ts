@@ -5,6 +5,7 @@ import { User } from '../../../model/user';
 import { Store } from '../../../model/store';
 import { StoreService } from '../../../services/store.service';
 
+
 @Component({
   selector: 'app-store-form',
   templateUrl: './store-form.component.html',
@@ -13,10 +14,11 @@ import { StoreService } from '../../../services/store.service';
 export class StoreFormComponent implements OnInit {
 
   storeName: string;
-  url: string = 'http://localhost:8080';
   imageUrl: string;
   @Input() user: User;
-  @Input() stores;
+  @Input() stores: Store[];
+  
+  
 
   constructor(private profile: ProfileService, private profileComponent: ProfileComponent, private storeService: StoreService) { }
 
@@ -24,8 +26,9 @@ export class StoreFormComponent implements OnInit {
   }
 
   addStore(){
-    this.storeService.addStore(this.user.id, this.storeName).subscribe(() => {
-      this.stores.push(new Store(name));
+    this.storeService.addStore(this.user.id, this.storeName).subscribe((res: Response) => {
+      var storeResponse = JSON.parse(JSON.stringify(res)) as Store
+      this.stores.push(new Store(storeResponse.name, storeResponse.id));
       this.profileComponent.hideForm();
     })
   }

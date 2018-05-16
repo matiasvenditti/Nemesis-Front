@@ -23,6 +23,7 @@ import { ProfileService } from '../services/profile.service';
 import { SettingsComponent } from './profile/settings/settings.component';
 import { AddComponent } from './profile/add/add.component';
 import { StoreFormComponent } from './profile/store-form/store-form.component';
+import { StoreService } from '../services/store.service';
 
 
 var appRoutes = [
@@ -62,6 +63,7 @@ var appRoutes = [
     AuthenticationService,
     SearchService,
     ProfileService,
+    StoreService
   ],
   bootstrap: [AppComponent]
 })

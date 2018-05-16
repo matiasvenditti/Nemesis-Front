@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ProfileService } from '../../../services/profile.service';
+import { StoreService } from '../../../services/store.service';
+import { Store } from '../../../model/store';
 
 @Component({
   selector: 'app-store-label',
@@ -8,17 +10,22 @@ import { ProfileService } from '../../../services/profile.service';
 })
 export class StoreLabelComponent implements OnInit {
 
-  @Input() name;
   @Input() stores;
+  @Input() name;
+ 
 
-  constructor() { }
+  constructor(private storeService: StoreService) { }
 
   ngOnInit() {
   }
 
   removeStore(){
-    let index = this.stores.indexOf(this.name, 0);
-    console.log(index);
+    let index = -1;
+    for(let store of this.stores){
+      if (store.name === this.name){
+        index = this.stores.indexOf(store, 0);
+      }
+    }
     
     if (index !== -1){
       this.stores.splice(index, 1);

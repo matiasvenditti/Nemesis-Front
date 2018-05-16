@@ -89,10 +89,6 @@ span{
 }
 
 .file-button{
-    position: relative;
-    left: 50%;
-    transform: translate(-50%);
-    margin: 20px 0px 20px 0px;
     border-radius: 15px;
     border: 1px solid #BCBCBC;
     color: #BCBCBC;
@@ -104,4 +100,16 @@ span{
     cursor: pointer;
     border: 1px solid #8068FF;
     color: #8068FF
+}
+
+.input-container{
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: inline-block;
+}
+
+.input-container img{
+    height: 60px;
+    float: right;
 }

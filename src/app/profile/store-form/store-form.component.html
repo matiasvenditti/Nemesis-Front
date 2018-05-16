@@ -11,9 +11,11 @@
         <input required ngModel [(ngModel)]="storeName"  class="user-input" type="text" name="storeName"/><br>
 
         <span class="subtitle">Choose store image</span>
-        <input required type="file" accept="image/*" class="file-input" #fileInput>
-        <button class="file-button"(click)="fileInput.click()">Upload store image</button>
-
-        <button class="submit-button" type="submit" >Send</button>
+        <div class="input-container">
+            <input required type="file" accept="image/*" class="file-input" #fileInput (change)="readUrl($event)">
+            <button class="file-button"(click)="fileInput.click()">Upload store image</button>
+            <img *ngIf="imageUrl" [src]="imageUrl" alt="">
+        </div>
+        <button class="submit-button" type="submit" (click)="addStore()">Send</button>
     </div>
 </form>

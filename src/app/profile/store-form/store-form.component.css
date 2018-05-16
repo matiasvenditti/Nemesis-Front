@@ -112,4 +112,19 @@ span{
 .input-container img{
     height: 60px;
     float: right;
+    border-radius: 5px;
+}
+
+.back{
+    height: 20px;
+    filter: invert(.5) sepia(1) saturate(5) hue-rotate(200deg);
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 20px;
+}
+
+.back:hover{
+    cursor: pointer;
+    
 }

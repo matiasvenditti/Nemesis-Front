@@ -22,8 +22,13 @@ export class StoreLabelComponent implements OnInit {
   ngOnInit() {
   }
 
-  removeStore(){
-    this.storeService.removeStore(this.user.id, this.store.id).subscribe(() => this.removeFromArray())
+  removeStore(event: Event){
+    console.log('Deleting');
+    
+    event.stopPropagation();
+    this.storeService.removeStore(this.user.id, this.store.id).subscribe(() => {
+      this.removeFromArray();
+    })
   }
 
   removeFromArray(){
@@ -36,6 +41,7 @@ export class StoreLabelComponent implements OnInit {
     if (index !== -1){
       this.stores.splice(index, 1);
     }
+    
   }
 
 }

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { ProfileService } from '../../services/profile.service';
 import { User } from '../../model/user';
 import { Store } from '../../model/store';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -20,7 +21,7 @@ export class ProfileComponent implements OnInit {
   user: User;
   
 
-  constructor(private http: HttpClient, private profile: ProfileService) {
+  constructor(private http: HttpClient, private profile: ProfileService, private router: Router) {
   }
 
   ngOnInit() {
@@ -49,5 +50,11 @@ export class ProfileComponent implements OnInit {
 
   private capitalize(word: string): string {
     return word.charAt(0).toUpperCase() + word.slice(1);
+  }
+
+  enterStore(id: number){
+    console.log('Navigating');
+    
+    this.router.navigate([`store/${id}`]);
   }
 }

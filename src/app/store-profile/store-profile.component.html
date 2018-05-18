@@ -1,4 +1,5 @@
 <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet">
 
 <div class="container">
   <div class="categories">
@@ -19,9 +20,11 @@
   <div class="content">
     <div class="options">
         <p>{{store.name}}</p>
-        <a routerLink="/profile">Profile</a>
+        <a routerLink="/profile" *ngIf="logged">Profile</a>
         <a routerLink="/">Home</a>
-        <a (click)="logOut()">Log out</a>
+        <a (click)="logOut()" *ngIf="logged">Log out</a>
+        <a routerLink="/login" *ngIf="!logged">Log in</a>
+        <a *ngIf="admin">Add product</a>
     </div>
     
   </div>

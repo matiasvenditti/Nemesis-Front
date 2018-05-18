@@ -48,7 +48,7 @@ body{
 .content{
     float: right;
     width: 70%;
-    padding: 20px 40px 20px 40px;
+    padding: 20px 40px 20px 0px;
 }
 
 .options{
@@ -60,6 +60,8 @@ body{
     top: 50%;
     transform: translateY(-50%);
     display: inline-block;
+    font-family: 'Fjalla One', sans-serif;
+    font-size: 20px;
 }
 
 .options a{

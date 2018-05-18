@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthenticationService } from './authentication.service';
 import { Store } from '../model/store';
+import { User } from '../model/user';
 
 
 @Injectable()
@@ -45,6 +46,15 @@ export class StoreService {
       headers: headers
     }
     return this.http.delete(this.url + `/users/${userId}/stores/${storeId}`, options);
+  }
+
+  isAdmin(user: User, store: Store){
+    for (let arrayStore of user.stores){
+      if (arrayStore.name === store.name){
+        return true;
+      }
+    }
+    return false;
   }
 
 }

@@ -31,7 +31,7 @@ var appRoutes = [
   { path: 'signup', component: SignupComponent},
   { path: '', component: HomeComponent},
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
-  { path: 'store/:id', component: StoreProfileComponent, canActivate: [AuthGuard]}
+  { path: 'store/:id', component: StoreProfileComponent}
 ]
 
 

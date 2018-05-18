@@ -14,7 +14,6 @@ import { HomeLabelComponent } from './home/home-label/home-label.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthGuard } from '../model/guard';
 import { AuthenticationService } from '../services/authentication.service';
-import { TestComponent } from './test/test.component';
 import { SearchComponent } from './home/search/search.component';
 import { SearchService } from '../services/search.service';
 import { ProfileComponent } from './profile/profile.component';
@@ -24,14 +23,15 @@ import { SettingsComponent } from './profile/settings/settings.component';
 import { AddComponent } from './profile/add/add.component';
 import { StoreFormComponent } from './profile/store-form/store-form.component';
 import { StoreService } from '../services/store.service';
+import { StoreProfileComponent } from './store-profile/store-profile.component';
 
 
 var appRoutes = [
   { path: 'login', component: LoginComponent},
   { path: 'signup', component: SignupComponent},
   { path: '', component: HomeComponent, canActivate:[AuthGuard]},
-  { path: 'test', component: TestComponent},
-  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]}
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
+  { path: 'store/:id', component: StoreProfileComponent, canActivate: [AuthGuard]}
 ]
 
 
@@ -44,13 +44,13 @@ var appRoutes = [
     SignupComponent,
     SignupFormComponent,
     HomeLabelComponent,
-    TestComponent,
     SearchComponent,
     ProfileComponent,
     StoreLabelComponent,
     SettingsComponent,
     AddComponent,
-    StoreFormComponent
+    StoreFormComponent,
+    StoreProfileComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

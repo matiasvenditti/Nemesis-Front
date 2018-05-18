@@ -11,6 +11,18 @@ export class StoreService {
 
   constructor(private http: HttpClient, private auth: AuthenticationService) { }
 
+  getStore(id: number){
+    const headers = new HttpHeaders()
+    .set('Content-Type', 'application/json')
+    .set('Authorization', 'Bearer ' + this.auth.getToken());
+
+    const options = {
+      headers: headers
+    }
+
+    return this.http.get<Store>(this.url + `/stores/${id}`, options);
+  }
+
   addStore(id: number, name: string){
     const body = {
       name: name
@@ -21,7 +33,7 @@ export class StoreService {
     const options = {
       headers: headers
     }
-    return this.http.post(this.url + `/users/${id}/stores`, body, options);
+    return this.http.post<Store>(this.url + `/users/${id}/stores`, body, options);
   }
 
   removeStore(userId: number, storeId: number){

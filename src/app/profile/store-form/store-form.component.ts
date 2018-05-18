@@ -26,9 +26,8 @@ export class StoreFormComponent implements OnInit {
   }
 
   addStore(){
-    this.storeService.addStore(this.user.id, this.storeName).subscribe((res: Response) => {
-      var storeResponse = JSON.parse(JSON.stringify(res)) as Store
-      this.stores.push(new Store(storeResponse.name, storeResponse.id));
+    this.storeService.addStore(this.user.id, this.storeName).subscribe((res: Store) => {
+      this.stores.push(res);
       this.profileComponent.hideForm();
     })
   }

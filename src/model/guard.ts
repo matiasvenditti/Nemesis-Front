@@ -1,22 +1,17 @@
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from "@angular/router";
-import { Injectable, OnInit } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { AuthenticationService } from "../services/authentication.service";
 import { Observable } from "rxjs/Observable";
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class AuthGuard implements CanActivate, OnInit{
+export class AuthGuard implements CanActivate{
 
     constructor(private auth: AuthenticationService, private router: Router){
-        
     }
-
-    ngOnInit(): void {
-        this.auth.login.subscribe();
-    }   
     
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Observable<boolean> | Promise<boolean> {
-        if (this.auth.isLoggedIn()){
+        if (localStorage.getItem('token')){
             return true;
         } else{
             this.router.navigate(['/login']);

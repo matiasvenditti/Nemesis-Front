@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Injectable, OnInit } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { User } from "../model/user";
 import {Observable, BehaviorSubject} from 'rxjs/Rx';
 
@@ -9,10 +9,7 @@ import { Router } from "@angular/router";
 
 
 @Injectable()
-export class AuthenticationService implements OnInit {
-
-    private loginSubject = new BehaviorSubject<boolean>(false);
-    login = this.loginSubject.asObservable();
+export class AuthenticationService{
 
     constructor(private http: HttpClient, private router: Router){}
 
@@ -29,16 +26,14 @@ export class AuthenticationService implements OnInit {
     }
 
     isLoggedIn(): boolean{
-        return this.loginSubject.getValue();
+        return localStorage.getItem('token') !== undefined;
     }
 
     logIn(res: Response){
-        this.loginSubject.next(true);
         localStorage.setItem('token', Object.values(res)[0]);
     }
 
     logOut(){
-        this.loginSubject.next(false);
         localStorage.clear();
         this.router.navigate(['/login']);
     }

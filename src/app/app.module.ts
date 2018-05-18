@@ -29,7 +29,7 @@ import { StoreProfileComponent } from './store-profile/store-profile.component';
 var appRoutes = [
   { path: 'login', component: LoginComponent},
   { path: 'signup', component: SignupComponent},
-  { path: '', component: HomeComponent, canActivate:[AuthGuard]},
+  { path: '', component: HomeComponent},
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
   { path: 'store/:id', component: StoreProfileComponent, canActivate: [AuthGuard]}
 ]

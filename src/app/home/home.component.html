@@ -13,8 +13,9 @@
   <ul>
     <a routerLink="">About</a>
     <a routerLink="/profile">Profile</a>
-    <a routerLink="/signup">Sign up</a>
-    <a routerLink="/login" (click)="logOut()">Log out</a>
+    <a routerLink="/signup" *ngIf="!this.auth.isLoggedIn()">Sign up</a>
+    <a (click)="logOut()" *ngIf="this.auth.isLoggedIn()">Log out</a>
+    <a routerLink="/login" *ngIf="!this.auth.isLoggedIn()">Log in</a>
   </ul>
 </div>
 <div class="content-container">

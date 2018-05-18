@@ -25,8 +25,8 @@ export class AuthenticationService{
         return this.http.post(url, body, {headers: headers});
     }
 
-    isLoggedIn(): boolean{
-        return localStorage.getItem('token') !== undefined;
+    isLoggedIn(): boolean{        
+        return localStorage.getItem('token') !== null;
     }
 
     logIn(res: Response){

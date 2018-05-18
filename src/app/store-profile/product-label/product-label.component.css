@@ -1,0 +1,27 @@
+.container{
+    padding: 20px;
+    background-color: #F7F7F7;
+    width: 45%;
+    float: left;
+    margin: 20px;
+}
+
+.data{
+    display: block;
+    padding: 20px;
+}
+
+.name{
+    float: left;
+}
+
+.price{
+    float: right;
+}
+
+img{
+    width: 100%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}

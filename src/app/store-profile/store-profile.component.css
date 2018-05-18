@@ -15,6 +15,8 @@ body{
     bottom: 0;
     margin: 0;
     padding: 0;
+    width: 100%;
+    font-family: 'Oswald', sans-serif;
 }
 
 .categories{
@@ -35,7 +37,7 @@ body{
 }
 
 .categories ul li{
-    margin: 10px;
+    padding: 15px;
 }
 
 .categories ul li:hover{
@@ -44,5 +46,35 @@ body{
 }
 
 .content{
-    float: left;
+    float: right;
+    width: 70%;
+    padding: 20px 40px 20px 40px;
+}
+
+.options{
+    height: 60px;
+}
+
+.options p{
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    display: inline-block;
+}
+
+.options a{
+    float: right;
+    color: #BCBCBC;
+    text-decoration: none;
+    padding: 15px;
+    margin-left: 5px;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.options a:hover{
+    color: black;
+    border-bottom: 2px solid black;
+    cursor: pointer;
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { StoreService } from '../../services/store.service';
 import { Store } from '../../model/store';
+import { AuthenticationService } from '../../services/authentication.service';
 
 @Component({
   selector: 'app-store-profile',
@@ -12,7 +13,7 @@ export class StoreProfileComponent implements OnInit {
 
   store: Store = new Store('Default', 1);
 
-  constructor(private route: ActivatedRoute, private storeService: StoreService) {
+  constructor(private route: ActivatedRoute, private storeService: StoreService, private auth: AuthenticationService) {
   }
 
   ngOnInit() {
@@ -21,6 +22,10 @@ export class StoreProfileComponent implements OnInit {
         this.store = res;
       })
     })
+  }
+
+  logOut(){
+    this.auth.logOut();
   }
 
 }

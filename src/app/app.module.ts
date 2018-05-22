@@ -25,6 +25,7 @@ import { StoreFormComponent } from './profile/store-form/store-form.component';
 import { StoreService } from '../services/store.service';
 import { StoreProfileComponent } from './store-profile/store-profile.component';
 import { ProductLabelComponent } from './store-profile/product-label/product-label.component';
+import { ProductFormComponent } from './store-profile/product-form/product-form.component';
 
 
 var appRoutes = [
@@ -52,7 +53,8 @@ var appRoutes = [
     AddComponent,
     StoreFormComponent,
     StoreProfileComponent,
-    ProductLabelComponent
+    ProductLabelComponent,
+    ProductFormComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

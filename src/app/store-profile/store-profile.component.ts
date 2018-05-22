@@ -24,8 +24,10 @@ export class StoreProfileComponent implements OnInit {
   displayedValues: Product[] = [];
   itemsPerPage = 2;
   current: number = 1;
+  formVisible: boolean;
 
   constructor(private route: ActivatedRoute, private storeService: StoreService, private auth: AuthenticationService, private http:HttpClient) {
+    this.formVisible = false;
   }
 
   ngOnInit() {
@@ -103,6 +105,20 @@ export class StoreProfileComponent implements OnInit {
 
   checkNegative(): boolean{
     return this.current <= 1;
+  }
+
+  toggleForm(){
+    this.formVisible = !this.formVisible;
+  }
+
+  showForm(){
+    document.querySelector('.container').classList.add('blur');
+    this.formVisible = true;
+  }
+
+  hideForm(){
+    document.querySelector('.container').classList.remove('blur');
+    this.formVisible = false;
   }
 
 }

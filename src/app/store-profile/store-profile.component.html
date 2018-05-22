@@ -24,7 +24,7 @@
         <a routerLink="/">Home</a>
         <a (click)="logOut()" *ngIf="logged">Log out</a>
         <a routerLink="/login" *ngIf="!logged">Log in</a>
-        <a *ngIf="admin">Add product</a>
+        <a *ngIf="admin" (click)="showForm()">Add product</a>
     </div>
     <div class="products">
       <app-product-label *ngFor="let product of displayedValues" [product]="product"></app-product-label>
@@ -39,4 +39,5 @@
     </div>
   </div>
 </div>
+<app-product-form *ngIf="formVisible"></app-product-form>
 

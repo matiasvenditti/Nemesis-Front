@@ -28,14 +28,14 @@
     </div>
     <div class="products">
       <app-product-label *ngFor="let product of displayedValues" [product]="product"></app-product-label>
-      <br>
-      <div class="pagination">
-          <ul>
-              <li (click)="previous()" [ngClass]="{'disabled': checkNegative()}">Prev</li>
-              <li *ngFor="let index of intervals" (click)="setCurrent(index)" [ngClass]="{'current': checkCurrent(index)}">{{index}}</li>
-              <li (click)="next()" [ngClass]="{'disabled': checkGreater()}">Next</li>
-            </ul>
-      </div>
+    </div>
+    <br>
+    <div class="pagination">
+      <ul>
+          <li (click)="previous()" [ngClass]="{'disabled': checkNegative()}">Prev</li>
+          <li *ngFor="let index of intervals" (click)="setCurrent(index)" [ngClass]="{'current': checkCurrent(index)}">{{index}}</li>
+          <li (click)="next()" [ngClass]="{'disabled': checkGreater()}">Next</li>
+        </ul>
     </div>
   </div>
 </div>

@@ -19,7 +19,7 @@ export class StoreProfileComponent implements OnInit {
   url: string = 'http://localhost:8080';
   user: User;
   logged: boolean = false;
-  products: Product[] = [new Product(1, 'Silla', 399), new Product(2, 'Mesa', 399), new Product(3, 'Remera', 399), new Product(4, 'Pantalon', 399)];
+  products: Product[] = [new Product(1, 'Silla', 399, 1), new Product(2, 'Mesa', 399, 1), new Product(3, 'Remera', 399, 1), new Product(4, 'Pantalon', 399, 1)];
   intervals: number[] = [];
   displayedValues: Product[] = [];
   itemsPerPage = 2;

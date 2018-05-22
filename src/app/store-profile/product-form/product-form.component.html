@@ -15,6 +15,17 @@
             <button class="file-button"(click)="fileInput.click()">Upload product image</button>
             <img *ngIf="imageUrl" [src]="imageUrl" alt="">
         </div>
+
+        <div class="amount-price">
+            <div class="product-amount">
+                <span class="subtitle">Product amount</span>
+                <input required type="number" min="1" max="10" value="1" class="amount">
+            </div>
+            <div class="product-price">
+                <span class="subtitle">Price</span>
+                <input  class="amount" type="text">
+            </div>
+        </div>
         <button class="submit-button" type="submit">Send</button>
     </div>
 </form>

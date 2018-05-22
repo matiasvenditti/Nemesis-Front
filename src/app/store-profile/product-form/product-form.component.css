@@ -121,6 +121,36 @@ span{
 }
 
 .back:hover{
+    cursor: pointer;   
+}
+
+.amount{
+    border: 1px solid #BCBCBC;
+    color: #BCBCBC;
+    border-radius: 15px;
+    outline: none;
+    padding: 10px;
+    margin: 10px 0px;
+}
+
+.amount:hover{
     cursor: pointer;
+    border: 1px solid #8068FF;
+    color: #8068FF    
+}
+
+.amount-price{
+    margin: 20px 0px;
+    display: inline-block;
+    width: 100%;
+}
+.product-amount{
+    width: 50%;
+    float: left;
+}
+
+.product-price{
+    width: 50%;
+    float: right;
     
 }

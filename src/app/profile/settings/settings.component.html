@@ -1,4 +1,9 @@
+<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 <div class="content">
-  <a href="">User Settings</a>
-  <span class="delete" (click)="deleteUser()">Delete Account</span>
+  <ul>
+    <span>{{getData()}}</span>
+    <li (click)="logOut()">Log Out</li>
+    <li>Account Settings</li>
+    <li class="delete" (click)="deleteUser()">Delete Account</li>
+  </ul>
 </div>

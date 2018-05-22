@@ -1,15 +1,40 @@
+.content{
+    background-color: white;
+    /* padding: 20px; */
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    font-family: 'Oswald', sans-serif;
+}
+
+span{
+    display: block;
+    text-align: center;
+    font-size: 16px;
+    padding: 10px 30px;
+    font-weight: bold;
+}
+
 .delete{
     background-color: transparent;
     text-decoration: none;
     color: #FA5858;
 }
 
-a{
-    display: block;
-    text-align: center;
-    text-decoration: none;
+ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
-span:hover{
+ul li{
+    padding: 10px 30px;
+    text-align: center;
+    opacity: 0.5;
+}
+
+ul li:hover{
+    background-color: #FAF8FC;
     cursor: pointer;
+    opacity: 1;
 }

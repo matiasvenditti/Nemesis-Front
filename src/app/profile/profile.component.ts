@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class ProfileComponent implements OnInit {
 
-  username: string;
+  name: string;
   url: string = 'http://localhost:8080';
   storeList: Store[];
   settingsVisible: boolean = false;
@@ -28,7 +28,7 @@ export class ProfileComponent implements OnInit {
     this.http.get(this.url + '/users/' + localStorage.getItem('username')).subscribe(value => 
       {
       this.user = value as User;
-      this.username = this.capitalize(this.user.username);
+      this.name = this.capitalize(this.user.name);
       this.storeList = this.user.stores;
       }
     );

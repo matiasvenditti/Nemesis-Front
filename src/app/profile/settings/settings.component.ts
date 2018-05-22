@@ -27,4 +27,16 @@ export class SettingsComponent implements OnInit {
     this.http.delete(this.url + '/' + id, options).subscribe(() => this.login.logOut())
   }
 
+  getData(): string{
+    return `${this.capitalize(this.user.name)} ${this.capitalize(this.user.surname)}`;
+  }
+
+  private capitalize(word: string): string {
+    return word.charAt(0).toUpperCase() + word.slice(1);
+  }
+
+  logOut(){
+    this.login.logOut();
+  }
+
 }

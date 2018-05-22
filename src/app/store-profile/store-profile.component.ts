@@ -22,7 +22,7 @@ export class StoreProfileComponent implements OnInit {
   products: Product[] = [new Product(1, 'Silla', 399), new Product(2, 'Mesa', 399), new Product(3, 'Remera', 399), new Product(4, 'Pantalon', 399)];
   intervals: number[] = [];
   displayedValues: Product[] = [];
-  itemsPerPage = 4;
+  itemsPerPage = 2;
   current: number = 1;
 
   constructor(private route: ActivatedRoute, private storeService: StoreService, private auth: AuthenticationService, private http:HttpClient) {

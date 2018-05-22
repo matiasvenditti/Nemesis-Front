@@ -27,9 +27,15 @@
         <a *ngIf="admin">Add product</a>
     </div>
     <div class="products">
-      <!-- <app-product-label *ngFor="let product of products"></app-product-label> -->
-      <app-product-label *ngFor="let product of products | paginate: { itemsPerPage: 10, currentPage: p}" [product]="product"></app-product-label>
-      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      <app-product-label *ngFor="let product of displayedValues" [product]="product"></app-product-label>
+      <br>
+      <div class="pagination">
+          <ul>
+              <li (click)="previous()" [ngClass]="{'disabled': checkNegative()}">Prev</li>
+              <li *ngFor="let index of intervals" (click)="setCurrent(index)" [ngClass]="{'current': checkCurrent(index)}">{{index}}</li>
+              <li (click)="next()" [ngClass]="{'disabled': checkGreater()}">Next</li>
+            </ul>
+      </div>
     </div>
   </div>
 </div>

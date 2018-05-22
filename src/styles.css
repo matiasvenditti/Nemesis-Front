@@ -1,1 +1,48 @@
 /* You can add global styles to this file, and also import other style files */
+/* 
+.myPagination .ngx-pagination{
+    /* position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0;
+    margin: 20px; */
+    /* font-size: 15px;
+}
+
+.myPagination .ngx-pagination .current{
+    color: #885EFF;
+    background-color: transparent;
+}
+
+.myPagination .ngx-pagination .pagination-previous a::before, .myPagination .ngx-pagination .pagination-previous.disabled::before{
+    display: inline-block;
+    margin-left: 0.5rem;
+    content: none;
+}
+
+.myPagination .ngx-pagination .pagination-next a::after, .myPagination .ngx-pagination .pagination-next.disabled::after{
+    display: inline-block;
+    margin-left: 0.5rem;
+    content: none;
+}
+
+.myPagination .ngx-pagination li a{
+    color: #BCBCBC;
+    outline: none;
+}
+
+.myPagination .ngx-pagination li a:hover{
+    background-color: transparent;
+    color: black;
+    border: none;
+}
+
+.myPagination .ngx-pagination .pagination-previous a:hover{
+    background-color: transparent;
+}
+
+.myPagination .ngx-pagination .pagination-next a:hover{
+    border-bottom: none;
+    background-color: transparent;
+} */ 

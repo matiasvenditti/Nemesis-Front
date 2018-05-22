@@ -86,3 +86,27 @@ body{
 .products{
     height: 100%;
 }
+
+.pagination ul{
+    list-style: none;
+}
+
+.pagination ul li{
+    float: left;
+    padding: 10px;
+    color: #BCBCBC;
+}
+
+.pagination ul li:hover{
+    color: black;
+    cursor: pointer;
+}
+
+.current{
+    color: #885EFF !important;
+}
+
+.disabled{
+    pointer-events: none;
+    opacity: 0.6;
+}

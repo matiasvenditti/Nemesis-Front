@@ -1,13 +1,13 @@
 <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
-<form (ngSubmit)="addStore()" class="form" #f="ngForm" autocomplete="off">
+<form (ngSubmit)="addProduct()" class="form" #f="ngForm" autocomplete="off">
 
     <div class="text">
         <img src="../../../assets/back.svg" alt="" class="back" (click)="this.storeComponent.hideForm()">
         <span class="form-text">Create Product</span>
 
         <span class="subtitle">Product name</span> 
-        <input required ngModel [(ngModel)]="productName"  class="user-input" type="text" name="productName"/><br>
+        <input required ngModel [(ngModel)]="name"  class="user-input" type="text" name="name"/><br>
 
         <span class="subtitle">Choose product image</span>
         <div class="input-container">
@@ -16,16 +16,30 @@
             <img *ngIf="imageUrl" [src]="imageUrl" alt="">
         </div>
 
+        <span class="subtitle">Select product category</span>
+        <div class="dropdown">
+            <button class="file-button dropdown-button">Categories</button>
+            <div class="dropdown-content">
+                <ul>
+                    <li *ngFor="let category of categories" (click)="setResult($event)">{{category}}</li>
+                </ul>
+            </div>
+        </div>
+        <div class="span-container">
+            <span class="category-result"></span>    
+        </div>
+        
         <div class="amount-price">
             <div class="product-amount">
                 <span class="subtitle">Product amount</span>
-                <input required type="number" min="1" max="10" value="1" class="amount">
+                <input  ngModel [(ngModel)]="amount" required type="number" min="1" max="10" value="1" class="amount" name="amount">
             </div>
             <div class="product-price">
                 <span class="subtitle">Price</span>
-                <input  class="amount" type="text">
+                <input ngModel [(ngModel)]="price" required type="number" min="1" max="10" class="amount" name="price">
             </div>
         </div>
+
         <button class="submit-button" type="submit">Send</button>
     </div>
 </form>

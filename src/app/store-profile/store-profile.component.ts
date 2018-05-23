@@ -14,20 +14,28 @@ import { Product } from '../../model/product';
 })
 export class StoreProfileComponent implements OnInit {
 
-  store: Store = new Store('Default', 1, []);
-  admin: boolean = false;
+  categories: string[];
+
+  store: Store;
+  admin: boolean;
   url: string = 'http://localhost:8080';
   user: User;
-  logged: boolean = false;
+  logged: boolean;
   products: Product[] = [new Product(1, 'Silla', 399, 1), new Product(2, 'Mesa', 399, 1), new Product(3, 'Remera', 399, 1), new Product(4, 'Pantalon', 399, 1)];
   intervals: number[] = [];
   displayedValues: Product[] = [];
-  itemsPerPage = 2;
-  current: number = 1;
+  itemsPerPage;
+  current: number;
   formVisible: boolean;
 
   constructor(private route: ActivatedRoute, private storeService: StoreService, private auth: AuthenticationService, private http:HttpClient) {
     this.formVisible = false;
+    this.current = 1;
+    this.itemsPerPage = 2;
+    this.categories = ['Shirts', 'Pants', 'Shorts', 'Shoes', 'Accesories', 'Other'];
+    this.logged = false;
+    this.admin = false;
+    this.store = new Store('Default', 1, []);
   }
 
   ngOnInit() {

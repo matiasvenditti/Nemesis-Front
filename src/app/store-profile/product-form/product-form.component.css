@@ -152,5 +152,54 @@ span{
 .product-price{
     width: 50%;
     float: right;
-    
+}
+
+.dropdown-content{
+    display: none;
+    position: absolute;
+    background-color: white;
+    border-radius: 5px;
+    z-index: 1;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+}
+
+.dropdown:hover .dropdown-content{
+    display: block;
+}
+
+.dropdown-content ul{
+    list-style: none;
+    padding: 0;
+    width: 150px;
+}
+
+.dropdown-content ul li{
+    padding: 10px 20px;
+    text-align: center;
+    color: #BCBCBC;
+}
+
+.dropdown-content ul li:hover{
+    background-color: #FAF8FC;
+    cursor: pointer;
+    color: #8068FF
+}
+
+.dropdown{
+    width: 50%;
+    display: inline-block;
+}
+
+.span-container{
+    /* display: inline-block; */
+    width: 50%;
+    float: right;
+}
+
+.category-result{
+    padding: 10px;
+    border-radius: 15px;
+    border: 1px solid #BCBCBC;
+    display: none;
+    color: #BCBCBC;
 }

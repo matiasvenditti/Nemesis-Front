@@ -5,16 +5,7 @@
   <div class="categories">
     <app-search></app-search>
     <ul>
-      <li>All</li>
-      <li>New Arrivals</li>
-      <li>Men</li>
-      <li>Women</li>
-      <li>Shirts</li>
-      <li>Pants</li>
-      <li>Shorts</li>
-      <li>Shoes</li>
-      <li>Accesories</li>
-      <li>Other</li>
+      <li *ngFor="let category of categories">{{category}}</li>
     </ul>
   </div>
   <div class="content">
@@ -39,5 +30,5 @@
     </div>
   </div>
 </div>
-<app-product-form *ngIf="formVisible"></app-product-form>
+<app-product-form *ngIf="formVisible" [categories]="categories"></app-product-form>
 

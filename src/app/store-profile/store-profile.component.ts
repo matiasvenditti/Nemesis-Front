@@ -28,8 +28,9 @@ export class StoreProfileComponent implements OnInit {
   itemsPerPage = 3;
   current: number = 1;
   formVisible: boolean = false;
+  searchValue: string;
 
-  constructor(private route: ActivatedRoute, private storeService: StoreService, private auth: AuthenticationService, private pagination: PaginationService, private userService: UserService) {}
+  constructor(private route: ActivatedRoute, private storeService: StoreService, private auth: AuthenticationService, private pagination: PaginationService, private userService: UserService, private productService: ProductService) {}
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -84,6 +85,18 @@ export class StoreProfileComponent implements OnInit {
   hideForm(){
     document.querySelector('.container').classList.remove('blur');
     this.formVisible = false;
+  }
+
+  searchProduct(){
+    this.productService.searchProduct(this.store.id, this.searchValue).subscribe((res: Product[]) => {
+      console.log(res);
+      this.products = [];
+      for (let product of res){
+        this.products.push(product);
+      }
+      this.intervals = this.pagination.divide(this.products, this.itemsPerPage, this.intervals);
+      this.displayedValues = this.pagination.display(this.displayedValues, this.products, this.current, this.itemsPerPage);
+    })
   }
 
 }

@@ -132,3 +132,43 @@ app-product-form{
 .blur{
     filter: blur(50px);
 }
+
+.search-box{
+    background-color: transparent;
+    border-radius: 40px;
+    padding: 10px;
+    display: inline-block;
+}
+
+.search-btn{
+    float: right;
+    display: flex;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-text{
+    border: none;
+    background: none;
+    outline: none;
+    float: left;
+    padding: 0;
+    color: black;
+    font-size: 16px;
+    transition: 0.4s;
+    line-height: 40px;
+    width: 0px;
+    height: 30px;
+}
+
+.search-box:hover > .search-text{
+    width: 120px;
+    padding: 0 6px;
+}
+
+.search-btn img{
+    width: 20px;
+}

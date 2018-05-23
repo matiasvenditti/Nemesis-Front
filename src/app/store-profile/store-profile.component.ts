@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { StoreService } from '../../services/store.service';
 import { Store } from '../../model/store';
@@ -6,6 +6,9 @@ import { AuthenticationService } from '../../services/authentication.service';
 import { User } from '../../model/user';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Product } from '../../model/product';
+import { ProductService } from '../../services/product.service';
+import { PaginationService } from '../../services/pagination.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-store-profile',
@@ -14,40 +17,29 @@ import { Product } from '../../model/product';
 })
 export class StoreProfileComponent implements OnInit {
 
-  categories: string[];
-
-  store: Store;
-  admin: boolean;
-  url: string = 'http://localhost:8080';
+  categories: string[] = ['Shirts', 'Pants', 'Shorts', 'Shoes', 'Accesories', 'Other'];
+  store: Store = new Store('Default', 1, []);
+  admin: boolean = false;
   user: User;
-  logged: boolean;
+  logged: boolean = false;
   products: Product[] = [new Product(1, 'Silla', 399, 1), new Product(2, 'Mesa', 399, 1), new Product(3, 'Remera', 399, 1), new Product(4, 'Pantalon', 399, 1)];
   intervals: number[] = [];
   displayedValues: Product[] = [];
-  itemsPerPage;
-  current: number;
-  formVisible: boolean;
+  itemsPerPage = 3;
+  current: number = 1;
+  formVisible: boolean = false;
 
-  constructor(private route: ActivatedRoute, private storeService: StoreService, private auth: AuthenticationService, private http:HttpClient) {
-    this.formVisible = false;
-    this.current = 1;
-    this.itemsPerPage = 2;
-    this.categories = ['Shirts', 'Pants', 'Shorts', 'Shoes', 'Accesories', 'Other'];
-    this.logged = false;
-    this.admin = false;
-    this.store = new Store('Default', 1, []);
-  }
+  constructor(private route: ActivatedRoute, private storeService: StoreService, private auth: AuthenticationService, private pagination: PaginationService, private userService: UserService) {}
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.logged = this.auth.isLoggedIn();
       this.storeService.getStore(params.id).subscribe((storeResponse: Store) => {
         this.store = storeResponse;
-        this.divide(this.products, this.itemsPerPage, this.intervals);
-        this.display();
-        
+        this.intervals = this.pagination.divide(this.products, this.itemsPerPage, this.intervals);
+        this.displayedValues = this.pagination.display(this.displayedValues, this.products, this.current, this.itemsPerPage);
         if (this.auth.isLoggedIn()){
-          this.getUser().subscribe((userResponse: User) => {
+          this.userService.getUser().subscribe((userResponse: User) => {
             this.admin = this.storeService.isAdmin(userResponse, this.store);
           })
         }
@@ -55,64 +47,29 @@ export class StoreProfileComponent implements OnInit {
     })
   }
 
-  logOut(){
-    this.auth.logOut();
-  }
-
-  getUser(){
-    const headers = new HttpHeaders()
-    .set('Content-Type', 'application/json')
-    .set('Authorization', 'Bearer ' + this.auth.getToken());
-
-    const options = {
-      headers: headers
-    }
-
-    return this.http.get<User>(this.url + `/users/${localStorage.getItem('username')}`, options);
-  }
-
-  divide(array: any[], x: number, indexes: number[]){
-    this.intervals = [];
-    let result = Math.ceil(array.length/x);
-    for(let i = 0; i < result; i++){
-      this.intervals.push(i+1);
-    }
-  }
-
-  display(){
-    this.displayedValues = [];
-    let from = (this.current-1)*this.itemsPerPage;
-    let to = this.current*this.itemsPerPage - 1;
-    for(let i = from; i <= to; i++){
-      if (i < this.products.length){
-        this.displayedValues.push(this.products[i]);
-      }
-    }
-  }
-
-  setCurrent(newCurrent: number){
-    this.current = newCurrent;
-    this.display();
+  previous(){
+    this.setCurrent(this.current-1);
   }
 
   next(){
     this.setCurrent(this.current+1);
   }
 
-  previous(){
-    this.setCurrent(this.current-1);
-  }
-
-  checkCurrent(index: number): boolean{
-    return this.current == index;
-  }
-
-  checkGreater(): boolean{
-    return this.current >= this.intervals.length;
+  setCurrent(index: number){
+    this.current = index;
+    this.displayedValues = this.pagination.display(this.displayedValues, this.products, this.current, this.itemsPerPage);
   }
 
   checkNegative(): boolean{
-    return this.current <= 1;
+    return this.pagination.checkNegative(this.current);
+  }
+
+  checkGreater(): boolean{
+    return this.pagination.checkGreater(this.current, this.intervals);
+  }
+
+  checkCurrent(index: number): boolean{
+    return this.pagination.checkCurrent(index, this.current);
   }
 
   toggleForm(){

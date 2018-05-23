@@ -13,7 +13,7 @@
         <p>{{store.name}}</p>
         <a routerLink="/profile" *ngIf="logged">Profile</a>
         <a routerLink="/">Home</a>
-        <a (click)="logOut()" *ngIf="logged">Log out</a>
+        <a (click)="this.auth.logOut()" *ngIf="logged">Log out</a>
         <a routerLink="/login" *ngIf="!logged">Log in</a>
         <a *ngIf="admin" (click)="showForm()">Add product</a>
     </div>

@@ -28,4 +28,15 @@ export class ProductService {
     
     return this.http.post<Product>(`${this.url}/${storeId}/products`, body, options);
   }
+
+  searchProduct(storeId: number, productKey: string){
+    const headers = new HttpHeaders()
+    .set('Content-Type', 'application/json')
+
+    const options = {
+      headers: headers
+    }
+
+    return this.http.get<Product[]>(`${this.url}/${storeId}/search/${productKey}`);
+  }
 }

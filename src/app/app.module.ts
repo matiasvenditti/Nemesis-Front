@@ -15,7 +15,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthGuard } from '../model/guard';
 import { AuthenticationService } from '../services/authentication.service';
 import { SearchComponent } from './home/search/search.component';
-import { SearchService } from '../services/search.service';
 import { ProfileComponent } from './profile/profile.component';
 import { StoreLabelComponent } from './profile/store-label/store-label.component';
 import { ProfileService } from '../services/profile.service';
@@ -27,6 +26,8 @@ import { StoreProfileComponent } from './store-profile/store-profile.component';
 import { ProductLabelComponent } from './store-profile/product-label/product-label.component';
 import { ProductFormComponent } from './store-profile/product-form/product-form.component';
 import { ProductService } from '../services/product.service';
+import { PaginationService } from '../services/pagination.service';
+import { UserService } from '../services/user.service';
 
 
 var appRoutes = [
@@ -66,10 +67,11 @@ var appRoutes = [
   providers: [
     AuthGuard,
     AuthenticationService,
-    SearchService,
     ProfileService,
     StoreService,
-    ProductService
+    ProductService,
+    PaginationService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })

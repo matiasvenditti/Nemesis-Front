@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { StoreProfileComponent } from '../store-profile.component';
+import { ProductService } from '../../../services/product.service';
+import { Product } from '../../../model/product';
 
 @Component({
   selector: 'app-product-form',
@@ -10,6 +12,7 @@ export class ProductFormComponent implements OnInit {
 
   productName: string;
   imageUrl: string;
+  @Input() storeId: number;
   @Input() categories: string[];
 
   category: string;
@@ -17,7 +20,7 @@ export class ProductFormComponent implements OnInit {
   amount: number = 1;
   price: number;
 
-  constructor(private storeComponent: StoreProfileComponent) { }
+  constructor(private storeComponent: StoreProfileComponent, private productService: ProductService) { }
 
   ngOnInit() {
   }
@@ -41,11 +44,10 @@ export class ProductFormComponent implements OnInit {
   }
 
   addProduct(){
-    console.log('Name ', this.name);
-    console.log('Stock ', this.amount);
-    console.log('Price ', this.price);
-    console.log('Category ', this.category);
-    
+    this.productService.addProduct(this.storeId, this.name, this.price, this.amount, this.category).subscribe((res: Product) => {
+      console.log(res);
+      
+    });
   }
 
 }

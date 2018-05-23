@@ -26,6 +26,7 @@ import { StoreService } from '../services/store.service';
 import { StoreProfileComponent } from './store-profile/store-profile.component';
 import { ProductLabelComponent } from './store-profile/product-label/product-label.component';
 import { ProductFormComponent } from './store-profile/product-form/product-form.component';
+import { ProductService } from '../services/product.service';
 
 
 var appRoutes = [
@@ -67,7 +68,8 @@ var appRoutes = [
     AuthenticationService,
     SearchService,
     ProfileService,
-    StoreService
+    StoreService,
+    ProductService
   ],
   bootstrap: [AppComponent]
 })

@@ -11,7 +11,7 @@
         </div>
     <!-- <app-search [storeId]="store.id"></app-search> -->
     <ul>
-      <li *ngFor="let category of categories">{{category}}</li>
+      <li *ngFor="let category of categories" (click)="searchByCategory(category)">{{category}}</li>
     </ul>
   </div>
   <div class="content">

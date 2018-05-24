@@ -37,8 +37,9 @@ export class StoreProfileComponent implements OnInit {
       this.logged = this.auth.isLoggedIn();
       this.storeService.getStore(params.id).subscribe((storeResponse: Store) => {
         this.store = storeResponse;
-        this.intervals = this.pagination.divide(this.products, this.itemsPerPage, this.intervals);
-        this.displayedValues = this.pagination.display(this.displayedValues, this.products, this.current, this.itemsPerPage);
+        this.arrangeData();
+        // this.intervals = this.pagination.divide(this.products, this.itemsPerPage, this.intervals);
+        // this.displayedValues = this.pagination.display(this.displayedValues, this.products, this.current, this.itemsPerPage);
         if (this.auth.isLoggedIn()){
           this.userService.getUser().subscribe((userResponse: User) => {
             this.admin = this.storeService.isAdmin(userResponse, this.store);
@@ -89,14 +90,28 @@ export class StoreProfileComponent implements OnInit {
 
   searchProduct(){
     this.productService.searchProduct(this.store.id, this.searchValue).subscribe((res: Product[]) => {
-      console.log(res);
       this.products = [];
       for (let product of res){
         this.products.push(product);
       }
-      this.intervals = this.pagination.divide(this.products, this.itemsPerPage, this.intervals);
-      this.displayedValues = this.pagination.display(this.displayedValues, this.products, this.current, this.itemsPerPage);
+      this.arrangeData();
     })
+  }
+
+  searchByCategory(category: string){
+    this.productService.searchByCategory(this.store.id, category).subscribe((res: Product[]) => {
+      this.products = [];
+      for (let product of res){
+        this.products.push(product);
+      }
+      this.arrangeData();
+    })
+  }
+
+  arrangeData(){
+    this.intervals = this.pagination.divide(this.products, this.itemsPerPage, this.intervals);
+    this.displayedValues = this.pagination.display(this.displayedValues, this.products, this.current, this.itemsPerPage);
+    this.setCurrent(this.intervals[0]);
   }
 
 }

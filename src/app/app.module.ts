@@ -28,6 +28,7 @@ import { ProductFormComponent } from './store-profile/product-form/product-form.
 import { ProductService } from '../services/product.service';
 import { PaginationService } from '../services/pagination.service';
 import { UserService } from '../services/user.service';
+import { StoreResultComponent } from './home/store-result/store-result.component';
 
 
 var appRoutes = [
@@ -56,7 +57,8 @@ var appRoutes = [
     StoreFormComponent,
     StoreProfileComponent,
     ProductLabelComponent,
-    ProductFormComponent
+    ProductFormComponent,
+    StoreResultComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

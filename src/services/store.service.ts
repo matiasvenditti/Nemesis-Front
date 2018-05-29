@@ -57,4 +57,16 @@ export class StoreService {
     return false;
   }
 
+  searchStore(key: string){
+    const headers = new HttpHeaders()
+    .set('Content-Type', 'application/json')
+    .set('Authorization', `Bearer ${this.auth.getToken()}`)
+
+    const options = {
+      headers: headers
+    }
+
+    return this.http.get<Store[]>(`${this.url}/search/stores/${key}`, options);
+  }
+
 }

@@ -1,8 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ProductService } from '../../../services/product.service';
 import { Product } from '../../../model/product';
 import { PaginationService } from '../../../services/pagination.service';
 import { StoreProfileComponent } from '../../store-profile/store-profile.component';
+import { StoreService } from '../../../services/store.service';
+import { Store } from '../../../model/store';
 
 @Component({
   selector: 'app-search',
@@ -15,21 +17,12 @@ export class SearchComponent implements OnInit {
   url: string = 'http://localhost:8080';
   @Input() storeId: number;
   @Input() products: Product[];
+  @Output() userSearched = new EventEmitter();
 
-  constructor(private productService: ProductService, private pagination: PaginationService) {}
+  constructor(private storeService: StoreService) {}
 
   ngOnInit() {
   }
 
-  searchProduct(){
-    this.productService.searchProduct(this.storeId, this.searchValue).subscribe((res: Product[]) => {
-      this.products = [];
-      for(let product of res){
-        this.products.push(new Product(product.id, product.name, product.price, product.stock));
-      }
-      
-      console.log(this.products);
-    });
-  }
 
 }

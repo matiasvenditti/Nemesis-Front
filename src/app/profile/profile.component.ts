@@ -52,9 +52,7 @@ export class ProfileComponent implements OnInit {
     return word.charAt(0).toUpperCase() + word.slice(1);
   }
 
-  enterStore(id: number){
-    console.log('Navigating');
-    
+  enterStore(id: number){  
     this.router.navigate([`store/${id}`]);
   }
 }

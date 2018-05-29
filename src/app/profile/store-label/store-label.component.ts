@@ -12,7 +12,6 @@ import { User } from '../../../model/user';
 export class StoreLabelComponent implements OnInit {
 
   @Input() stores: Store[];
-  @Input() name;
   @Input() store: Store;
   @Input() user: User;
  
@@ -23,8 +22,6 @@ export class StoreLabelComponent implements OnInit {
   }
 
   removeStore(event: Event){
-    console.log('Deleting');
-    
     event.stopPropagation();
     this.storeService.removeStore(this.user.id, this.store.id).subscribe(() => {
       this.removeFromArray();
@@ -34,7 +31,7 @@ export class StoreLabelComponent implements OnInit {
   removeFromArray(){
     let index = -1;
     for(let store of this.stores){
-      if (store.name === this.name){
+      if (store.name === this.store.name){
         index = this.stores.indexOf(store, 0);
       }
     }

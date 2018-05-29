@@ -8,24 +8,35 @@
 
 <div id="nav" class="navbar">
   <span class="left">Nemesis</span>
-  <app-search class="left"></app-search>
+  <div class="search-box">
+      <input [(ngModel)]="searchValue" class="search-text" type="text" placeholder="Type to search">
+      <a class="search-btn" (click)="searchProduct()">
+        <img src="../../../assets/search.svg" alt="">
+      </a>
+    </div>
   
   <ul>
-    <a routerLink="">About</a>
-    <a routerLink="/profile">Profile</a>
-    <a routerLink="/signup" *ngIf="!this.auth.isLoggedIn()">Sign up</a>
-    <a (click)="logOut()" *ngIf="this.auth.isLoggedIn()">Log out</a>
-    <a routerLink="/login" *ngIf="!this.auth.isLoggedIn()">Log in</a>
+    <a class="nav-button" routerLink="">About</a>
+    <a class="nav-button" (click)="navigate('profile')">Profile</a>
+    <a class="nav-button" (click)="navigate('signup')" *ngIf="!this.auth.isLoggedIn()">Sign up</a>
+    <a class="nav-button" (click)="logOut()" *ngIf="this.auth.isLoggedIn()">Log out</a>
+    <a class="nav-button" (click)="navigate('login')" *ngIf="!this.auth.isLoggedIn()">Log in</a>
   </ul>
 </div>
 <div class="content-container">
+  <div class="results" *ngIf="userSearched">
+    <h2>These are the stores that match with your parameters</h2>
+    <div class="list">
+        <app-store-result *ngFor="let store of resultStores" [store]="store" (click)="enterStore(store.id)"></app-store-result>
+    </div>
+  </div>
+
   <h2>Get to know our top Stores</h2>
   <p>These are some of the best stores selected from huge variety of excelente quality brands</p>
   <hr>
+
   <h2>Most wanted products</h2>
   <p>Browse for the best products made especially for you</p>
 </div>
-
-
 
 <div id="space" class="space" (scroll)="scrollHandler()"></div>

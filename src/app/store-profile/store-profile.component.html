@@ -24,7 +24,7 @@
         <a *ngIf="admin" (click)="showForm()">Add product</a>
     </div>
     <div class="products">
-      <app-product-label *ngFor="let product of displayedValues" [product]="product"></app-product-label>
+      <app-product-label *ngFor="let product of displayedValues" [product]="product" [admin]="admin"></app-product-label>
     </div>
     <br>
     <div class="pagination">

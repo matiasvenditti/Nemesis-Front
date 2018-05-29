@@ -8,6 +8,8 @@ import { Product } from '../../../model/product';
 })
 export class ProductLabelComponent implements OnInit {
 
+  @Input() admin: boolean;
+
   @Input() product: Product;
 
   constructor() { }

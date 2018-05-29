@@ -5,6 +5,8 @@
     width: 45%;
     float: left;
     margin: 20px;
+    transition: all 0.3s;
+    position: relative;
 }
 
 .data{
@@ -20,9 +22,35 @@
     float: right;
 }
 
-img{
+.product-image{
     width: 100%;
     position: relative;
     left: 50%;
     transform: translateX(-50%);
+}
+
+.container:hover{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+    transform: scale(1.01);
+}
+
+.container:hover .label-button{
+    visibility: visible;
+}
+
+.label-button{
+    position: relative;
+    width: 20px;
+    right: 0;
+    top: 0;
+    float: right;
+    visibility: hidden;
+    display: block;
+    margin-left: 20px;
+}
+
+.label-button:hover{
+    cursor: pointer;
+    filter: invert(.5) sepia(1) saturate(5) hue-rotate(200deg);
+    transform: scale(1.15);
 }

@@ -22,7 +22,7 @@ export class StoreProfileComponent implements OnInit {
   admin: boolean = false;
   user: User;
   logged: boolean = false;
-  products: Product[] = [new Product(1, 'Silla', 399, 1), new Product(2, 'Mesa', 399, 1), new Product(3, 'Remera', 399, 1), new Product(4, 'Pantalon', 399, 1)];
+  products: Product[] = [];
   intervals: number[] = [];
   displayedValues: Product[] = [];
   itemsPerPage = 3;
@@ -38,11 +38,10 @@ export class StoreProfileComponent implements OnInit {
       this.storeService.getStore(params.id).subscribe((storeResponse: Store) => {
         this.store = storeResponse;
         this.arrangeData();
-        // this.intervals = this.pagination.divide(this.products, this.itemsPerPage, this.intervals);
-        // this.displayedValues = this.pagination.display(this.displayedValues, this.products, this.current, this.itemsPerPage);
         if (this.auth.isLoggedIn()){
           this.userService.getUser().subscribe((userResponse: User) => {
             this.admin = this.storeService.isAdmin(userResponse, this.store);
+            this.user = userResponse;
           })
         }
       })
@@ -112,6 +111,16 @@ export class StoreProfileComponent implements OnInit {
     this.intervals = this.pagination.divide(this.products, this.itemsPerPage, this.intervals);
     this.displayedValues = this.pagination.display(this.displayedValues, this.products, this.current, this.itemsPerPage);
     this.setCurrent(this.intervals[0]);
+  }
+
+  showAllProducts(){
+    this.storeService.getAll(this.store.id).subscribe((res: Product[]) => {
+      this.products = [];
+      for (let product of res){
+        this.products.push(product);
+      }
+      this.arrangeData();
+    })
   }
 
 }

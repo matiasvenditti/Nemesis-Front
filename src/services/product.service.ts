@@ -6,7 +6,7 @@ import { Product } from '../model/product';
 @Injectable()
 export class ProductService {
 
-  url: string = 'http://localhost:8080/stores';
+  url: string = 'http://localhost:8080';
 
   constructor(private http: HttpClient, private auth: AuthenticationService) { }
 
@@ -26,7 +26,7 @@ export class ProductService {
       headers: headers
     }
     
-    return this.http.post<Product>(`${this.url}/${storeId}/products`, body, options);
+    return this.http.post<Product>(`${this.url}/stores/${storeId}/products`, body, options);
   }
 
   searchProduct(storeId: number, productKey: string){
@@ -37,7 +37,7 @@ export class ProductService {
       headers: headers
     }
 
-    return this.http.get<Product[]>(`${this.url}/${storeId}/search/${productKey}`);
+    return this.http.get<Product[]>(`${this.url}/stores/${storeId}/search/${productKey}`);
   }
 
   searchByCategory(storeId: number, category: string){
@@ -48,6 +48,36 @@ export class ProductService {
       headers: headers
     }
 
-    return this.http.get<Product[]>(`${this.url}/${storeId}/products/${category}`)
+    return this.http.get<Product[]>(`${this.url}/stores/${storeId}/products/${category}`)
+  }
+
+  removeProduct(storeId: number, productId: number){
+    const headers = new HttpHeaders()
+    .set('Content-Type', 'application/json')
+    .set('Authorization', `Bearer ${this.auth.getToken()}`)
+    const options = {
+      headers: headers
+    }
+
+    return this.http.delete(`${this.url}/stores/${storeId}/products/${productId}`, options);
+  }
+
+  addToCart(userId: number, product: Product){
+    
+    const body = {
+      name: product.name,
+      price: product.price,
+      stock: product.stock,
+      category: product.category
+    }
+
+    const headers = new HttpHeaders()
+    .set('Content-Type', 'application/json')
+    .set('Authorization', `Bearer ${this.auth.getToken()}`)
+
+    const options = {
+      headers: headers
+    }
+    return this.http.post(`${this.url}/users/${userId}/products`, body, options);
   }
 }

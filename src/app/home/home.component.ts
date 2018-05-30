@@ -38,8 +38,6 @@ export class HomeComponent implements OnInit {
       this.searchValue = '';
       this.userSearched = true;
       this.resultStores = res;
-      console.log(this.resultStores[0]);
-      
     })
   }
 

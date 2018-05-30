@@ -9,8 +9,8 @@
             <img src="../../../assets/search.svg" alt="">
           </a>
         </div>
-    <!-- <app-search [storeId]="store.id"></app-search> -->
     <ul>
+      <li (click)="showAllProducts()">All</li>
       <li *ngFor="let category of categories" (click)="searchByCategory(category)">{{category}}</li>
     </ul>
   </div>
@@ -24,7 +24,7 @@
         <a *ngIf="admin" (click)="showForm()">Add product</a>
     </div>
     <div class="products">
-      <app-product-label *ngFor="let product of displayedValues" [product]="product" [admin]="admin"></app-product-label>
+      <app-product-label *ngFor="let product of displayedValues" [product]="product" [products]="products" [store]="store" [admin]="admin" [user]="user"></app-product-label>
     </div>
     <br>
     <div class="pagination">

@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthenticationService } from './authentication.service';
 import { Store } from '../model/store';
 import { User } from '../model/user';
+import { Product } from '../model/product';
 
 
 @Injectable()
@@ -67,6 +68,17 @@ export class StoreService {
     }
 
     return this.http.get<Store[]>(`${this.url}/search/stores/${key}`, options);
+  }
+
+  getAll(storeId: number){
+    const headers = new HttpHeaders()
+    .set('Content-Type', 'application/json')
+
+    const options = {
+      headers: headers
+    }
+
+    return this.http.get<Product[]>(`${this.url}/stores/${storeId}/products`)
   }
 
 }

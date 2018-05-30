@@ -1,4 +1,5 @@
 import { Store } from "./store";
+import { Product } from "./product";
 
 export class User{
 
@@ -9,9 +10,10 @@ export class User{
     username: string;
     stores: Store[];
     id: number;
+    products: Product[];
 
 
-    constructor(id, name, surname, username, email, password, stores){
+    constructor(id: number, name: string, surname: string, username: string, email: string, password: string, stores: Store[], products: Product[]){
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -19,7 +21,7 @@ export class User{
         this.email = email;
         this.password = password;
         this.stores = stores;
-
+        this.products = products;
     }
 
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { User } from '../../model/user';
 import { Product } from '../../model/product';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -13,7 +14,7 @@ export class CartComponent implements OnInit {
   user: User = new User(0, 'Default', 'Default', 'Default', 'Default', 'Default', [], []);
   total: number = 0;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
     this.userService.getUser().subscribe((res: User) => {
@@ -37,6 +38,10 @@ export class CartComponent implements OnInit {
       this.user.products.splice(index, 1);
     }
     this.total = this.getTotal(this.user.products);
+  }
+
+  buy(){
+    this.router.navigate(['/success']);
   }
 
 }

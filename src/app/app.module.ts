@@ -31,6 +31,7 @@ import { UserService } from '../services/user.service';
 import { StoreResultComponent } from './home/store-result/store-result.component';
 import { CartComponent } from './cart/cart.component';
 import { CartLabelComponent } from './cart/cart-label/cart-label.component';
+import { SuccessComponent } from './success/success.component';
 
 
 var appRoutes = [
@@ -39,7 +40,8 @@ var appRoutes = [
   { path: '', component: HomeComponent},
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
   { path: 'store/:id', component: StoreProfileComponent},
-  { path: 'cart', component: CartComponent, canActivate: [AuthGuard]}
+  { path: 'cart', component: CartComponent, canActivate: [AuthGuard]},
+  { path: 'success', component: SuccessComponent, canActivate: [AuthGuard]}
 ]
 
 
@@ -63,7 +65,8 @@ var appRoutes = [
     ProductFormComponent,
     StoreResultComponent,
     CartComponent,
-    CartLabelComponent
+    CartLabelComponent,
+    SuccessComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

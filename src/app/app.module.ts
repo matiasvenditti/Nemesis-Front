@@ -32,6 +32,7 @@ import { StoreResultComponent } from './home/store-result/store-result.component
 import { CartComponent } from './cart/cart.component';
 import { CartLabelComponent } from './cart/cart-label/cart-label.component';
 import { SuccessComponent } from './success/success.component';
+import { ContactComponent } from './home/contact/contact.component';
 
 
 var appRoutes = [
@@ -66,7 +67,8 @@ var appRoutes = [
     StoreResultComponent,
     CartComponent,
     CartLabelComponent,
-    SuccessComponent
+    SuccessComponent,
+    ContactComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

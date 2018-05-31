@@ -1,0 +1,45 @@
+.container{
+    padding: 20px;
+    font-family: 'Oswald', sans-serif;
+    position: relative;
+    width: 100%;
+}
+
+.data{
+    float: left;
+}
+
+.container:hover{
+    background-color: #FAF8FC;
+}
+
+.label{
+    display: block;
+    text-align: left;
+    color: #BCBCBC;
+    padding: 0;
+}
+
+.name{
+    font-size: 15px;
+    margin-bottom: 10px;
+    font-family: 'Open Sans Condensed', sans-serif;
+    color: black;
+}
+
+.price{
+    color: #BCBCBC;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 12px;
+}
+
+img{
+    width: 20px;
+    position: relative;
+    float: right;
+}
+
+img:hover{
+    cursor: pointer;
+    filter: invert(.5) sepia(1) saturate(5) hue-rotate(200deg);
+}

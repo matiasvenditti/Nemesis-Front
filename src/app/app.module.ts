@@ -29,6 +29,8 @@ import { ProductService } from '../services/product.service';
 import { PaginationService } from '../services/pagination.service';
 import { UserService } from '../services/user.service';
 import { StoreResultComponent } from './home/store-result/store-result.component';
+import { CartComponent } from './cart/cart.component';
+import { CartLabelComponent } from './cart/cart-label/cart-label.component';
 
 
 var appRoutes = [
@@ -36,7 +38,8 @@ var appRoutes = [
   { path: 'signup', component: SignupComponent},
   { path: '', component: HomeComponent},
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
-  { path: 'store/:id', component: StoreProfileComponent}
+  { path: 'store/:id', component: StoreProfileComponent},
+  { path: 'cart', component: CartComponent, canActivate: [AuthGuard]}
 ]
 
 
@@ -58,7 +61,9 @@ var appRoutes = [
     StoreProfileComponent,
     ProductLabelComponent,
     ProductFormComponent,
-    StoreResultComponent
+    StoreResultComponent,
+    CartComponent,
+    CartLabelComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

@@ -16,8 +16,8 @@
     </div>
   
   <ul>
-    <a class="nav-button" routerLink="">About</a>
-    <a class="nav-button" (click)="navigate('profile')">Profile</a>
+    <a class="nav-button" (click)="navigate('cart')" *ngIf="this.auth.isLoggedIn()">Cart</a>
+    <a class="nav-button" (click)="navigate('profile')" *ngIf="this.auth.isLoggedIn()">Profile</a>
     <a class="nav-button" (click)="navigate('signup')" *ngIf="!this.auth.isLoggedIn()">Sign up</a>
     <a class="nav-button" (click)="logOut()" *ngIf="this.auth.isLoggedIn()">Log out</a>
     <a class="nav-button" (click)="navigate('login')" *ngIf="!this.auth.isLoggedIn()">Log in</a>

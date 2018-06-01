@@ -34,4 +34,16 @@ export class UserService {
     return this.http.delete(`${this.url}/users/${userId}/products`, options)
   }
 
+  deleteUser(userId: number){
+    const headers = new HttpHeaders()
+    .set('Content-Type', 'application/json')
+    .set('Authorization', `Bearer ${this.auth.getToken()}`)
+
+    const options = {
+      headers: headers
+    }
+
+    return this.http.delete(`${this.url}/users/${userId}`, options)
+  }
+
 }

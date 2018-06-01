@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthenticationService } from '../../../services/authentication.service';
 import { User } from '../../../model/user';
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-settings',
@@ -13,18 +13,15 @@ export class SettingsComponent implements OnInit {
   url: string = 'http://localhost:8080/user';
   @Input() user: User;
 
-  constructor(private http: HttpClient, private login: AuthenticationService) { }
+  constructor(private login: AuthenticationService, private userService: UserService) { }
 
   ngOnInit() {
   }
 
   deleteUser(){
-    var id = this.user.id;
-    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.login.getToken());
-    const options = {
-      headers: headers
-    }
-    this.http.delete(this.url + '/' + id, options).subscribe(() => this.login.logOut())
+    this.userService.deleteUser(this.user.id).subscribe(() => {
+      this.login.logOut();
+    })
   }
 
   getData(): string{

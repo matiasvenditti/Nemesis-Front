@@ -80,4 +80,17 @@ export class ProductService {
     }
     return this.http.post(`${this.url}/users/${userId}/products`, body, options);
   }
+
+  removeFromCart(userId: number, productId: number){
+
+    const headers = new HttpHeaders()
+    .set('Content-Type', 'application/json')
+    .set('Authorization', `Bearer ${this.auth.getToken()}`)
+
+    const options = {
+      headers: headers
+    }
+
+    return this.http.delete(`${this.url}/users/${userId}/products/${productId}`, options)
+  }
 }

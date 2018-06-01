@@ -29,18 +29,8 @@ export class ProductLabelComponent implements OnInit {
   }
 
   addToCart(){
-    console.log('User ', this.user);
-    console.log('Product ', this.product);
-
-    
     this.productService.addToCart(this.user.id, this.product).subscribe(() => {
-      console.log(this.user.products);
-      console.log(this.user);
       this.user.products.push(this.product);
-      
-      
-      
-      
     })
   }
 

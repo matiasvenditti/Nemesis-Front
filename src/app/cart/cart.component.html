@@ -1,7 +1,7 @@
 <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 <div class="background"></div>
-<div class="container">
+<div class="container" [ngClass]="{'hide': isEmpty()}">
   <div class="cart">
     <span class="cart-text">Your Cart</span>
     <app-cart-label *ngFor="let product of user.products" [product]="product" (emitter)="removeFromCart($event)"></app-cart-label>
@@ -11,4 +11,9 @@
     </div>
     <button class="submit-button" type="button" (click)="buy()">Buy</button>
   </div>
+</div>
+
+<div class="container" [ngClass]="{'hide': !isEmpty()}">
+  <span class="cart-text">Your cart is currently empty</span>
+  <button class="submit-button" type="button" (click)="home()">Continue shopping</button>
 </div>

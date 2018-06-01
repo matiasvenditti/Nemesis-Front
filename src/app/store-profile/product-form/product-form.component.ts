@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { StoreProfileComponent } from '../store-profile.component';
 import { ProductService } from '../../../services/product.service';
 import { Product } from '../../../model/product';
@@ -14,6 +14,7 @@ export class ProductFormComponent implements OnInit {
   imageUrl: string;
   @Input() storeId: number;
   @Input() categories: string[];
+  @Output() emitter = new EventEmitter();
 
   category: string;
   name: string;
@@ -45,9 +46,12 @@ export class ProductFormComponent implements OnInit {
 
   addProduct(){
     this.productService.addProduct(this.storeId, this.name, this.price, this.amount, this.category).subscribe((res: Product) => {
-      console.log(res);
-      
+      this.hide();
     });
+  }
+
+  hide(){
+    this.emitter.emit();
   }
 
 }

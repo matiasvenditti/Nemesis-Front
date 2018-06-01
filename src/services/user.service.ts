@@ -22,4 +22,16 @@ export class UserService {
     return this.http.get<User>(this.url + `/users/${localStorage.getItem('username')}`, options);
   }
 
+  clearCart(userId: number){
+    const headers = new HttpHeaders()
+    .set('Content-Type', 'application/json')
+    .set('Authorization', `Bearer ${this.auth.getToken()}`)
+
+    const options = {
+      headers: headers
+    }
+
+    return this.http.delete(`${this.url}/users/${userId}/products`, options)
+  }
+
 }

@@ -44,7 +44,9 @@ export class CartComponent implements OnInit {
   }
 
   buy(){
-    this.router.navigate(['/success']);
+    this.userService.clearCart(this.user.id).subscribe(() => {
+      this.router.navigate(['/success']);
+    })
   }
 
   home(){

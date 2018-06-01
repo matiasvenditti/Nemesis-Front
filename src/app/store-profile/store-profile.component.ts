@@ -25,7 +25,7 @@ export class StoreProfileComponent implements OnInit {
   products: Product[] = [];
   intervals: number[] = [];
   displayedValues: Product[] = [];
-  itemsPerPage = 3;
+  itemsPerPage = 10;
   current: number = 1;
   formVisible: boolean = false;
   searchValue: string;

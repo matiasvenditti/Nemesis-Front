@@ -18,6 +18,7 @@ export class ProfileComponent implements OnInit {
   storeList: Store[];
   settingsVisible: boolean = false;
   formVisible: boolean = false;
+  imageFormVisible = false;
   user: User;
   
 
@@ -46,6 +47,29 @@ export class ProfileComponent implements OnInit {
   hideForm(){
     document.querySelector('.container').classList.remove('blur');
     this.formVisible = false;
+  }
+
+  showImageForm(){
+    document.querySelector('.container').classList.add('blur');
+    this.imageFormVisible = true;
+  }
+
+  hideImageForm(){
+    document.querySelector('.container').classList.remove('blur');
+    this.imageFormVisible = false;
+  }
+
+  toggleForm(event: any){
+    console.log(event);
+    
+    if (event){
+      document.querySelector('.container').classList.add('blur');
+      this.imageFormVisible = true;
+    } else{
+      document.querySelector('.container').classList.remove('blur');
+      this.imageFormVisible = false;
+    }
+    
   }
 
   private capitalize(word: string): string {

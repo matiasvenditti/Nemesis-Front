@@ -17,6 +17,7 @@ export class StoreFormComponent implements OnInit {
   imageUrl: string;
   @Input() user: User;
   @Input() stores: Store[];
+  selectedFile: File;
   
   
 
@@ -34,6 +35,7 @@ export class StoreFormComponent implements OnInit {
 
   readUrl(event: any){
     if (event.target.files && event.target.files[0]){
+      this.selectedFile = event.target.files[0];
       var reader = new FileReader();
 
       reader.onload = (event: any) => {
@@ -41,5 +43,9 @@ export class StoreFormComponent implements OnInit {
       }
       reader.readAsDataURL(event.target.files[0]);
     }
+  }
+
+  upload(){
+    
   }
 }

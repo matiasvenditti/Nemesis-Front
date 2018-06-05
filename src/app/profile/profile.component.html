@@ -3,7 +3,13 @@
 <div class="container">
     <div class="background"></div>
     <div class="content">
-        <img src="../../assets/perfil.jpg" alt="">
+        <!-- <img src="../../assets/perfil.jpg" alt=""> -->
+        <div class="image-container">
+            <img class="profile-image" src="../../assets/perfil.jpg" alt="">
+            <div class="upload" (click)="showImageForm()">
+                <img src="../../assets/photo-camera.svg" alt="">
+            </div>
+        </div>
         <span>Welcome {{ name }}</span>
     </div>
 
@@ -20,6 +26,7 @@
     </div>
 </div>
 <app-store-form *ngIf="formVisible" [stores]="storeList" [user]="user"></app-store-form>
+<app-image-form *ngIf="imageFormVisible" (emitter)="toggleForm($event)"></app-image-form>
 
 
 

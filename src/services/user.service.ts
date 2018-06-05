@@ -46,4 +46,11 @@ export class UserService {
     return this.http.delete(`${this.url}/users/${userId}`, options)
   }
 
+  addUserImage(image: File){
+    const data = new FormData();
+    data.append('image', image);
+
+    // this.http.post(``)
+  }
+
 }

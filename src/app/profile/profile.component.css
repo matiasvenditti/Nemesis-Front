@@ -38,7 +38,7 @@ body{
     margin-top: 30px;
 }
 
-.content img{
+.content .profile-image{
     width: 200px;
     border-radius: 50%;
     border: 5px solid white;
@@ -121,8 +121,47 @@ app-store-form{
     width: 50%;
 }
 
+app-image-form{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+}
+
 app-store-form:focus{
     outline: none;
+}
+
+.image-container{
+    width: 200px;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+}
+
+.upload{
+    display: none;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    height: 100%;
+    background-color: rgba(188, 188, 188, 0.9);
+}
+
+.image-container:hover .upload{
+    display: inline-block;
+    cursor: pointer;
+    border: 5px solid white;
+    border-radius: 50%;
+}
+
+.upload img{
+    width: 50px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
 }
 
 

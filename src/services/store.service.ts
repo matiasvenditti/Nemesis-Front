@@ -38,6 +38,14 @@ export class StoreService {
     return this.http.post<Store>(this.url + `/users/${id}/stores`, body, options);
   }
 
+  // uploadStore(name: string, image: File){
+  //   const uploadData = new FormData();
+  //   uploadData.append('name', name);
+  //   uploadData.append('image', image);
+    
+  //   // this.http.post()
+  // }
+
   removeStore(userId: number, storeId: number){
     const headers = new HttpHeaders()
     .set('Content-Type', 'application/json')

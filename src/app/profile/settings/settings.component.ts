@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { AuthenticationService } from '../../../services/authentication.service';
 import { User } from '../../../model/user';
 import { UserService } from '../../../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-settings',
@@ -13,7 +14,7 @@ export class SettingsComponent implements OnInit {
   url: string = 'http://localhost:8080/user';
   @Input() user: User;
 
-  constructor(private login: AuthenticationService, private userService: UserService) { }
+  constructor(private login: AuthenticationService, private userService: UserService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -34,6 +35,10 @@ export class SettingsComponent implements OnInit {
 
   logOut(){
     this.login.logOut();
+  }
+
+  userSettings(){
+    this.router.navigate(['edit/user']);
   }
 
 }

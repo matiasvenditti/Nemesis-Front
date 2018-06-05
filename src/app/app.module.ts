@@ -34,6 +34,9 @@ import { CartLabelComponent } from './cart/cart-label/cart-label.component';
 import { SuccessComponent } from './success/success.component';
 import { ContactComponent } from './home/contact/contact.component';
 import { ImageFormComponent } from './profile/image-form/image-form.component';
+import { EditUserComponent } from './edit/edit-user/edit-user.component';
+import { EditProductComponent } from './edit/edit-product/edit-product.component';
+import { EditStoreComponent } from './edit/edit-store/edit-store.component';
 
 
 var appRoutes = [
@@ -43,7 +46,10 @@ var appRoutes = [
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
   { path: 'store/:id', component: StoreProfileComponent},
   { path: 'cart', component: CartComponent, canActivate: [AuthGuard]},
-  { path: 'success', component: SuccessComponent, canActivate: [AuthGuard]}
+  { path: 'success', component: SuccessComponent, canActivate: [AuthGuard]},
+  { path: 'edit/user', component: EditUserComponent, canActivate: [AuthGuard]},
+  { path: 'edit/product/:id', component: EditProductComponent, canActivate: [AuthGuard]},
+  { path: 'edit/store/:id', component: EditStoreComponent, canActivate: [AuthGuard]}
 ]
 
 
@@ -70,7 +76,10 @@ var appRoutes = [
     CartLabelComponent,
     SuccessComponent,
     ContactComponent,
-    ImageFormComponent
+    ImageFormComponent,
+    EditUserComponent,
+    EditProductComponent,
+    EditStoreComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

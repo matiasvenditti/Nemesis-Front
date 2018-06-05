@@ -3,6 +3,7 @@ import { Product } from '../../../model/product';
 import { ProductService } from '../../../services/product.service';
 import { Store } from '../../../model/store';
 import { User } from '../../../model/user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-label',
@@ -17,7 +18,7 @@ export class ProductLabelComponent implements OnInit {
   @Input() store: Store; 
   @Input() user: User;
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -45,6 +46,10 @@ export class ProductLabelComponent implements OnInit {
       this.products.splice(index, 1);
     }
     
+  }
+
+  editProduct(){
+    this.router.navigate([`edit/product/${this.product.id}`]);
   }
 
 

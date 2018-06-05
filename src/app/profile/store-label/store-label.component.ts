@@ -3,6 +3,7 @@ import { ProfileService } from '../../../services/profile.service';
 import { StoreService } from '../../../services/store.service';
 import { Store } from '../../../model/store';
 import { User } from '../../../model/user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-store-label',
@@ -16,7 +17,7 @@ export class StoreLabelComponent implements OnInit {
   @Input() user: User;
  
 
-  constructor(private storeService: StoreService) { }
+  constructor(private storeService: StoreService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -40,5 +41,11 @@ export class StoreLabelComponent implements OnInit {
     }
     
   }
+
+  editStore(){
+    this.router.navigate([`edit/store/${this.store.id}`]);
+  }
+
+
 
 }

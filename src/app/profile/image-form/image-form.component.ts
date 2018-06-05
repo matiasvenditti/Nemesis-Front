@@ -1,4 +1,6 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { UserService } from '../../../services/user.service';
+import { User } from '../../../model/user';
 
 @Component({
   selector: 'app-image-form',
@@ -9,8 +11,10 @@ export class ImageFormComponent implements OnInit {
 
   selectedFile: File;
   imageUrl: string;
+  @Input() user: User;
   @Output() emitter = new EventEmitter<boolean>();
-  constructor() { }
+
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
   }
@@ -32,8 +36,12 @@ export class ImageFormComponent implements OnInit {
   }
 
   upload(){
-    console.log(this.selectedFile);
-    this.hide();
+    if (this.selectedFile != null){
+      console.log(this.selectedFile);
+      
+      this.userService.addUserImage(this.selectedFile, this.user.id);
+      this.hide();
+    }
   }
 
 }

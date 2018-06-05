@@ -121,6 +121,10 @@ app-store-result{
     height: inherit;
 }
 
+.search-box:hover{
+    cursor: pointer;
+}
+
 .search-btn{
     float: right;
     display: flex;

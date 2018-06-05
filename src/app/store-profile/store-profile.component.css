@@ -140,6 +140,10 @@ app-product-form{
     display: inline-block;
 }
 
+.search-box:hover{
+    cursor: pointer;
+}
+
 .search-btn{
     float: right;
     display: flex;

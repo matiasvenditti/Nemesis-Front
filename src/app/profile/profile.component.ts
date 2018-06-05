@@ -59,19 +59,6 @@ export class ProfileComponent implements OnInit {
     this.imageFormVisible = false;
   }
 
-  toggleForm(event: any){
-    console.log(event);
-    
-    if (event){
-      document.querySelector('.container').classList.add('blur');
-      this.imageFormVisible = true;
-    } else{
-      document.querySelector('.container').classList.remove('blur');
-      this.imageFormVisible = false;
-    }
-    
-  }
-
   private capitalize(word: string): string {
     return word.charAt(0).toUpperCase() + word.slice(1);
   }

@@ -1,3 +1,38 @@
-<p>
-  edit-product works!
-</p>
+<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+
+<form class="form" #f="ngForm" autocomplete="off">
+    <div class="text">
+        <span class="title-text">Edit Product</span>
+
+        <span class="subtitle">Name</span> 
+        <input required ngModel [(ngModel)]="name"  class="user-input" type="text" name="name"/><br>
+
+        <span class="subtitle">Select product category</span>
+        <div class="dropdown">
+            <button class="file-button dropdown-button">Categories</button>
+            <div class="dropdown-content">
+                <ul>
+                    <li *ngFor="let category of categories" (click)="setResult($event)">{{category}}</li>
+                </ul>
+            </div>
+        </div>
+        <div class="span-container">
+            <span class="category-result"></span>    
+        </div>
+        
+        <div class="amount-price">
+            <div class="product-amount">
+                <span class="subtitle">Product amount</span>
+                <input  ngModel [(ngModel)]="stock" required type="number" min="1" max="10" value="1" class="amount" name="stock">
+            </div>
+            <div class="product-price">
+                <span class="subtitle">Price</span>
+                <input ngModel [(ngModel)]="price" required type="number" min="1" max="10" class="amount" name="price">
+            </div>
+        </div>
+
+        <button class="submit-button" type="button" (click)="update()">Send</button>
+    </div>
+</form>
+<div class="background"></div>

@@ -48,7 +48,8 @@ export class UserService {
 
   addUserImage(image: File, userId: number){
     const data = new FormData();
-    data.append('image', image);
+    data.append('file', image);
+    data.append('Authorization', `Bearer ${this.auth.getToken()}`)
 
     return this.http.post(`${this.url}/users/${userId}`, data);
   }

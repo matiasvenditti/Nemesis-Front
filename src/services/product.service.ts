@@ -93,4 +93,38 @@ export class ProductService {
 
     return this.http.delete(`${this.url}/users/${userId}/products/${productId}`, options)
   }
+
+  getProduct(productId: number){
+    const headers = new HttpHeaders()
+    .set('Content-Type', 'application/json')
+    .set('Authorization', `Bearer ${this.auth.getToken()}`)
+
+    const options = {
+      headers: headers
+    }
+
+    return this.http.get<Product>(`${this.url}/products/${productId}`, options);
+  }
+
+  updateProduct(product: Product){
+    const body = {
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      category: product.category,
+      stock: product.stock
+    }
+    console.log(body);
+    
+
+    const headers = new HttpHeaders()
+    .set('Authorization', `Bearer ${this.auth.getToken()}`)
+    .set('Content-Type', 'application/json')
+
+    const options = {
+      headers: headers
+    }
+
+    return this.http.put(`${this.url}/products`, body, options);
+  }
 }

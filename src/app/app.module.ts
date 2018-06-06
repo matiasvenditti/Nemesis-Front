@@ -37,6 +37,7 @@ import { ImageFormComponent } from './profile/image-form/image-form.component';
 import { EditUserComponent } from './edit/edit-user/edit-user.component';
 import { EditProductComponent } from './edit/edit-product/edit-product.component';
 import { EditStoreComponent } from './edit/edit-store/edit-store.component';
+import { ProductResultComponent } from './home/product-result/product-result.component';
 
 
 var appRoutes = [
@@ -79,7 +80,8 @@ var appRoutes = [
     ImageFormComponent,
     EditUserComponent,
     EditProductComponent,
-    EditStoreComponent
+    EditStoreComponent,
+    ProductResultComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

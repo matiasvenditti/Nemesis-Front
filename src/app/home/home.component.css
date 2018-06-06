@@ -104,6 +104,12 @@ app-store-result{
     height: 215px;
 }
 
+app-product-result{
+    float: left;
+    width: 215px;
+    height: 215px;
+}
+
 .results{
     display: inline-block;
 }
@@ -156,4 +162,10 @@ app-store-result{
 
 .search-btn img{
     width: 20px;
+}
+
+.stores-container{
+    display: inline-block;
+    width: 100%;
+    padding: 20px 0px;
 }

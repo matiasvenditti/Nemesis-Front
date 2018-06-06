@@ -15,8 +15,6 @@ export class EditProductComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.productId = params.id;
-      console.log(this.productId);
-      
     })
   }
 

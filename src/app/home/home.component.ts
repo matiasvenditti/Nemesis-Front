@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from '../../services/authentication.service';
 import { Store } from '../../model/store';
 import { StoreService } from '../../services/store.service';
+import { Product } from '../../model/product';
 
 @Component({
   selector: 'app-home',
@@ -14,11 +15,23 @@ export class HomeComponent implements OnInit {
   resultStores: Store[];
   userSearched: boolean = false;
   searchValue: string;
+  stores: Store[] = [];
+  products: Product[] = [];
 
   constructor(private router: Router, private auth: AuthenticationService, private storeService: StoreService) { }
 
   ngOnInit() {
-    
+    this.storeService.getAllStores().subscribe((res: Store[]) => {
+      console.log(res);
+      
+      this.stores = res;
+      for(let store of this.stores){
+        if (store.products.length >= 1){
+          let index = Math.floor(Math.random() * store.products.length);
+          this.products.push(store.products[index]);
+        }
+      }
+    })
   }
 
   @HostListener('window: scroll')
@@ -49,5 +62,4 @@ export class HomeComponent implements OnInit {
   enterStore(id: number){ 
     this.router.navigate([`store/${id}`]);
   }
-
 }

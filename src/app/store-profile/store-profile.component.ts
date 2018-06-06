@@ -114,7 +114,7 @@ export class StoreProfileComponent implements OnInit {
   }
 
   showAllProducts(){
-    this.storeService.getAll(this.store.id).subscribe((res: Product[]) => {
+    this.storeService.getAllProductsFromStore(this.store.id).subscribe((res: Product[]) => {
       this.products = [];
       for (let product of res){
         this.products.push(product);

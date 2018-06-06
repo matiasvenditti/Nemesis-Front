@@ -1,0 +1,30 @@
+.container{
+    font-family: 'Oswald', sans-serif;
+    transition: all 0.3s;
+    padding: 20px;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.container:hover{
+    background-color: #F7F7F7;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+    transform: scale(1.01);
+}
+
+
+.container .label-image{
+    float: left;
+    position: relative;
+    height: 120px;
+    border-radius: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.container .description{
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 30px;
+    text-align: center;
+}

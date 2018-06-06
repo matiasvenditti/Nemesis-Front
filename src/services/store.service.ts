@@ -78,7 +78,7 @@ export class StoreService {
     return this.http.get<Store[]>(`${this.url}/search/stores/${key}`, options);
   }
 
-  getAll(storeId: number){
+  getAllProductsFromStore(storeId: number){
     const headers = new HttpHeaders()
     .set('Content-Type', 'application/json')
 
@@ -87,6 +87,17 @@ export class StoreService {
     }
 
     return this.http.get<Product[]>(`${this.url}/stores/${storeId}/products`)
+  }
+
+  getAllStores(){
+    const headers = new HttpHeaders()
+    .set('Content-Type', 'application/json')
+
+    const options = {
+      headers: headers
+    }
+
+    return this.http.get<Store[]>(`${this.url}/stores`);
   }
 
 }

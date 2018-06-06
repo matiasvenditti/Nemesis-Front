@@ -33,10 +33,15 @@
 
   <h2>Get to know our top Stores</h2>
   <p>These are some of the best stores selected from huge variety of excelente quality brands</p>
-  <hr>
+  <div class="stores-container">
+    <app-store-result *ngFor="let store of stores" [store]="store" (click)="enterStore(store.id)"></app-store-result>
+  </div>
 
   <h2>Most wanted products</h2>
   <p>Browse for the best products made especially for you</p>
+  <div class="stores-container">
+    <app-product-result *ngFor="let product of products" [product]="product"></app-product-result>
+  </div>
   <app-contact></app-contact>
 </div>
 

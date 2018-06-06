@@ -48,7 +48,7 @@ var appRoutes = [
   { path: 'store/:id', component: StoreProfileComponent},
   { path: 'cart', component: CartComponent, canActivate: [AuthGuard]},
   { path: 'success', component: SuccessComponent, canActivate: [AuthGuard]},
-  { path: 'edit/user', component: EditUserComponent, canActivate: [AuthGuard]},
+  { path: 'edit/user/:id', component: EditUserComponent, canActivate: [AuthGuard]},
   { path: 'edit/product/:id', component: EditProductComponent, canActivate: [AuthGuard]},
   { path: 'edit/store/:id', component: EditStoreComponent, canActivate: [AuthGuard]}
 ]

@@ -54,4 +54,27 @@ export class UserService {
     return this.http.post(`${this.url}/users/${userId}`, data);
   }
 
+  updateUser(user: User){
+    const body = {
+      id: user.id,
+      name: user.name,
+      surname: user.surname,
+      username: user.username,
+      email: user.email,
+      password: user.password,
+      stores: user.stores,
+      products: user.products
+    }
+
+    const headers = new HttpHeaders()
+    .set('Content-Type', 'application/json')
+    .set('Authorization', `Bearer ${this.auth.getToken()}`)
+
+    const options = {
+      headers: headers
+    }
+
+    return this.http.put(`${this.url}/users`, body, options);
+  }
+
 }

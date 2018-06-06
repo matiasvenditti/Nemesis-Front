@@ -1,0 +1,114 @@
+*{
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+.form{
+    display: inline-block;
+    width: 100%;
+    background-color: #FFFFFF;
+    color: #333333;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+    width: 40%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.text label{
+    display: block;
+    font-size: 25px;
+    display: block;
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: 'Oswald', sans-serif;
+}
+
+.text span{
+    font-size: 20px;
+    margin-bottom: 8px;
+    color: #BCBCBC;
+    display: block;
+}
+
+.text .tag{
+    width: 50%;
+    float: left;
+    padding: 10px;
+}
+
+.text .user-input{
+    text-decoration: none;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #BCBCBC;
+    color: #262626;
+    outline: none;
+    width: 100%;
+    transition: 0.3s all;
+    margin-bottom: 20px;
+}
+
+.text .user-input:focus{
+    border-bottom: 1px solid transparent;
+    border-image: linear-gradient(90deg, #22D2FE, #B228FF);
+    border-image-slice: 1;
+}
+
+.text .submit-button{
+    text-decoration: none;
+    background: linear-gradient(90deg, #22D2FE 0%, #44AAFE 25%, #6D7BFE 51%, #B228FF 100%);
+    width: 50%;
+    border-radius: 30px;
+    padding: 12px;
+    position: relative;
+    color: white;
+    border: transparent;
+    font-size: 15px;
+    display: block;
+    margin: auto;
+    -webkit-transition: 0.3s all;
+    transition: 0.3s all;
+}
+
+.text .submit-button:hover{
+    transform: scale(1.05);
+    filter: brightness(1.05) contrast(1.05);
+}
+
+.submit-button:active, .submit-button:focus{
+    outline: none;
+} 
+
+.text .bottom{
+    font-size: 15px;
+    margin: 20px 0px 10px 0px;
+    text-decoration: none;
+    color: #333333;
+    display: block;
+}
+
+.left{
+    float: left;
+}
+
+.right{
+    float: right;
+}
+
+.user-input.ng-touched.ng-invalid{
+    border-bottom: 1px solid #FA5858;
+    color: #FA5858;
+}
+
+.active{
+    border-bottom: 1px solid #FA5858 !important;
+    color: #FA5858 !important;
+}
+
+.background{
+    width: 100%;
+    height: 100vh;
+    background-color: #F2F2F2;
+}

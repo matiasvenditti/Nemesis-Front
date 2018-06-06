@@ -38,7 +38,7 @@ export class SettingsComponent implements OnInit {
   }
 
   userSettings(){
-    this.router.navigate(['edit/user']);
+    this.router.navigate([`edit/user/${this.user.id}`]);
   }
 
 }

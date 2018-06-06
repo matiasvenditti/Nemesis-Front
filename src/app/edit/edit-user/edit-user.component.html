@@ -1,3 +1,29 @@
-<p>
-  edit-user works!
-</p>
+<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+<form class="form" #f autocomplete="off">
+
+  <div class="text">
+      <label>Edit Account</label>
+
+      <span class="subtitle">Name</span> 
+      <input required ngModel [(ngModel)]="name"  class="user-input" type="text" name="name"/><br>
+
+      <span class="subtitle">Surname</span> 
+      <input required ngModel [(ngModel)]="surname"  class="user-input" type="text" name="surname"/><br>
+
+      <span class="subtitle">Username</span> 
+      <input required ngModel [(ngModel)]="username"  class="user-input" type="text" name="username"/><br>
+
+      <span class="subtitle">Email</span>
+      <input required email ngModel [(ngModel)]="email" class="user-input" type="text" name="email"><br>
+
+      <span class="subtitle">Password</span> 
+      <input required ngModel [(ngModel)]="password" [ngClass]="check()" class="user-input" type="password" name="password"/><br>
+
+      <span class="subtitle">Confirm Password</span> 
+      <input required ngModel [(ngModel)]="confirmPassword" [ngClass]="check()" class="user-input" type="password" name="confirm-password"/><br>
+
+      <button class="submit-button" type="button" (click)="updateUser()">Send</button>
+  </div>
+</form>
+<div class="background"></div>

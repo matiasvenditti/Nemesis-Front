@@ -38,6 +38,7 @@ import { EditUserComponent } from './edit/edit-user/edit-user.component';
 import { EditProductComponent } from './edit/edit-product/edit-product.component';
 import { EditStoreComponent } from './edit/edit-store/edit-store.component';
 import { ProductResultComponent } from './home/product-result/product-result.component';
+import { CartTextComponent } from './store-profile/cart-text/cart-text.component';
 
 
 var appRoutes = [
@@ -81,7 +82,8 @@ var appRoutes = [
     EditUserComponent,
     EditProductComponent,
     EditStoreComponent,
-    ProductResultComponent
+    ProductResultComponent,
+    CartTextComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

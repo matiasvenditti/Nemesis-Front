@@ -35,11 +35,14 @@ export class ImageFormComponent implements OnInit {
     this.emitter.emit(false);
   }
 
+  //REVISAR
   upload(){
     if (this.selectedFile != null){
-      console.log(this.selectedFile);
-      
-      this.userService.addUserImage(this.selectedFile, this.user.id);
+      this.userService.addUserImage(this.selectedFile, this.user.id).subscribe(() => {
+        this.userService.getUserImage(this.user.id).subscribe((res) => {
+          console.log(res);
+        })
+      });
       this.hide();
     }
   }

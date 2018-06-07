@@ -49,9 +49,19 @@ export class UserService {
   addUserImage(image: File, userId: number){
     const data = new FormData();
     data.append('file', image);
-    data.append('Authorization', `Bearer ${this.auth.getToken()}`)
+    
+    const headers = new HttpHeaders()
+    .set('Authorization', `Bearer ${this.auth.getToken()}`)
 
-    return this.http.post(`${this.url}/users/${userId}`, data);
+    const options = {
+      headers: headers
+    }
+
+    return this.http.post(`${this.url}/images/users/${userId}`, data, options);
+  }
+
+  getUserImage(userId: number){
+    return this.http.get(`${this.url}/images/users/${userId}`);
   }
 
   updateUser(user: User){

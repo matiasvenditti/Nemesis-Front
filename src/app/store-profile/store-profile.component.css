@@ -130,7 +130,7 @@ app-product-form{
 }
 
 .blur{
-    filter: blur(50px);
+    filter: blur(20px);
 }
 
 .search-box{
@@ -175,4 +175,12 @@ app-product-form{
 
 .search-btn img{
     width: 20px;
+}
+
+app-cart-text{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40%;
 }

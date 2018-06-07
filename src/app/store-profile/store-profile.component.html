@@ -24,7 +24,7 @@
         <a *ngIf="admin" (click)="showForm()">Add product</a>
     </div>
     <div class="products">
-      <app-product-label *ngFor="let product of displayedValues" [product]="product" [products]="products" [store]="store" [admin]="admin" [user]="user"></app-product-label>
+      <app-product-label *ngFor="let product of displayedValues" [product]="product" [products]="products" [store]="store" [admin]="admin" [user]="user" (emitter)="displayText($event)"></app-product-label>
     </div>
     <br>
     <div class="pagination">
@@ -36,5 +36,6 @@
     </div>
   </div>
 </div>
-<app-product-form *ngIf="formVisible" [categories]="categories" [storeId]="store.id" (emitter)="hideForm()"></app-product-form>
+<app-product-form *ngIf="formVisible" [categories]="categories" [storeId]="store.id" (emitter)="hideForm()" (addProductEmitter)="showAllProducts()"></app-product-form>
+<app-cart-text *ngIf="cartTextVisible" [product]="cartProduct"></app-cart-text>
 

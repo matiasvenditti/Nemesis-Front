@@ -15,6 +15,7 @@ export class ProductFormComponent implements OnInit {
   @Input() storeId: number;
   @Input() categories: string[];
   @Output() emitter = new EventEmitter();
+  @Output() addProductEmitter = new EventEmitter();
 
   category: string;
   name: string;
@@ -47,6 +48,7 @@ export class ProductFormComponent implements OnInit {
   addProduct(){
     this.productService.addProduct(this.storeId, this.name, this.price, this.amount, this.category).subscribe((res: Product) => {
       this.hide();
+      this.addProductEmitter.emit();
     });
   }
 

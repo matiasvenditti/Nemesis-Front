@@ -22,8 +22,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.storeService.getAllStores().subscribe((res: Store[]) => {
-      console.log(res);
-      
       this.stores = res;
       for(let store of this.stores){
         if (store.products.length >= 1){

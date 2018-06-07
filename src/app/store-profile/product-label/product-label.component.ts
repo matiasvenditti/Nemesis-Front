@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Product } from '../../../model/product';
 import { ProductService } from '../../../services/product.service';
 import { Store } from '../../../model/store';
@@ -17,6 +17,7 @@ export class ProductLabelComponent implements OnInit {
   @Input() products: Product[];
   @Input() store: Store; 
   @Input() user: User;
+  @Output() emitter = new EventEmitter<Product>();
 
   constructor(private productService: ProductService, private router: Router) { }
 
@@ -32,6 +33,7 @@ export class ProductLabelComponent implements OnInit {
   addToCart(){
     this.productService.addToCart(this.user.id, this.product).subscribe(() => {
       this.user.products.push(this.product);
+      this.emitter.emit(this.product);
     })
   }
 

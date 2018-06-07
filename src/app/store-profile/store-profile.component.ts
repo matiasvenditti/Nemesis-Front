@@ -29,6 +29,8 @@ export class StoreProfileComponent implements OnInit {
   current: number = 1;
   formVisible: boolean = false;
   searchValue: string;
+  cartProduct: Product;
+  cartTextVisible: boolean = false;
 
   constructor(private route: ActivatedRoute, private storeService: StoreService, private auth: AuthenticationService, private pagination: PaginationService, private userService: UserService, private productService: ProductService) {}
 
@@ -121,6 +123,16 @@ export class StoreProfileComponent implements OnInit {
       }
       this.arrangeData();
     })
+  }
+
+  displayText(event: any){
+    this.cartProduct = event;
+    this.cartTextVisible = true;
+    document.querySelector('.container').classList.add('blur');
+    setTimeout(() => {
+      this.cartTextVisible = false;
+      document.querySelector('.container').classList.remove('blur');
+    }, 3000);
   }
 
 }

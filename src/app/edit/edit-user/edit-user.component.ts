@@ -25,8 +25,6 @@ export class EditUserComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      console.log(params.id);
-      
       this.userId = params.id;
     })
     this.userService.getUser().subscribe((res: User) => {

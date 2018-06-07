@@ -4,6 +4,7 @@ import { ProfileService } from '../../services/profile.service';
 import { User } from '../../model/user';
 import { Store } from '../../model/store';
 import { Router } from '@angular/router';
+import { UserService } from '../../services/user.service';
 
 
 @Component({
@@ -22,17 +23,20 @@ export class ProfileComponent implements OnInit {
   user: User;
   
 
-  constructor(private http: HttpClient, private profile: ProfileService, private router: Router) {
+  constructor(private userService: UserService, private profile: ProfileService, private router: Router) {
   }
 
   ngOnInit() {
-    this.http.get(this.url + '/users/' + localStorage.getItem('username')).subscribe(value => 
-      {
-      this.user = value as User;
+    this.userService.getUser().subscribe((value: User) => {
+      this.user = value;
       this.name = this.capitalize(this.user.name);
       this.storeList = this.user.stores;
-      }
-    );
+      this.userService.getUserImage(this.user.id).subscribe(res => {
+        console.log('Getting image');
+        
+        console.log(typeof(res));
+      })
+    });
   }
 
   toggleSettings(){

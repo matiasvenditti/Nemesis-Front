@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { ProfileService } from '../../services/profile.service';
 import { User } from '../../model/user';
 import { Store } from '../../model/store';
 import { Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
+import { Image } from '../../model/image';
+import { DomSanitizer } from '@angular/platform-browser';
 
 
 @Component({
@@ -21,9 +22,10 @@ export class ProfileComponent implements OnInit {
   formVisible: boolean = false;
   imageFormVisible = false;
   user: User;
+  userImage: any = '../../assets/perfil.png';
   
 
-  constructor(private userService: UserService, private profile: ProfileService, private router: Router) {
+  constructor(private userService: UserService, private router: Router, private sanitizer: DomSanitizer) {
   }
 
   ngOnInit() {
@@ -31,10 +33,10 @@ export class ProfileComponent implements OnInit {
       this.user = value;
       this.name = this.capitalize(this.user.name);
       this.storeList = this.user.stores;
-      this.userService.getUserImage(this.user.id).subscribe(res => {
-        console.log('Getting image');
+      this.userService.getUserImage(this.user.id).subscribe((res: Image) => {
         
-        console.log(typeof(res));
+        this.userImage = this.sanitizer.bypassSecurityTrustUrl('data:image/jpg;base64,' + res.code);
+        
       })
     });
   }
@@ -69,5 +71,9 @@ export class ProfileComponent implements OnInit {
 
   enterStore(id: number){  
     this.router.navigate([`store/${id}`]);
+  }
+
+  changeImage(event: any){
+    this.userImage = event;
   }
 }

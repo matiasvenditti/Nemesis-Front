@@ -5,7 +5,7 @@
     <div class="content">
         <!-- <img src="../../assets/perfil.jpg" alt=""> -->
         <div class="image-container">
-            <img class="profile-image" src="../../assets/perfil.jpg" alt="">
+            <img class="profile-image" [src]="userImage" alt="">
             <div class="upload" (click)="showImageForm()">
                 <img src="../../assets/photo-camera.svg" alt="">
             </div>
@@ -26,7 +26,7 @@
     </div>
 </div>
 <app-store-form *ngIf="formVisible" [stores]="storeList" [user]="user"></app-store-form>
-<app-image-form *ngIf="imageFormVisible" [user]="user" (emitter)="hideImageForm()"></app-image-form>
+<app-image-form *ngIf="imageFormVisible" [user]="user" (emitter)="hideImageForm()" (imageEmitter)="changeImage($event)"></app-image-form>
 
 
 

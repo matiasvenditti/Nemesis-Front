@@ -13,6 +13,7 @@ export class ImageFormComponent implements OnInit {
   imageUrl: string;
   @Input() user: User;
   @Output() emitter = new EventEmitter<boolean>();
+  @Output() imageEmitter = new EventEmitter<string>();
 
   constructor(private userService: UserService) { }
 
@@ -35,14 +36,10 @@ export class ImageFormComponent implements OnInit {
     this.emitter.emit(false);
   }
 
-  //REVISAR
   upload(){
     if (this.selectedFile != null){
-      this.userService.addUserImage(this.selectedFile, this.user.id).subscribe(() => {
-        this.userService.getUserImage(this.user.id).subscribe((res) => {
-          console.log(res);
-        })
-      });
+      this.userService.addUserImage(this.selectedFile, this.user.id).subscribe();
+      this.imageEmitter.emit(this.imageUrl);
       this.hide();
     }
   }

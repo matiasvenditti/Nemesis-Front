@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthenticationService } from './authentication.service';
 import { User } from '../model/user';
+import { Image } from '../model/image';
 
 @Injectable()
 export class UserService {
@@ -57,11 +58,11 @@ export class UserService {
       headers: headers
     }
 
-    return this.http.post(`${this.url}/images/users/${userId}`, data, options);
+    return this.http.post(`${this.url}/users/images/${userId}`, data, options);
   }
 
   getUserImage(userId: number){
-    return this.http.get(`${this.url}/images/users/${userId}`);
+    return this.http.get<Image>(`${this.url}/users/image/${userId}`);
   }
 
   updateUser(user: User){

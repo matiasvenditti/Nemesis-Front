@@ -4,6 +4,8 @@ import { ProfileComponent } from '../profile.component';
 import { User } from '../../../model/user';
 import { Store } from '../../../model/store';
 import { StoreService } from '../../../services/store.service';
+import { DomSanitizer } from '@angular/platform-browser';
+import { Image } from '../../../model/image';
 
 
 @Component({
@@ -22,13 +24,15 @@ export class StoreFormComponent implements OnInit {
   
   
 
-  constructor(private profileComponent: ProfileComponent, private storeService: StoreService) { }
+  constructor(private profileComponent: ProfileComponent, private storeService: StoreService, private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
   }
 
   addStore(){
     this.storeService.addStore(this.user.id, this.storeName).subscribe((res: Store) => {
+      this.uploadImage(res.id);
+      res.imageUrl = this.imageUrl;
       this.stores.push(res);
       this.profileComponent.hideForm();
     })
@@ -46,9 +50,7 @@ export class StoreFormComponent implements OnInit {
     }
   }
 
-  upload(){
-    if (this.selectedFile != null){
-      this.emitter.emit(this.imageUrl);
-    }
+  uploadImage(id: number){
+    this.storeService.addStoreImage(this.selectedFile, id).subscribe();
   }
 }

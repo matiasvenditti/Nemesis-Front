@@ -4,6 +4,8 @@ import { ProductService } from '../../../services/product.service';
 import { Store } from '../../../model/store';
 import { User } from '../../../model/user';
 import { Router } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
+import { Image } from '../../../model/image';
 
 @Component({
   selector: 'app-product-label',
@@ -19,9 +21,12 @@ export class ProductLabelComponent implements OnInit {
   @Input() user: User;
   @Output() emitter = new EventEmitter<Product>();
 
-  constructor(private productService: ProductService, private router: Router) { }
+  constructor(private productService: ProductService, private router: Router, private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
+    this.productService.getProductImage(this.product.id).subscribe((res: Image) => {
+      this.product.imageUrl = this.sanitizer.bypassSecurityTrustUrl('data:image/jpg;base64,' + res.code);
+    })
   }
 
   removeProduct(){

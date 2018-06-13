@@ -34,12 +34,6 @@ export class ProfileComponent implements OnInit {
       this.user = value;
       this.name = this.capitalize(this.user.name);
       this.storeList = this.user.stores;
-      this.storeList.forEach(store => {
-        this.storeService.getStoreImage(store.id).subscribe((res: Image) => {
-          store.imageUrl = this.sanitizer.bypassSecurityTrustUrl('data:image/jpg;base64,' + res.code);
-        })
-      });
-      
       this.userService.getUserImage(this.user.id).subscribe((res: Image) => {
         this.userImage = this.sanitizer.bypassSecurityTrustUrl('data:image/jpg;base64,' + res.code);
       })

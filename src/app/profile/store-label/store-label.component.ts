@@ -4,6 +4,8 @@ import { StoreService } from '../../../services/store.service';
 import { Store } from '../../../model/store';
 import { User } from '../../../model/user';
 import { Router } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
+import { Image } from '../../../model/image';
 
 @Component({
   selector: 'app-store-label',
@@ -17,9 +19,12 @@ export class StoreLabelComponent implements OnInit {
   @Input() user: User;
  
 
-  constructor(private storeService: StoreService, private router: Router) { }
+  constructor(private storeService: StoreService, private router: Router, private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
+    this.storeService.getStoreImage(this.store.id).subscribe((res: Image) => {
+      this.store.imageUrl = this.sanitizer.bypassSecurityTrustUrl('data:image/jpg;base64,' + res.code);
+    })
   }
 
   removeStore(event: Event){

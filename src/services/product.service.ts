@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthenticationService } from './authentication.service';
 import { Product } from '../model/product';
+import { Image } from '../model/image';
 
 @Injectable()
 export class ProductService {
@@ -126,5 +127,23 @@ export class ProductService {
     }
 
     return this.http.put(`${this.url}/products`, body, options);
+  }
+
+  getProductImage(productId: number){
+    return this.http.get<Image>(`${this.url}/products/image/${productId}`);
+  }
+
+  addStoreImage(image: File, productId: number){
+    let data = new FormData()
+    data.append('file', image);
+
+    const headers = new HttpHeaders()
+    .set('Authorization', `Bearer ${this.auth.getToken()}`)
+
+    const options = {
+      headers: headers
+    }
+    
+    return this.http.post(`${this.url}/products/images/${productId}`, data, options)
   }
 }

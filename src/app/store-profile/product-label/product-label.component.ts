@@ -20,6 +20,7 @@ export class ProductLabelComponent implements OnInit {
   @Input() store: Store; 
   @Input() user: User;
   @Output() emitter = new EventEmitter<Product>();
+  @Output() removeProductEmitter = new EventEmitter();
 
   constructor(private productService: ProductService, private router: Router, private sanitizer: DomSanitizer) { }
 
@@ -32,6 +33,7 @@ export class ProductLabelComponent implements OnInit {
   removeProduct(){
     this.productService.removeProduct(this.store.id, this.product.id).subscribe(() => {
       this.removeFromArray();
+      this.removeProductEmitter.emit();
     })
   }
 

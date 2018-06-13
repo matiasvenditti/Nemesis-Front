@@ -133,7 +133,7 @@ export class ProductService {
     return this.http.get<Image>(`${this.url}/products/image/${productId}`);
   }
 
-  addStoreImage(image: File, productId: number){
+  addProductImage(image: File, productId: number){
     let data = new FormData()
     data.append('file', image);
 

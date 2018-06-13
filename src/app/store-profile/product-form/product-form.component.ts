@@ -12,6 +12,7 @@ export class ProductFormComponent implements OnInit {
 
   productName: string;
   imageUrl: string;
+  selectedFile: File;
   @Input() storeId: number;
   @Input() categories: string[];
   @Output() emitter = new EventEmitter();
@@ -22,13 +23,14 @@ export class ProductFormComponent implements OnInit {
   amount: number = 1;
   price: number;
 
-  constructor(private storeComponent: StoreProfileComponent, private productService: ProductService) { }
+  constructor(private productService: ProductService) { }
 
   ngOnInit() {
   }
 
   readUrl(event: any){
     if (event.target.files && event.target.files[0]){
+      this.selectedFile = event.target.files[0];
       var reader = new FileReader();
 
       reader.onload = (event: any) => {
@@ -47,8 +49,10 @@ export class ProductFormComponent implements OnInit {
 
   addProduct(){
     this.productService.addProduct(this.storeId, this.name, this.price, this.amount, this.category).subscribe((res: Product) => {
-      this.hide();
-      this.addProductEmitter.emit();
+      this.productService.addProductImage(this.selectedFile, res.id).subscribe(() => {
+        this.hide();
+        this.addProductEmitter.emit();
+      });
     });
   }
 

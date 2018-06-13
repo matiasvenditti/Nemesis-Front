@@ -14,6 +14,7 @@ export class CartComponent implements OnInit {
 
   user: User = new User(0, 'Default', 'Default', 'Default', 'Default', 'Default', [], []);
   total: number = 0;
+  formVisible: boolean = false;
 
   constructor(private userService: UserService, private router: Router, private productService: ProductService) { }
 
@@ -43,10 +44,10 @@ export class CartComponent implements OnInit {
     })
   }
 
-  buy(){
-    this.userService.clearCart(this.user.id).subscribe(() => {
-      this.router.navigate(['/success']);
-    })
+  continue(){
+    let cartContainer = document.querySelector('.container') as HTMLElement;
+    cartContainer.style.setProperty('display','none');
+    this.formVisible = true;
   }
 
   home(){

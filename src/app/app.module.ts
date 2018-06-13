@@ -39,6 +39,8 @@ import { EditProductComponent } from './edit/edit-product/edit-product.component
 import { EditStoreComponent } from './edit/edit-store/edit-store.component';
 import { ProductResultComponent } from './home/product-result/product-result.component';
 import { CartTextComponent } from './store-profile/cart-text/cart-text.component';
+import { CartFormComponent } from './cart/cart-form/cart-form.component';
+import { AddressComponent } from './cart/cart-form/address/address.component';
 
 
 var appRoutes = [
@@ -83,7 +85,9 @@ var appRoutes = [
     EditProductComponent,
     EditStoreComponent,
     ProductResultComponent,
-    CartTextComponent
+    CartTextComponent,
+    CartFormComponent,
+    AddressComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

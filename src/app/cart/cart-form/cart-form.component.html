@@ -1,0 +1,27 @@
+<form class="form">
+  <div class="text">
+      <span class="login-text">You're almost done</span>
+
+      <span class="subtitle">Name</span> 
+      <input required ngModel [(ngModel)]="name"  class="user-input" type="text" name="name"/><br>
+
+      <span class="subtitle">DNI</span> 
+      <input required ngModel [(ngModel)]="dni"  class="user-input" type="text" name="dni"/><br>
+
+      <span class="subtitle">Select location</span>
+      <div class="radio-container">
+        <div class="left">
+          <input type="radio" name="location" value="Address" (click)="setTrue()" name="location"> Address
+        </div>
+        <div class="right">
+          <input type="radio" name="location" value="Store" (click)="setFalse()" name="location"> Store
+        </div>
+      </div>
+      
+      <div *ngIf="displayAddressInput">
+          <span class="subtitle">Delivery location</span>
+          <input class="user-input" type="text" [(ngModel)]="address" name="address">
+      </div>
+      <button class="submit-button" type="button" (click)="buy()">Buy</button>
+  </div>
+</form>

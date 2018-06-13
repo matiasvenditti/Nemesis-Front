@@ -9,7 +9,7 @@
       <span class="left">Total:</span>
       <span class="right">${{total}}</span>
     </div>
-    <button class="submit-button" type="button" (click)="buy()">Buy</button>
+    <button class="submit-button" type="button" (click)="continue()">Continue</button>
   </div>
 </div>
 
@@ -17,3 +17,4 @@
   <span class="cart-text">Your cart is currently empty</span>
   <button class="submit-button" type="button" (click)="home()">Continue shopping</button>
 </div>
+<app-cart-form *ngIf="formVisible" [user]="user"></app-cart-form>

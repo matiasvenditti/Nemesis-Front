@@ -10,8 +10,9 @@
 }
 
 .data{
-    display: block;
+    display: inline-block;
     padding: 20px;
+    width: 100%;
 }
 
 .name{
@@ -54,4 +55,13 @@
     cursor: pointer;
     filter: invert(.5) sepia(1) saturate(5) hue-rotate(200deg);
     transform: scale(1.15);
+}
+
+.category{
+    padding: 20px;
+    visibility: hidden;
+}
+
+.container:hover .category{
+    visibility: visible;
 }

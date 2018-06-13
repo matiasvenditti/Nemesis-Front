@@ -2,7 +2,7 @@
 <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
 
-<form (ngSubmit)="addStore()" class="form" #f="ngForm" autocomplete="off">
+<form class="form" #f="ngForm" autocomplete="off">
 
     <div class="text">
         <img src="../../../assets/back.svg" alt="" class="back" (click)="this.profileComponent.hideForm()">
@@ -17,6 +17,6 @@
             <button class="file-button"(click)="fileInput.click()">Upload store image</button>
             <img *ngIf="imageUrl" [src]="imageUrl" alt="">
         </div>
-        <button class="submit-button" type="submit">Send</button>
+        <button class="submit-button" type="button" (click)="addStore()">Send</button>
     </div>
 </form>

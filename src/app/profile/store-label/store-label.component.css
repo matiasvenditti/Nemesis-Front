@@ -20,7 +20,7 @@
     float: left;
     position: relative;
     height: 120px;
-    border-radius: 50%;
+    /* border-radius: 50%; */
     left: 50%;
     transform: translateX(-50%);
 }

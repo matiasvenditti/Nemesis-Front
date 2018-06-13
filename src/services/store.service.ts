@@ -4,6 +4,7 @@ import { AuthenticationService } from './authentication.service';
 import { Store } from '../model/store';
 import { User } from '../model/user';
 import { Product } from '../model/product';
+import { Image } from '../model/image';
 
 
 @Injectable()
@@ -38,13 +39,23 @@ export class StoreService {
     return this.http.post<Store>(this.url + `/users/${id}/stores`, body, options);
   }
 
-  // uploadStore(name: string, image: File){
-  //   const uploadData = new FormData();
-  //   uploadData.append('name', name);
-  //   uploadData.append('image', image);
+  getStoreImage(storeId: number){
+    return this.http.get<Image>(`${this.url}/stores/image/${storeId}`);
+  }
+
+  addStoreImage(image: File, storeId: number){
+    let data = new FormData()
+    data.append('file', image);
+
+    const headers = new HttpHeaders()
+    .set('Authorization', `Bearer ${this.auth.getToken()}`)
+
+    const options = {
+      headers: headers
+    }
     
-  //   // this.http.post()
-  // }
+    return this.http.post(`${this.url}/stores/images/${storeId}`, data, options)
+  }
 
   removeStore(userId: number, storeId: number){
     const headers = new HttpHeaders()

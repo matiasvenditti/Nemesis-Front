@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ProfileService } from '../../../services/profile.service';
 import { ProfileComponent } from '../profile.component';
 import { User } from '../../../model/user';
@@ -18,10 +18,11 @@ export class StoreFormComponent implements OnInit {
   @Input() user: User;
   @Input() stores: Store[];
   selectedFile: File;
+  @Output() emitter = new EventEmitter<string>();
   
   
 
-  constructor(private profile: ProfileService, private profileComponent: ProfileComponent, private storeService: StoreService) { }
+  constructor(private profileComponent: ProfileComponent, private storeService: StoreService) { }
 
   ngOnInit() {
   }
@@ -46,6 +47,8 @@ export class StoreFormComponent implements OnInit {
   }
 
   upload(){
-    
+    if (this.selectedFile != null){
+      this.emitter.emit(this.imageUrl);
+    }
   }
 }

@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { Image } from '../../model/image';
 import { DomSanitizer } from '@angular/platform-browser';
+import { StoreService } from '../../services/store.service';
 
 
 @Component({
@@ -25,7 +26,7 @@ export class ProfileComponent implements OnInit {
   userImage: any = '../../assets/perfil.png';
   
 
-  constructor(private userService: UserService, private router: Router, private sanitizer: DomSanitizer) {
+  constructor(private userService: UserService, private router: Router, private sanitizer: DomSanitizer, private storeService:StoreService) {
   }
 
   ngOnInit() {
@@ -33,10 +34,17 @@ export class ProfileComponent implements OnInit {
       this.user = value;
       this.name = this.capitalize(this.user.name);
       this.storeList = this.user.stores;
+      this.storeList.forEach(store => {
+        console.log(store.id);
+        
+        this.storeService.getStoreImage(store.id).subscribe((res: Image) => {
+          store.imageUrl = this.sanitizer.bypassSecurityTrustUrl('data:image/jpg;base64,' + res.code);
+          
+        })
+      });
+      
       this.userService.getUserImage(this.user.id).subscribe((res: Image) => {
-        
         this.userImage = this.sanitizer.bypassSecurityTrustUrl('data:image/jpg;base64,' + res.code);
-        
       })
     });
   }

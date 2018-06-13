@@ -5,7 +5,7 @@
       <img class="label-button" src="../../../assets/delete.svg" alt="" (click)="removeStore($event)">
       <img class="label-button" src="../../../assets/edit.svg" alt="" (click)="editStore()">
   </div>
-  <img class="label-image" src="../../../assets/default.png" alt="">
+  <img class="label-image" [src]="store.imageUrl" alt="">
   
 </div>
 

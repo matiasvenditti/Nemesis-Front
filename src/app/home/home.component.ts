@@ -44,7 +44,7 @@ export class HomeComponent implements OnInit {
     this.auth.logOut();
   }
 
-  searchProduct(){
+  searchStore(){
     this.storeService.searchStore(this.searchValue).subscribe((res: Store[]) => {
       this.searchValue = '';
       this.userSearched = true;
@@ -59,5 +59,11 @@ export class HomeComponent implements OnInit {
 
   enterStore(id: number){ 
     this.router.navigate([`store/${id}`]);
+  }
+
+  handleEvent(event: any){
+    if (event.keyCode === 13){
+      this.searchStore();
+    }
   }
 }

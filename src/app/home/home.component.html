@@ -9,8 +9,8 @@
 <div id="nav" class="navbar">
   <span class="left">Nemesis</span>
   <div class="search-box">
-      <input [(ngModel)]="searchValue" class="search-text" type="text" placeholder="Type to search">
-      <a class="search-btn" (click)="searchProduct()">
+      <input [(ngModel)]="searchValue" class="search-text" type="text" placeholder="Type to search" (keypress)="handleEvent($event)">
+      <a class="search-btn" (click)="searchStore()">
         <img src="../../../assets/search.svg" alt="">
       </a>
     </div>

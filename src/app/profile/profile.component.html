@@ -4,8 +4,8 @@
     <div class="background"></div>
     <div class="content">
         <!-- <img src="../../assets/perfil.jpg" alt=""> -->
-        <div class="image-container">
-            <img class="profile-image" [src]="userImage" alt="">
+        <div *ngIf="user" class="image-container">
+            <img class="profile-image" [src]="user.image | noImage" alt="">
             <div class="upload" (click)="showImageForm()">
                 <img src="../../assets/photo-camera.svg" alt="">
             </div>

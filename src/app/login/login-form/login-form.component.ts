@@ -21,7 +21,7 @@ export class LoginFormComponent{
   
 
   logIn(){
-    this.auth.postLogIn(this.url + '/login', this.userName, this.password).subscribe((res: Response) => {
+    this.auth.postLogIn(this.userName, this.password).subscribe((res: Response) => {
       this.auth.logIn(res);
       localStorage.setItem('username', this.userName);
       this.router.navigate(['/']);

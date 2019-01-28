@@ -7,22 +7,27 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { Router } from "@angular/router";
 
+import { environment } from "../environments/environment";
+
 
 @Injectable()
 export class AuthenticationService{
+
+    signUpUrl: string = environment.userUrl;
+    logInUrl: string = environment.logInUrl;
 
     constructor(private http: HttpClient, private router: Router){}
 
     ngOnInit(): void {}
 
-    postLogIn(url: string, username: string, password: string): Observable<any>{
+    postLogIn(username: string, password: string): Observable<any>{
         const body = {
             username: username,
             password: password
         };
         const headers = new HttpHeaders();
         headers.append('Content-Type', 'application/json')
-        return this.http.post(url, body, {headers: headers});
+        return this.http.post(this.logInUrl, body, {headers: headers});
     }
 
     isLoggedIn(): boolean{        
@@ -38,7 +43,7 @@ export class AuthenticationService{
         this.router.navigate(['/login']);
     }
 
-    signUp(url: string, name: string, surname: string,username: string, email:string, password: string){
+    signUp(name: string, surname: string,username: string, email:string, password: string){
         const body = {
             name: name,
             surname: surname,
@@ -50,7 +55,7 @@ export class AuthenticationService{
         const options = {
             headers: headers,
         }
-        return this.http.post(url, body, options)
+        return this.http.post(this.signUpUrl, body, options)
     }
 
     getToken(){

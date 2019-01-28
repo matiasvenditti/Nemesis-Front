@@ -10,7 +10,8 @@ export class User{
     username: string;
     stores: Store[];
     id: number;
-    products: Product[];
+    products: Product[] = [];
+    image: string;
 
 
     constructor(id: number, name: string, surname: string, username: string, email: string, password: string, stores: Store[], products: Product[]){

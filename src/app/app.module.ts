@@ -40,6 +40,7 @@ import { EditStoreComponent } from './edit/edit-store/edit-store.component';
 import { ProductResultComponent } from './home/product-result/product-result.component';
 import { CartTextComponent } from './store-profile/cart-text/cart-text.component';
 import { CartFormComponent } from './cart/cart-form/cart-form.component';
+import { NoImagePipe } from './pipes/no-image.pipe';
 
 
 var appRoutes = [
@@ -85,7 +86,8 @@ var appRoutes = [
     EditStoreComponent,
     ProductResultComponent,
     CartTextComponent,
-    CartFormComponent
+    CartFormComponent,
+    NoImagePipe
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

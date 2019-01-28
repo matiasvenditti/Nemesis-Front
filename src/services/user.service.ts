@@ -3,11 +3,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthenticationService } from './authentication.service';
 import { User } from '../model/user';
 import { Image } from '../model/image';
+import { environment } from '../environments/environment';
 
 @Injectable()
 export class UserService {
 
-  url: string = 'http://localhost:8080';
+  url: string = environment.userUrl;
+
 
   constructor(private http: HttpClient, private auth: AuthenticationService) { }
 
@@ -20,7 +22,7 @@ export class UserService {
       headers: headers
     }
 
-    return this.http.get<User>(this.url + `/users/${localStorage.getItem('username')}`, options);
+    return this.http.get<User>(this.url + `/${localStorage.getItem('username')}`, options);
   }
 
   clearCart(userId: number){
@@ -32,7 +34,7 @@ export class UserService {
       headers: headers
     }
 
-    return this.http.delete(`${this.url}/users/${userId}/products`, options)
+    return this.http.delete(`${this.url}/${userId}/products`, options)
   }
 
   deleteUser(userId: number){
@@ -44,7 +46,7 @@ export class UserService {
       headers: headers
     }
 
-    return this.http.delete(`${this.url}/users/${userId}`, options)
+    return this.http.delete(`${this.url}/${userId}`, options)
   }
 
   addUserImage(image: File, userId: number){
@@ -58,11 +60,11 @@ export class UserService {
       headers: headers
     }
 
-    return this.http.post(`${this.url}/users/images/${userId}`, data, options);
+    return this.http.post(`${this.url}/${userId}/images`, data, options);
   }
 
   getUserImage(userId: number){
-    return this.http.get<Image>(`${this.url}/users/image/${userId}`);
+    return this.http.get<Image>(`${this.url}/image/${userId}`);
   }
 
   updateUser(user: User){
@@ -85,7 +87,7 @@ export class UserService {
       headers: headers
     }
 
-    return this.http.put(`${this.url}/users`, body, options);
+    return this.http.put(`${this.url}`, body, options);
   }
 
 }

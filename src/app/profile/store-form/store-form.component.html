@@ -5,11 +5,14 @@
 <form class="form" #f="ngForm" autocomplete="off">
 
     <div class="text">
-        <img src="../../../assets/back.svg" alt="" class="back" (click)="this.profileComponent.hideForm()">
+        <img [src]="user.image | noImage" alt="" class="back" (click)="this.profileComponent.hideForm()">
         <span class="form-text">Create Your Store</span>
 
         <span class="subtitle">Store name</span> 
         <input required ngModel [(ngModel)]="storeName"  class="user-input" type="text" name="storeName"/><br>
+
+        <span class="subtitle">Store description</span>
+        <input required ngModel [(ngModel)]="storeDescription" class="user-input" type="text" name="storeDescription">
 
         <span class="subtitle">Choose store image</span>
         <div class="input-container">

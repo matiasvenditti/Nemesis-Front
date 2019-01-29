@@ -16,8 +16,8 @@ export class StoreResultComponent implements OnInit {
   constructor(private storeService: StoreService, private sanitizer: DomSanitizer) {}
 
   ngOnInit() {
-    this.storeService.getStoreImage(this.store.id).subscribe((res: Image) => {
-      this.store.imageUrl = this.sanitizer.bypassSecurityTrustUrl('data:image/jpg;base64,' + res.code);
+    this.storeService.getStore(this.store.id).subscribe((res: Store) => { 
+      this.store = res;
     })
   }
 

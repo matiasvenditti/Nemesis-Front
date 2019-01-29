@@ -16,6 +16,7 @@ import { Image } from '../../../model/image';
 export class StoreFormComponent implements OnInit {
 
   storeName: string;
+  storeDescription: string;
   imageUrl: string;
   @Input() user: User;
   @Input() stores: Store[];
@@ -24,17 +25,19 @@ export class StoreFormComponent implements OnInit {
   
   
 
-  constructor(private profileComponent: ProfileComponent, private storeService: StoreService, private sanitizer: DomSanitizer) { }
+  constructor(private profileComponent: ProfileComponent, private storeService: StoreService, private sanitizer: DomSanitizer) {}
 
   ngOnInit() {
   }
 
   addStore(){
-    this.storeService.addStore(this.user.id, this.storeName).subscribe((res: Store) => {
-      this.uploadImage(res.id);
-      res.imageUrl = this.imageUrl;
-      this.stores.push(res);
-      this.profileComponent.hideForm();
+    this.storeService.addStore(this.user.id, this.storeName, this.storeDescription).subscribe((storeResponse: Store) => {
+      this.storeService.addStoreImage(this.selectedFile, storeResponse.id).subscribe(res => {
+        storeResponse.image = this.imageUrl;
+        this.stores.push(storeResponse);
+        this.profileComponent.hideForm();
+      });
+      
     })
   }
 
@@ -48,9 +51,5 @@ export class StoreFormComponent implements OnInit {
       }
       reader.readAsDataURL(event.target.files[0]);
     }
-  }
-
-  uploadImage(id: number){
-    this.storeService.addStoreImage(this.selectedFile, id).subscribe();
   }
 }

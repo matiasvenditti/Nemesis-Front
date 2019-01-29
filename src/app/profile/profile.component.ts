@@ -23,7 +23,6 @@ export class ProfileComponent implements OnInit {
   formVisible: boolean = false;
   imageFormVisible = false;
   user: User;
-  // userImage: any = '../../assets/perfil.png';
   
 
   constructor(private userService: UserService, private router: Router, private sanitizer: DomSanitizer, private storeService:StoreService) {
@@ -34,9 +33,6 @@ export class ProfileComponent implements OnInit {
       this.user = value;
       this.name = this.capitalize(this.user.name);
       this.storeList = this.user.stores;
-      // this.userService.getUserImage(this.user.id).subscribe((res: Image) => {
-      //   this.userImage = this.sanitizer.bypassSecurityTrustUrl('data:image/jpg;base64,' + res.code);
-      // })
     });
   }
 
@@ -73,8 +69,6 @@ export class ProfileComponent implements OnInit {
   }
 
   changeImage(event: any){
-    this.userService.addUserImage(event, this.user.id).subscribe(res => {
-      this.user.image = event;
-    });
+    this.user.image = event;
   }
 }

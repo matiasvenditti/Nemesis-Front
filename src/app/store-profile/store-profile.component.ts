@@ -18,7 +18,7 @@ import { UserService } from '../../services/user.service';
 export class StoreProfileComponent implements OnInit {
 
   categories: string[] = ['Shirts', 'Pants', 'Shorts', 'Shoes', 'Accesories', 'Other'];
-  store: Store = new Store('Default', 1, []);
+  store: Store = new Store('Default', 1, [], "");
   admin: boolean = false;
   user: User;
   logged: boolean = false;

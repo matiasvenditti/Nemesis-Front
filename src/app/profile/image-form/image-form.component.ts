@@ -38,8 +38,9 @@ export class ImageFormComponent implements OnInit {
 
   upload(){
     if (this.selectedFile != null){
-      console.log(typeof this.selectedFile)
-      this.userService.addUserImage(this.selectedFile, this.user.id).subscribe();
+      this.userService.addUserImage(this.selectedFile, this.user.id).subscribe((user: User) => {
+        user.image = this.imageUrl;
+      });
       this.imageEmitter.emit(this.imageUrl);
       this.hide();
     }

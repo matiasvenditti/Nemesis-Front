@@ -6,7 +6,6 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class NoImagePipe implements PipeTransform {
 
   transform(image: any): any {
-    console.log('Image: ',image);
     if (!image){
       return 'assets/perfil.png';
     } else {

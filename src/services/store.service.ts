@@ -26,9 +26,10 @@ export class StoreService {
     return this.http.get<Store>(this.url + `/stores/${id}`, options);
   }
 
-  addStore(id: number, name: string){
+  addStore(id: number, name: string, description: string){
     const body = {
-      name: name
+      name: name,
+      description: description
     }
     const headers = new HttpHeaders()
     .set('Content-Type', 'application/json')
@@ -37,10 +38,6 @@ export class StoreService {
       headers: headers
     }
     return this.http.post<Store>(this.url + `/users/${id}/stores`, body, options);
-  }
-
-  getStoreImage(storeId: number){
-    return this.http.get<Image>(`${this.url}/stores/image/${storeId}`);
   }
 
   addStoreImage(image: File, storeId: number){
@@ -54,7 +51,7 @@ export class StoreService {
       headers: headers
     }
     
-    return this.http.post(`${this.url}/stores/images/${storeId}`, data, options)
+    return this.http.post(`${this.url}/stores/${storeId}/images`, data, options)
   }
 
   removeStore(userId: number, storeId: number){

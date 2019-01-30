@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { StoreProfileComponent } from '../store-profile.component';
 import { ProductService } from '../../../services/product.service';
 import { Product } from '../../../model/product';
+import { Category } from '../../../model/category';
 
 @Component({
   selector: 'app-product-form',
@@ -14,11 +15,11 @@ export class ProductFormComponent implements OnInit {
   imageUrl: string;
   selectedFile: File;
   @Input() storeId: number;
-  @Input() categories: string[];
+  @Input() categories: Category[];
   @Output() emitter = new EventEmitter();
-  @Output() addProductEmitter = new EventEmitter();
+  @Output() addProductEmitter = new EventEmitter<Product>();
 
-  category: string;
+  category: Category;
   name: string;
   amount: number = 1;
   price: number;
@@ -40,18 +41,17 @@ export class ProductFormComponent implements OnInit {
     }
   }
 
-  setResult(event: any){
-    let result = document.querySelector('.category-result') as HTMLElement;
-    result.innerHTML = event.target.innerHTML;
-    result.style.setProperty('display', 'inline-block');
-    this.category = event.target.innerHTML;
+  setResult(category: Category){
+    this.category = category;
   }
 
   addProduct(){
-    this.productService.addProduct(this.storeId, this.name, this.price, this.amount, this.category).subscribe((res: Product) => {
-      this.productService.addProductImage(this.selectedFile, res.id).subscribe(() => {
+    console.log(this.category);
+    this.productService.addProduct(this.storeId, this.name, this.price, this.amount, this.category).subscribe((productResponse: Product) => {
+      this.productService.addProductImage(this.selectedFile, productResponse.id).subscribe((res) => {
+        productResponse.image = this.imageUrl;
+        this.addProductEmitter.emit(productResponse);
         this.hide();
-        this.addProductEmitter.emit();
       });
     });
   }

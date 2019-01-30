@@ -5,7 +5,7 @@
       <img class="label-button" src="../../../assets/delete.svg" alt="" (click)="removeStore($event)">
       <!-- <img class="label-button" src="../../../assets/edit.svg" alt="" (click)="editStore()"> -->
   </div>
-  <img *ngIf="store" class="label-image" [src]="store.image | noImage" alt="">
+  <img *ngIf="store" class="label-image" [src]="store.image | noImage:'../../../assets/default.png'" alt="">
   
 </div>
 

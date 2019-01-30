@@ -21,12 +21,12 @@
             <button class="file-button dropdown-button">Categories</button>
             <div class="dropdown-content">
                 <ul>
-                    <li *ngFor="let category of categories" (click)="setResult($event)">{{category}}</li>
+                    <li *ngFor="let category of categories" (click)="setResult(category)">{{category.category}}</li>
                 </ul>
             </div>
         </div>
-        <div class="span-container">
-            <span class="category-result"></span>    
+        <div *ngIf="category" class="span-container">
+            <span class="category-result">{{category.category}}</span>    
         </div>
         
         <div class="amount-price">

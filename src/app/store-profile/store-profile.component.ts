@@ -9,6 +9,8 @@ import { Product } from '../../model/product';
 import { ProductService } from '../../services/product.service';
 import { PaginationService } from '../../services/pagination.service';
 import { UserService } from '../../services/user.service';
+import { CategoryService } from '../../services/category.service';
+import { Category } from '../../model/category';
 
 @Component({
   selector: 'app-store-profile',
@@ -17,7 +19,7 @@ import { UserService } from '../../services/user.service';
 })
 export class StoreProfileComponent implements OnInit {
 
-  categories: string[] = ['Shirts', 'Pants', 'Shorts', 'Shoes', 'Accesories', 'Other'];
+  categories: Category[] = [];
   store: Store = new Store('Default', 1, [], "");
   admin: boolean = false;
   user: User;
@@ -32,7 +34,8 @@ export class StoreProfileComponent implements OnInit {
   cartProduct: Product;
   cartTextVisible: boolean = false;
 
-  constructor(private route: ActivatedRoute, private storeService: StoreService, private auth: AuthenticationService, private pagination: PaginationService, private userService: UserService, private productService: ProductService) {}
+  constructor(private route: ActivatedRoute, private storeService: StoreService, private auth: AuthenticationService,
+    private pagination: PaginationService, private userService: UserService, private productService: ProductService, private categoryService: CategoryService) {}
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -47,6 +50,10 @@ export class StoreProfileComponent implements OnInit {
           })
         }
       })
+    });
+
+    this.categoryService.getCategories().subscribe((res: Category[]) => {
+      this.categories = res;
     })
   }
 
@@ -99,12 +106,13 @@ export class StoreProfileComponent implements OnInit {
     })
   }
 
-  searchByCategory(category: string){
-    this.productService.searchByCategory(this.store.id, category).subscribe((res: Product[]) => {
-      this.products = [];
-      for (let product of res){
-        this.products.push(product);
-      }
+  searchByCategory(category: Category){
+    this.productService.searchByCategory(this.store.id, category.id).subscribe((res: Product[]) => {
+      console.log(res);
+      this.products = res;
+      // for (let product of res){
+      //   this.products.push(product);
+      // }
       this.arrangeData();
     })
   }
@@ -133,6 +141,10 @@ export class StoreProfileComponent implements OnInit {
       this.cartTextVisible = false;
       document.querySelector('.container').classList.remove('blur');
     }, 3000);
+  }
+
+  isEmpty(array: any): boolean{
+    return array.length > 0;
   }
 
 }

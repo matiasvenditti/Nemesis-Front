@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthenticationService } from './authentication.service';
 import { Product } from '../model/product';
 import { Image } from '../model/image';
+import { Category } from '../model/category';
 
 @Injectable()
 export class ProductService {
@@ -11,7 +12,7 @@ export class ProductService {
 
   constructor(private http: HttpClient, private auth: AuthenticationService) { }
 
-  addProduct(storeId: number, name: string, price: number, stock: number, category: string){
+  addProduct(storeId: number, name: string, price: number, stock: number, category: Category){
     const body = {
       name: name,
       price: price,
@@ -26,6 +27,8 @@ export class ProductService {
     const options = {
       headers: headers
     }
+
+    console.log(body);
     
     return this.http.post<Product>(`${this.url}/stores/${storeId}/products`, body, options);
   }
@@ -41,7 +44,7 @@ export class ProductService {
     return this.http.get<Product[]>(`${this.url}/stores/${storeId}/search/${productKey}`);
   }
 
-  searchByCategory(storeId: number, category: string){
+  searchByCategory(storeId: number, categoryId: number){
     const headers = new HttpHeaders()
     .set('Content-Type', 'application/json')
 
@@ -49,7 +52,7 @@ export class ProductService {
       headers: headers
     }
 
-    return this.http.get<Product[]>(`${this.url}/stores/${storeId}/products/${category}`)
+    return this.http.get<Product[]>(`${this.url}/stores/${storeId}/search/${categoryId}`)
   }
 
   removeProduct(storeId: number, productId: number){
@@ -144,6 +147,6 @@ export class ProductService {
       headers: headers
     }
     
-    return this.http.post(`${this.url}/products/images/${productId}`, data, options)
+    return this.http.post(`${this.url}/products/${productId}/images`, data, options)
   }
 }

@@ -3,9 +3,8 @@
 <div class="container">
     <div class="background"></div>
     <div class="content">
-        <!-- <img src="../../assets/perfil.jpg" alt=""> -->
         <div *ngIf="user" class="image-container">
-            <img class="profile-image" [src]="user.image | noImage" alt="">
+            <img class="profile-image" [src]="user.image | noImage:'../../assets/perfil.png'" alt="">
             <div class="upload" (click)="showImageForm()">
                 <img src="../../assets/photo-camera.svg" alt="">
             </div>
@@ -25,7 +24,7 @@
         </div>
     </div>
 </div>
-<app-store-form *ngIf="formVisible" [stores]="storeList" [user]="user"></app-store-form>
+<app-store-form *ngIf="formVisible" [user]="user" (storeEmitter)="addStore($event)"></app-store-form>
 <app-image-form *ngIf="imageFormVisible" [user]="user" (emitter)="hideImageForm()" (imageEmitter)="changeImage($event)"></app-image-form>
 
 

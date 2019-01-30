@@ -71,4 +71,8 @@ export class ProfileComponent implements OnInit {
   changeImage(event: any){
     this.user.image = event;
   }
+
+  addStore(event){
+    this.storeList.push(event);
+  }
 }

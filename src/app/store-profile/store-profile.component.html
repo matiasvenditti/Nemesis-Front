@@ -11,7 +11,7 @@
         </div>
     <ul>
       <li (click)="showAllProducts()">All</li>
-      <li *ngFor="let category of categories" (click)="searchByCategory(category)">{{category}}</li>
+      <li *ngFor="let category of categories" (click)="searchByCategory(category)">{{category.category}}</li>
     </ul>
   </div>
   <div class="content">
@@ -28,7 +28,7 @@
       <app-product-label *ngFor="let product of displayedValues" [product]="product" [products]="products" [store]="store" [admin]="admin" [user]="user" (emitter)="displayText($event)" (removeProductEmitter)="showAllProducts()"></app-product-label>
     </div>
     <br>
-    <div class="pagination">
+    <div class="pagination" *ngIf="isEmpty(displayedValues)">
       <ul>
           <li (click)="previous()" [ngClass]="{'disabled': checkNegative()}">Prev</li>
           <li *ngFor="let index of intervals" (click)="setCurrent(index)" [ngClass]="{'current': checkCurrent(index)}">{{index}}</li>

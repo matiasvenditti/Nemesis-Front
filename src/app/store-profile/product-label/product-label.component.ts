@@ -25,9 +25,9 @@ export class ProductLabelComponent implements OnInit {
   constructor(private productService: ProductService, private router: Router, private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
-    this.productService.getProductImage(this.product.id).subscribe((res: Image) => {
-      this.product.imageUrl = this.sanitizer.bypassSecurityTrustUrl('data:image/jpg;base64,' + res.code);
-    })
+    this.productService.getProduct(this.product.id).subscribe((resProduct: Product) => {
+      this.product = resProduct;
+    });
   }
 
   removeProduct(){

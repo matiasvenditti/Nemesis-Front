@@ -19,9 +19,9 @@ export class StoreFormComponent implements OnInit {
   storeDescription: string;
   imageUrl: string;
   @Input() user: User;
-  @Input() stores: Store[];
   selectedFile: File;
   @Output() emitter = new EventEmitter<string>();
+  @Output() storeEmitter = new EventEmitter<Store>();
   
   
 
@@ -34,7 +34,7 @@ export class StoreFormComponent implements OnInit {
     this.storeService.addStore(this.user.id, this.storeName, this.storeDescription).subscribe((storeResponse: Store) => {
       this.storeService.addStoreImage(this.selectedFile, storeResponse.id).subscribe(res => {
         storeResponse.image = this.imageUrl;
-        this.stores.push(storeResponse);
+        this.storeEmitter.emit(storeResponse);
         this.profileComponent.hideForm();
       });
       

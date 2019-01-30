@@ -41,6 +41,7 @@ import { ProductResultComponent } from './home/product-result/product-result.com
 import { CartTextComponent } from './store-profile/cart-text/cart-text.component';
 import { CartFormComponent } from './cart/cart-form/cart-form.component';
 import { NoImagePipe } from './pipes/no-image.pipe';
+import { CategoryService } from '../services/category.service';
 
 
 var appRoutes = [
@@ -102,7 +103,8 @@ var appRoutes = [
     StoreService,
     ProductService,
     PaginationService,
-    UserService
+    UserService,
+    CategoryService
   ],
   bootstrap: [AppComponent]
 })

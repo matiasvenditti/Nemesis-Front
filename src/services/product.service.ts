@@ -69,10 +69,7 @@ export class ProductService {
   addToCart(userId: number, product: Product){
     
     const body = {
-      name: product.name,
-      price: product.price,
-      stock: product.stock,
-      category: product.category
+      product: product
     }
 
     const headers = new HttpHeaders()
@@ -82,7 +79,7 @@ export class ProductService {
     const options = {
       headers: headers
     }
-    return this.http.post(`${this.url}/users/${userId}/products`, body, options);
+    return this.http.post(`${this.url}/users/${userId}/products/${product.id}`, body, options);
   }
 
   removeFromCart(userId: number, productId: number){

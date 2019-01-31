@@ -12,8 +12,8 @@ export class CategoryService {
 
   constructor(private http: HttpClient) { }
 
-  getCategories(){
-    return this.http.get(`${this.url}/categories`);
+  getCategories(storeId: number){
+    return this.http.get(`${this.url}/categories/stores/${storeId}`);
   }
 
 }

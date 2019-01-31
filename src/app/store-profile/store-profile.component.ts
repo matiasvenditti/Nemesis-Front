@@ -50,11 +50,11 @@ export class StoreProfileComponent implements OnInit {
           })
         }
       })
-    });
 
-    this.categoryService.getCategories().subscribe((res: Category[]) => {
-      this.categories = res;
-    })
+      this.categoryService.getCategories(params.id).subscribe((res: Category[]) => {
+        this.categories = res;
+      })
+    });
   }
 
   previous(){
@@ -108,7 +108,6 @@ export class StoreProfileComponent implements OnInit {
 
   searchByCategory(category: Category){
     this.productService.searchByCategory(this.store.id, category.id).subscribe((res: Product[]) => {
-      console.log(res);
       this.products = res;
       // for (let product of res){
       //   this.products.push(product);

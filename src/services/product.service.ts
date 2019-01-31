@@ -52,7 +52,7 @@ export class ProductService {
       headers: headers
     }
 
-    return this.http.get<Product[]>(`${this.url}/stores/${storeId}/search/${categoryId}`)
+    return this.http.get<Product[]>(`${this.url}/stores/${storeId}/products/${categoryId}`)
   }
 
   removeProduct(storeId: number, productId: number){

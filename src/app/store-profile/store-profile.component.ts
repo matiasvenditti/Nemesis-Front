@@ -4,7 +4,6 @@ import { StoreService } from '../../services/store.service';
 import { Store } from '../../model/store';
 import { AuthenticationService } from '../../services/authentication.service';
 import { User } from '../../model/user';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Product } from '../../model/product';
 import { ProductService } from '../../services/product.service';
 import { PaginationService } from '../../services/pagination.service';
@@ -129,6 +128,10 @@ export class StoreProfileComponent implements OnInit {
         this.products.push(product);
       }
       this.arrangeData();
+    })
+
+    this.categoryService.getCategories(this.store.id).subscribe((res: Category[]) => {
+      this.categories = res;
     })
   }
 

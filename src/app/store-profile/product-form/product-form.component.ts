@@ -3,6 +3,7 @@ import { StoreProfileComponent } from '../store-profile.component';
 import { ProductService } from '../../../services/product.service';
 import { Product } from '../../../model/product';
 import { Category } from '../../../model/category';
+import { CategoryService } from '../../../services/category.service';
 
 @Component({
   selector: 'app-product-form',
@@ -14,8 +15,8 @@ export class ProductFormComponent implements OnInit {
   productName: string;
   imageUrl: string;
   selectedFile: File;
+  categories: Category[];
   @Input() storeId: number;
-  @Input() categories: Category[];
   @Output() emitter = new EventEmitter();
   @Output() addProductEmitter = new EventEmitter<Product>();
 
@@ -24,10 +25,13 @@ export class ProductFormComponent implements OnInit {
   amount: number = 1;
   price: number;
 
-  constructor(private productService: ProductService) { }
-
-  ngOnInit() {
+  constructor(private productService: ProductService, private categoryService: CategoryService) {
+    this.categoryService.getAllCategories().subscribe((res: Category[]) => {
+      this.categories = res;
+    })
   }
+
+  ngOnInit() {}
 
   readUrl(event: any){
     if (event.target.files && event.target.files[0]){

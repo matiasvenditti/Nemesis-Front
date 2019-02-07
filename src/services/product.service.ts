@@ -27,8 +27,6 @@ export class ProductService {
     const options = {
       headers: headers
     }
-
-    console.log(body);
     
     return this.http.post<Product>(`${this.url}/stores/${storeId}/products`, body, options);
   }

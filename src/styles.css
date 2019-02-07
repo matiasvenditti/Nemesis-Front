@@ -46,3 +46,4 @@
     border-bottom: none;
     background-color: transparent;
 } */ 
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";

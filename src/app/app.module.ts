@@ -42,6 +42,9 @@ import { CartTextComponent } from './store-profile/cart-text/cart-text.component
 import { CartFormComponent } from './cart/cart-form/cart-form.component';
 import { NoImagePipe } from './pipes/no-image.pipe';
 import { CategoryService } from '../services/category.service';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material';
+import { CartModalComponent } from './cart-modal/cart-modal.component';
 
 
 var appRoutes = [
@@ -88,13 +91,16 @@ var appRoutes = [
     ProductResultComponent,
     CartTextComponent,
     CartFormComponent,
-    NoImagePipe
+    NoImagePipe,
+    CartModalComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
   providers: [
     AuthGuard,
@@ -106,6 +112,9 @@ var appRoutes = [
     UserService,
     CategoryService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    CartModalComponent
+  ]
 })
 export class AppModule { }

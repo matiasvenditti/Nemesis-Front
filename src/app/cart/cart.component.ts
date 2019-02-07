@@ -4,6 +4,8 @@ import { User } from '../../model/user';
 import { Product } from '../../model/product';
 import { Router } from '@angular/router';
 import { ProductService } from '../../services/product.service';
+import { CartItem } from '../../model/cart-item';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-cart',
@@ -15,32 +17,37 @@ export class CartComponent implements OnInit {
   user: User = new User(0, 'Default', 'Default', 'Default', 'Default', 'Default', [], []);
   total: number = 0;
   formVisible: boolean = false;
+  cartList: CartItem[] = [];
 
-  constructor(private userService: UserService, private router: Router, private productService: ProductService) { }
+  constructor(private userService: UserService, private router: Router, private productService: ProductService, private cartService: CartService) { }
 
   ngOnInit() {
-    this.userService.getUser().subscribe((res: User) => {
-      this.user = res;
-      this.total = this.getTotal(this.user.products);
-    })
+    this.userService.getUser().subscribe((userRes: User) => {
+      this.user = userRes;
+      this.cartService.getItems(userRes.id).subscribe((cartItemRes: CartItem[]) => {
+        this.cartList = cartItemRes;
+        this.total = this.getTotal(this.cartList);
+        console.log(cartItemRes);
+      });
+    });
   }
 
-  getTotal(array: Product[]){
+  getTotal(array: CartItem[]){
     let total = 0;
-    for(let product of array){
-      total += product.price;
+    for(let item of array){
+      total += item.product.price*item.quantity;
     }
     return total;
   }
 
   removeFromCart(event: any){
-    let product: Product = event as Product;
-    this.productService.removeFromCart(this.user.id, product.id).subscribe(() => {
-      let index = this.user.products.indexOf(product, 0);
+    let item: CartItem = event as CartItem;
+    this.cartService.removeItem(item.id).subscribe(() => {
+      let index = this.cartList.indexOf(item, 0);
       if (index > -1){
-        this.user.products.splice(index, 1);
+        this.cartList.splice(index, 1);
       }
-      this.total = this.getTotal(this.user.products);
+      this.total = this.getTotal(this.cartList);
     })
   }
 
@@ -55,7 +62,7 @@ export class CartComponent implements OnInit {
   }
 
   isEmpty(){ 
-    return this.user.products.length < 1;
+    return this.cartList.length < 1;
   }
 
 }

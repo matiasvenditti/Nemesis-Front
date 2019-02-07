@@ -37,6 +37,6 @@
     </div>
   </div>
 </div>
-<app-product-form *ngIf="formVisible" [categories]="categories" [storeId]="store.id" (emitter)="hideForm()" (addProductEmitter)="showAllProducts()"></app-product-form>
+<app-product-form *ngIf="formVisible" [storeId]="store.id" (emitter)="hideForm()" (addProductEmitter)="showAllProducts()"></app-product-form>
 <app-cart-text *ngIf="cartTextVisible" [product]="cartProduct"></app-cart-text>
 

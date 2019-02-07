@@ -4,7 +4,7 @@
 <div class="container" [ngClass]="{'hide': isEmpty()}">
   <div class="cart">
     <span class="cart-text">Your Cart</span>
-    <app-cart-label *ngFor="let product of user.products" [product]="product" (emitter)="removeFromCart($event)"></app-cart-label>
+    <app-cart-label *ngFor="let item of cartList" [item]="item" (emitter)="removeFromCart($event)"></app-cart-label>
     <div class="total">
       <span class="left">Total:</span>
       <span class="right">${{total}}</span>

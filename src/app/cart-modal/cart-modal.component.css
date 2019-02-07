@@ -1,0 +1,77 @@
+.subtitle{
+    font-size: 20px;
+    margin-bottom: 8px;
+    color: #BCBCBC;
+}
+
+.amount{
+    border: 1px solid #BCBCBC;
+    color: #BCBCBC;
+    border-radius: 15px;
+    outline: none;
+    padding: 10px;
+    margin: 10px 0px;
+}
+
+.amount:hover{
+    cursor: pointer;
+    border: 1px solid #8068FF;
+    color: #8068FF    
+}
+
+.form .text{
+    padding: 10px 20px 20px 20px;
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.form-text{
+    font-size: 25px;
+    display: block;
+    text-align: center;
+    margin-bottom: 10px;
+    font-family: 'Oswald', sans-serif;
+}
+
+span{
+    display: block;
+}
+
+.form .submit-button{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    background: linear-gradient(90deg, #22D2FE 0%, #44AAFE 25%, #6D7BFE 51%, #B228FF 100%);
+    width: 50%;
+    border-radius: 30px;
+    padding: 12px;
+    position: relative;
+    color: white;
+    border: transparent;
+    font-size: 15px;
+    display: block;
+    margin: auto;
+    transition: 0.3s all;
+}
+
+.form .submit-button:hover{
+    transform: scale(1.05);
+    filter: brightness(1.05) contrast(1.05);
+}
+
+.submit-button:active, .submit-button:focus{
+    outline: none;
+}
+
+.product-container{
+    display: inline-block;
+    width: 100%;
+}
+
+.product-container img{
+    height: 60px;
+    float: right;
+    border-radius: 5px;
+}
+
+.inline{
+    display: inline-block;
+}

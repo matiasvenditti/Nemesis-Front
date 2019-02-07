@@ -4,8 +4,8 @@ import { ProductService } from '../../../services/product.service';
 import { Store } from '../../../model/store';
 import { User } from '../../../model/user';
 import { Router } from '@angular/router';
-import { DomSanitizer } from '@angular/platform-browser';
-import { Image } from '../../../model/image';
+import { MatDialog } from '@angular/material';
+import { CartModalComponent } from '../../cart-modal/cart-modal.component';
 
 @Component({
   selector: 'app-product-label',
@@ -22,7 +22,7 @@ export class ProductLabelComponent implements OnInit {
   @Output() emitter = new EventEmitter<Product>();
   @Output() removeProductEmitter = new EventEmitter();
 
-  constructor(private productService: ProductService, private router: Router, private sanitizer: DomSanitizer) { }
+  constructor(private productService: ProductService, private router: Router, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.productService.getProduct(this.product.id).subscribe((resProduct: Product) => {
@@ -59,6 +59,21 @@ export class ProductLabelComponent implements OnInit {
 
   editProduct(){
     this.router.navigate([`edit/product/${this.product.id}`]);
+  }
+
+  openModal(){
+    const title = "Esto es un titulo";
+    const dialogRef = this.dialog.open(CartModalComponent, {
+      width: '500px',
+      data: {
+        user: this.user,
+        product: this.product
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 
 

@@ -16,4 +16,8 @@ export class CategoryService {
     return this.http.get(`${this.url}/categories/stores/${storeId}`);
   }
 
+  getAllCategories(){
+    return this.http.get<Category[]>(`${this.url}/categories`);
+  }
+
 }

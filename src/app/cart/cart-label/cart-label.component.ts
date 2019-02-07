@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Product } from '../../../model/product';
+import { CartItem } from '../../../model/cart-item';
 
 @Component({
   selector: 'app-cart-label',
@@ -9,8 +9,8 @@ import { Product } from '../../../model/product';
 export class CartLabelComponent implements OnInit {
 
   
-  @Input() product: Product;
-  @Output() emitter = new EventEmitter<Product>();
+  @Input() item: CartItem;
+  @Output() emitter = new EventEmitter<CartItem>();
 
   constructor() { }
 
@@ -18,7 +18,7 @@ export class CartLabelComponent implements OnInit {
   }
 
   emit(){
-    this.emitter.emit(this.product);
+    this.emitter.emit(this.item);
   }
 
 }

@@ -1,0 +1,17 @@
+<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+<form class="form"> 
+    <span class="form-text">Add to Cart</span>
+    <div class="text">
+        <span class="subtitle">Product Name</span>
+        <div class="product-container">
+            <span class="subtitle inline">{{data.product.name}}</span>
+            <img [src]="data.product.image | noImage:'../../assets/default.png'">
+        </div>
+
+        <span class="subtitle">Product amount</span>
+        <input  ngModel [(ngModel)]="amount" required type="number" min="1" max="10" value="1" class="amount" name="amount">
+    </div>
+  <button [disabled]="amount === 0" class="submit-button" type="button" (click)="addToCart()">Add</button>
+</form>
+

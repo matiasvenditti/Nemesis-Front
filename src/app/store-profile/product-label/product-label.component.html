@@ -1,7 +1,7 @@
 <div class="container">
   <span class="category">{{ product.category.category }}</span>
   <img *ngIf="admin" class="label-button" src="../../../assets/delete.svg" alt="" (click)="removeProduct()">
-  <img class="label-button" src="../../../assets/shopping-cart.svg" alt="" (click)="addToCart()">
+  <img class="label-button" src="../../../assets/shopping-cart.svg" alt="" (click)="openModal()">
   <img *ngIf="admin" class="label-button" src="../../../assets/edit.svg" alt="" (click)="editProduct()">
   <img class="product-image" [src]="product.image | noImage:'../../../assets/default.png'" alt="">
   <div class="data">

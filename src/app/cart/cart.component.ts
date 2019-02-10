@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { ProductService } from '../../services/product.service';
 import { CartItem } from '../../model/cart-item';
 import { CartService } from '../../services/cart.service';
+import { Purchase } from '../../model/purchase';
 
 @Component({
   selector: 'app-cart',
@@ -18,6 +19,7 @@ export class CartComponent implements OnInit {
   total: number = 0;
   formVisible: boolean = false;
   cartList: CartItem[] = [];
+  purchase: Purchase;
 
   constructor(private userService: UserService, private router: Router, private productService: ProductService, private cartService: CartService) { }
 
@@ -27,6 +29,7 @@ export class CartComponent implements OnInit {
       this.cartService.getItems(userRes.id).subscribe((cartItemRes: CartItem[]) => {
         this.cartList = cartItemRes;
         this.total = this.getTotal(this.cartList);
+        this.purchase = new Purchase(this.user, this.cartList, this.total);
         console.log(cartItemRes);
       });
     });
@@ -55,6 +58,8 @@ export class CartComponent implements OnInit {
     let cartContainer = document.querySelector('.container') as HTMLElement;
     cartContainer.style.setProperty('display','none');
     this.formVisible = true;
+    const purchase: Purchase = new Purchase(this.user, this.cartList, this.total);
+    console.log(purchase);
   }
 
   home(){

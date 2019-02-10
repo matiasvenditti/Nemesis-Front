@@ -2,6 +2,9 @@ import { Component, OnInit, Input } from '@angular/core';
 import { User } from '../../../model/user';
 import { UserService } from '../../../services/user.service';
 import { Router } from '@angular/router';
+import { Purchase } from '../../../model/purchase';
+import { CartService } from '../../../services/cart.service';
+import { PurchaseService } from '../../../services/purchase.service';
 
 @Component({
   selector: 'app-cart-form',
@@ -16,9 +19,9 @@ export class CartFormComponent implements OnInit {
   radioButtonValue: string = '';
   address: string = '';
 
-  @Input() user: User;
+  @Input() purchase: Purchase;
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router, private cartService: CartService, private purchaseService: PurchaseService) { }
 
   ngOnInit() {
   }
@@ -35,9 +38,11 @@ export class CartFormComponent implements OnInit {
   }
 
   buy(){
-    this.userService.clearCart(this.user.id).subscribe(() => {
-      this.router.navigate(['/success']);
-    })
+    this.purchaseService.generatePurchase(this.purchase).subscribe(() => {
+      this.cartService.clearCart(this.purchase.user.id).subscribe(() => {
+        this.router.navigate(['/success']);
+      })
+    });
   }
 
 }

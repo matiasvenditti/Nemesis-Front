@@ -39,4 +39,13 @@ export class CartService {
     return this.http.delete(`${this.url}/items/${itemId}`, { headers });
 
   }
+
+  clearCart(userId: number){
+    const headers = new HttpHeaders()
+    .set('Content-Type', 'application/json')
+    .set('Authorization', `Bearer ${this.auth.getToken()}`);
+
+    return this.http.delete(`${this.url}/purchases/${userId}/all`, { headers });
+
+  }
 }

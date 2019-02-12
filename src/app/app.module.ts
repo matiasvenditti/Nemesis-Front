@@ -45,6 +45,7 @@ import { CategoryService } from '../services/category.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material';
 import { CartModalComponent } from './cart-modal/cart-modal.component';
+import { HistoryComponent } from './history/history.component';
 
 
 var appRoutes = [
@@ -57,7 +58,8 @@ var appRoutes = [
   { path: 'success', component: SuccessComponent, canActivate: [AuthGuard]},
   { path: 'edit/user/:id', component: EditUserComponent, canActivate: [AuthGuard]},
   { path: 'edit/product/:id', component: EditProductComponent, canActivate: [AuthGuard]},
-  { path: 'edit/store/:id', component: EditStoreComponent, canActivate: [AuthGuard]}
+  { path: 'edit/store/:id', component: EditStoreComponent, canActivate: [AuthGuard]},
+  { path: 'history/:id', component: HistoryComponent, canActivate: [AuthGuard]}
 ]
 
 
@@ -92,7 +94,8 @@ var appRoutes = [
     CartTextComponent,
     CartFormComponent,
     NoImagePipe,
-    CartModalComponent
+    CartModalComponent,
+    HistoryComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

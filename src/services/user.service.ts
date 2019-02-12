@@ -4,6 +4,7 @@ import { AuthenticationService } from './authentication.service';
 import { User } from '../model/user';
 import { Image } from '../model/image';
 import { environment } from '../environments/environment';
+import { CartItem } from '../model/cart-item';
 
 @Injectable()
 export class UserService {
@@ -87,6 +88,14 @@ export class UserService {
     }
 
     return this.http.put(`${this.url}`, body, options);
+  }
+
+  getHistory(userId: number){
+    const headers = new HttpHeaders()
+    .set('Content-Type', 'application/json')
+    .set('Authorization', `Bearer ${this.auth.getToken()}`)
+
+    return this.http.get<CartItem[]>(`${this.url}/purchases/${userId}`, {headers});
   }
 
 }

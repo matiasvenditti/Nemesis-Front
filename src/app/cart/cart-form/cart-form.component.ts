@@ -38,10 +38,8 @@ export class CartFormComponent implements OnInit {
   }
 
   buy(){
-    this.purchaseService.generatePurchase(this.purchase).subscribe(() => {
-      this.cartService.clearCart(this.purchase.user.id).subscribe(() => {
-        this.router.navigate(['/success']);
-      })
+    this.cartService.checkout(this.purchase.user.id, this.purchase).subscribe(() => {
+      this.router.navigate(['/success']);
     });
   }
 

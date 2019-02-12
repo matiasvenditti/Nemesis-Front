@@ -4,6 +4,7 @@ import { environment } from '../environments/environment';
 import { Observable } from 'rxjs';
 import { CartItem } from '../model/cart-item';
 import { AuthenticationService } from './authentication.service';
+import { Purchase } from '../model/purchase';
 
 @Injectable({
   providedIn: 'root'
@@ -40,12 +41,11 @@ export class CartService {
 
   }
 
-  clearCart(userId: number){
+  checkout(userId: number, purchase: Purchase){
     const headers = new HttpHeaders()
     .set('Content-Type', 'application/json')
     .set('Authorization', `Bearer ${this.auth.getToken()}`);
 
-    return this.http.delete(`${this.url}/purchases/${userId}/all`, { headers });
-
+    return this.http.post(`${this.url}/items/${userId}/checkout`, purchase, { headers });
   }
 }

@@ -1,0 +1,28 @@
+*{
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.main-container{
+    display: block;
+    width: 80%;
+    margin: auto;
+}
+
+.main-table{
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+    position: relative;
+    width: 100%;
+    margin: 40px 0;
+}
+
+.main-table th, .main-table td{
+    padding: 20px;
+    text-align: center;
+}
+
+.accordeon:hover{
+    background-color: #F7F7F9;
+    cursor: pointer;
+}

@@ -1,3 +1,35 @@
-<p>
-  history works!
-</p>
+<div class="main-container">
+  <h1>History</h1>
+
+  <h2>Purchase List</h2>
+  <table class="main-table">
+    <tr>
+      <th>Purchase ID</th>
+      <th>User</th>
+      <th>Amount Spent</th>
+      <th>Date</th>
+    </tr>
+    <tr *ngFor="let purchase of purchases; let i = index" class="accordeon" (click)="updateActualPurchase(i)">
+      <td>{{purchase.id}}</td>
+      <td>{{purchase.user.username}}</td>
+      <td>${{purchase.amount}}</td>
+      <td>{{purchase.date}}</td>
+    </tr>
+  </table>
+  
+  <h2>Product List</h2>
+  <table *ngIf="currentPurchase" class="main-table">
+    <tr>
+      <th>Product ID</th>
+      <th>Name</th>
+      <th>Category</th>
+      <th>Price</th>
+    </tr>
+    <tr *ngFor="let item of currentPurchase.items">
+      <td>{{item.product.id}}</td>
+      <td>{{item.product.name}}</td>
+      <td>{{item.product.category.category}}</td>
+      <td>{{item.product.price}}</td>
+    </tr>
+  </table>
+</div>

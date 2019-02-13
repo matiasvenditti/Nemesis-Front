@@ -4,12 +4,13 @@ import { AuthenticationService } from './authentication.service';
 import { User } from '../model/user';
 import { Image } from '../model/image';
 import { environment } from '../environments/environment';
-import { CartItem } from '../model/cart-item';
+import { Purchase } from '../model/purchase';
 
 @Injectable()
 export class UserService {
 
   url: string = environment.userUrl;
+  baseUrl: string = environment.baseUrl;
 
 
   constructor(private http: HttpClient, private auth: AuthenticationService) { }
@@ -95,7 +96,7 @@ export class UserService {
     .set('Content-Type', 'application/json')
     .set('Authorization', `Bearer ${this.auth.getToken()}`)
 
-    return this.http.get<CartItem[]>(`${this.url}/purchases/${userId}`, {headers});
+    return this.http.get<Purchase[]>(`${this.baseUrl}/purchases/${userId}`, {headers});
   }
 
 }

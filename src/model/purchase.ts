@@ -6,6 +6,7 @@ export class Purchase{
     items: CartItem[];
     amount: number;
     id: number;
+    date: Date;
 
     constructor(user: User, items: CartItem[], amount: number){
         this.user = user;

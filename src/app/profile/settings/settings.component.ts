@@ -45,4 +45,8 @@ export class SettingsComponent implements OnInit {
     this.router.navigate(['/cart']);
   }
 
+  history(){
+    this.router.navigate([`history/${this.user.id}`]);
+  }
+
 }

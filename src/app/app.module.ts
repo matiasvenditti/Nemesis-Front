@@ -46,6 +46,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material';
 import { CartModalComponent } from './cart-modal/cart-modal.component';
 import { HistoryComponent } from './history/history.component';
+import { ProductProfileComponent } from './product-profile/product-profile.component';
 
 
 var appRoutes = [
@@ -95,7 +96,8 @@ var appRoutes = [
     CartFormComponent,
     NoImagePipe,
     CartModalComponent,
-    HistoryComponent
+    HistoryComponent,
+    ProductProfileComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

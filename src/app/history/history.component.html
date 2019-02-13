@@ -1,5 +1,7 @@
 <div class="main-container">
-  <h1>History</h1>
+  <h1 *ngIf="this.username">{{this.username}}'s History</h1>
+  <p class="content">Here's your personal purchase history</p>
+  <p class="content">To display products of a particular purchase just click on the purchase list.</p>
 
   <h2>Purchase List</h2>
   <table class="main-table">
@@ -17,7 +19,7 @@
     </tr>
   </table>
   
-  <h2>Product List</h2>
+  <h2 *ngIf="currentPurchase">Product List</h2>
   <table *ngIf="currentPurchase" class="main-table">
     <tr>
       <th>Product ID</th>

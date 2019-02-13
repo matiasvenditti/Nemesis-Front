@@ -46,7 +46,7 @@ export class SettingsComponent implements OnInit {
   }
 
   history(){
-    this.router.navigate([`history/${this.user.id}`]);
+    this.router.navigate([`history/${this.user.id}`, {user: this.user}]);
   }
 
 }

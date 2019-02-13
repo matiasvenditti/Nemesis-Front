@@ -15,24 +15,22 @@ export class HistoryComponent implements OnInit {
   userId: number;
   purchases: Purchase[] = [];
   currentPurchase: Purchase;
+  username: string;
 
   constructor(private userService: UserService, private activatedRoute: ActivatedRoute) {
     this.activatedRoute.params.subscribe(params => {
-      console.log(params);
       this.userId = params['id'];
+      this.username = localStorage.getItem('username');
     })
   }
 
   ngOnInit() {
     this.userService.getHistory(this.userId).subscribe((res: any[]) => {
-      console.table(res);
-      console.log(res);
       this.purchases = res;
     })
   }
 
   updateActualPurchase(index: number){
-    console.log(index);
     this.currentPurchase = this.purchases[index];
   }
 

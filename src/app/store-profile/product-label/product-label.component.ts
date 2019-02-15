@@ -76,5 +76,9 @@ export class ProductLabelComponent implements OnInit {
     });
   }
 
+  visitProduct(){
+    this.router.navigate([`product/${this.product.id}`]);
+  }
+
 
 }

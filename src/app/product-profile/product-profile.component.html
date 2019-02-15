@@ -1,3 +1,11 @@
-<p *ngIf="product">
-  {{product | json}}
-</p>
+<app-header></app-header>
+<div *ngIf="product" class="content">
+    <p>{{product | json}}</p>
+    <img class="image" [src]="product.image | noImage:'../../assets/default.png'">
+    <div class="comments">
+      <form>
+          <textarea placeholder="Type your comment"></textarea>
+      </form>
+    </div>
+</div>
+

@@ -152,7 +152,7 @@ app-store-form:focus{
 }
 
 .image-container:hover .upload{
-    display: inline-block;
+    display: block;
     cursor: pointer;
     border: 5px solid white;
     border-radius: 50%;

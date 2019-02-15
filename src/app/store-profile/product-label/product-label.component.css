@@ -65,3 +65,7 @@
 .container:hover .category{
     visibility: visible;
 }
+
+.product-image:hover{
+    cursor: pointer;
+}

@@ -3,7 +3,7 @@
   <img *ngIf="admin" class="label-button" src="../../../assets/delete.svg" alt="" (click)="removeProduct()">
   <img class="label-button" src="../../../assets/shopping-cart.svg" alt="" (click)="openModal()">
   <img *ngIf="admin" class="label-button" src="../../../assets/edit.svg" alt="" (click)="editProduct()">
-  <img class="product-image" [src]="product.image | noImage:'../../../assets/default.png'" alt="">
+  <img class="product-image" (click)="visitProduct()" [src]="product.image | noImage:'../../../assets/default.png'" alt="">
   <div class="data">
       <span class="name">{{ product.name }}</span>
       <span class="price">${{ product.price }}</span>

@@ -1,0 +1,11 @@
+.content{
+    top: 20%;
+    position: absolute;
+    width: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.image{
+    width: 100%;
+}

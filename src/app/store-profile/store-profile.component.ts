@@ -44,7 +44,7 @@ export class StoreProfileComponent implements OnInit {
         this.showAllProducts();
         if (this.auth.isLoggedIn()){
           this.userService.getUser().subscribe((userResponse: User) => {
-            this.admin = this.storeService.isAdmin(userResponse, this.store);
+            this.admin = this.storeService.isAdmin(userResponse, storeResponse);
             this.user = userResponse;
           })
         }

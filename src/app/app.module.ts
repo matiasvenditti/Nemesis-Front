@@ -47,6 +47,7 @@ import { MatDialogModule } from '@angular/material';
 import { CartModalComponent } from './cart-modal/cart-modal.component';
 import { HistoryComponent } from './history/history.component';
 import { ProductProfileComponent } from './product-profile/product-profile.component';
+import { HeaderComponent } from './header/header.component';
 
 
 var appRoutes = [
@@ -98,7 +99,8 @@ var appRoutes = [
     NoImagePipe,
     CartModalComponent,
     HistoryComponent,
-    ProductProfileComponent
+    ProductProfileComponent,
+    HeaderComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

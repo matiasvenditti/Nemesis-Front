@@ -1,0 +1,8 @@
+<div class="options">
+  <h1 class="title">Nemesis</h1>
+  <a routerLink="/profile" *ngIf="logged">Profile</a>
+  <a routerLink="/cart" *ngIf="logged">Cart</a>
+  <a routerLink="/">Home</a>
+  <a (click)="this.auth.logOut()" *ngIf="logged">Log out</a>
+  <a routerLink="/login" *ngIf="!logged">Log in</a>
+</div>

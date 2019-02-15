@@ -66,4 +66,8 @@ export class HomeComponent implements OnInit {
       this.searchStore();
     }
   }
+
+  enterProduct(id: number){
+    this.router.navigate([`product/${id}`]);
+  }
 }

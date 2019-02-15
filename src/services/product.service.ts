@@ -53,7 +53,7 @@ export class ProductService {
     return this.http.get<Product[]>(`${this.url}/stores/${storeId}/products/${categoryId}`)
   }
 
-  removeProduct(storeId: number, productId: number){
+  removeProduct(productId: number){
     const headers = new HttpHeaders()
     .set('Content-Type', 'application/json')
     .set('Authorization', `Bearer ${this.auth.getToken()}`)
@@ -61,7 +61,7 @@ export class ProductService {
       headers: headers
     }
 
-    return this.http.delete(`${this.url}/stores/${storeId}/products/${productId}`, options);
+    return this.http.delete(`${this.url}/products/${productId}`, options);
   }
 
   addToCart(userId: number, product: Product){

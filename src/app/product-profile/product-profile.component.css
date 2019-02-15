@@ -6,6 +6,24 @@
     transform: translateX(-50%);
 }
 
+.image-container{
+    width: 60%;
+    display: inline-block;
+}
+
 .image{
     width: 100%;
+}
+
+.comment-text{
+    width: 100%;
+}
+
+.data-container{
+    width: 40%;
+    display: inline-block;
+}
+
+.main-container{
+    display: inline-block;
 }

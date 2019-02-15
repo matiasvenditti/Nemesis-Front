@@ -31,7 +31,7 @@ export class ProductLabelComponent implements OnInit {
   }
 
   removeProduct(){
-    this.productService.removeProduct(this.store.id, this.product.id).subscribe(() => {
+    this.productService.removeProduct(this.product.id).subscribe(() => {
       this.removeFromArray();
       this.removeProductEmitter.emit();
     })

@@ -3,5 +3,5 @@
   <div class="description">
       <span>{{product.name}}</span>
   </div>
-  <img class="label-image" [src]="product.imageUrl" alt="">
+  <img class="label-image" [src]="product.image | noImage:'../../assets/default.png'">
 </div>

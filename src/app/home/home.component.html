@@ -41,7 +41,7 @@
   <h2>Most wanted products</h2>
   <p>Browse for the best products made especially for you</p>
   <div class="stores-container">
-    <app-product-result *ngFor="let product of products" [product]="product"></app-product-result>
+    <app-product-result *ngFor="let product of products" [product]="product" (click)="enterProduct(product.id)"></app-product-result>
   </div>
   <app-contact></app-contact>
 </div>

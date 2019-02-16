@@ -10,10 +10,17 @@
       </div>
     </div>
 
-    <div class="comments">
-      <div class="user-comment" *ngFor="let comment of comments">{{comment | json}}</div>
+    <div class="comments-container">
+      <div class="comments">
+        <div class="user-comment" *ngFor="let comment of comments">
+          <img class="icon" [src]="comment.user.image | noImage:'../../assets/default.png'">
+          <label class="from">{{comment.user.name}}:</label>
+          <label>{{comment.comment}}</label>
+        </div>
+      </div>
       <form>
-          <textarea class="comment-text" placeholder="Type your comment"></textarea>
+          <textarea [(ngModel)]="message" name="comment" class="comment-text" placeholder="Type your comment"></textarea>
+          <button type="submit" (click)="addComment()">Send Comment</button>
       </form>
     </div>
 </div>

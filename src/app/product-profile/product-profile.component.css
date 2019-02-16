@@ -1,3 +1,7 @@
+*{
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
 .content{
     top: 20%;
     position: absolute;
@@ -13,10 +17,16 @@
 
 .image{
     width: 100%;
+    border-radius: 5px;
 }
 
 .comment-text{
     width: 100%;
+    border-radius: 5px;
+    border: 1px solid #F2F2F2;
+    outline: none;
+    padding: 20px;
+    margin-top: 20px;
 }
 
 .data-container{
@@ -26,4 +36,32 @@
 
 .main-container{
     display: inline-block;
+    margin-bottom: 20px;
+}
+
+.from{
+    font-weight: bold;
+    margin-right: 30px;
+    padding: 20px;
+}
+
+.icon{
+    height: 80px;
+    border-radius: 5px;
+}
+
+.comments{
+    max-height: 400px;
+    /* height: 400px; */
+    overflow-y: scroll;
+}
+
+.user-comment{
+    padding: 10px;
+    box-sizing: border-box;
+    margin-top: 20px;
+}
+
+.user-comment:hover{
+    background-color: #F2F2F2;
 }

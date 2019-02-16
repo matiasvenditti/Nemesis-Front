@@ -38,10 +38,6 @@ export class EditUserComponent implements OnInit {
     })
   }
 
-  check(): string{
-    if (this.confirmPassword != undefined && this.password != this.confirmPassword) return "active";
-  }
-
   updateUser(){
     let user = new User(this.userId, this.name, this.surname, this.username, this.email, this.password, this.user.stores, this.user.products);
     this.userService.updateUser(user).subscribe(() => {

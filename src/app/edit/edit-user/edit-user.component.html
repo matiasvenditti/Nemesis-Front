@@ -17,12 +17,6 @@
       <span class="subtitle">Email</span>
       <input required email ngModel [(ngModel)]="email" class="user-input" type="text" name="email"><br>
 
-      <span class="subtitle">Password</span> 
-      <input required ngModel [(ngModel)]="password" [ngClass]="check()" class="user-input" type="password" name="password"/><br>
-
-      <span class="subtitle">Confirm Password</span> 
-      <input required ngModel [(ngModel)]="confirmPassword" [ngClass]="check()" class="user-input" type="password" name="confirm-password"/><br>
-
       <button class="submit-button" type="button" (click)="updateUser()">Send</button>
   </div>
 </form>

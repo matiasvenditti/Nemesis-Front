@@ -3,7 +3,9 @@ import { ProductService } from '../../services/product.service';
 import { Product } from '../../model/product';
 import { ActivatedRoute } from '@angular/router';
 import { Comment } from '../../model/comment';
-import { CommentService } from '../comment.service';
+import { CommentService } from '../../services/comment.service';
+import { UserService } from '../../services/user.service';
+import { User } from '../../model/user';
 
 @Component({
   selector: 'app-product-profile',
@@ -14,8 +16,11 @@ export class ProductProfileComponent implements OnInit {
 
   product: Product;
   comments: Comment[];
+  message: string;
+  user: User;
 
-  constructor(private productService: ProductService, private activatedRoute: ActivatedRoute, private commentService: CommentService) {
+  constructor(private productService: ProductService, private activatedRoute: ActivatedRoute, private commentService: CommentService, private userService: UserService) {
+    this.getComments();
     this.activatedRoute.params.subscribe(params => {
       this.productService.getProduct(params['id']).subscribe((res: Product) => {
         this.product = res;
@@ -27,6 +32,18 @@ export class ProductProfileComponent implements OnInit {
     });
   }
 
+  getComments(){
+    this.userService.getUser().subscribe(res => {this.user = res});
+  }
+
   ngOnInit() {}
+
+  addComment(){
+    if (this.message !== ''){
+      this.commentService.addComment(new Comment(this.user, this.product, this.message)).subscribe();
+      this.message = '';
+      this.getComments();
+    }
+  }
 
 }

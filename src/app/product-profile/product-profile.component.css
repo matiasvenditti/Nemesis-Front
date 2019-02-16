@@ -3,7 +3,7 @@
 }
 
 .content{
-    top: 20%;
+    top: 15%;
     position: absolute;
     width: 80%;
     left: 50%;
@@ -12,7 +12,7 @@
 
 .image-container{
     width: 60%;
-    display: inline-block;
+    float: left;
 }
 
 .image{
@@ -29,9 +29,15 @@
     margin-top: 20px;
 }
 
+.comment-text:focus{
+    border: 1px solid #22272A;
+}
+
 .data-container{
     width: 40%;
-    display: inline-block;
+    float: left;
+    text-align: left;
+    padding: 20px;
 }
 
 .main-container{
@@ -64,4 +70,72 @@
 
 .user-comment:hover{
     background-color: #F2F2F2;
+}
+
+.comment-button{
+    padding: 10px 20px;
+    text-transform: uppercase;
+    border-radius: 3px;
+    margin-left: 20px;
+    outline: none;
+    transition: 0.3s all;
+    /* float: right; */
+}
+
+.dark{
+    background-color: #22272A;
+    color: white;
+}
+
+.light{
+    background-color: #F8F9FA;
+    color: #22272A;
+    border: none;
+}
+
+.comments-container{
+    margin-bottom: 20px;
+}
+
+.light:hover{
+    background-color: #E2E6E9;
+    cursor: pointer;
+}
+
+.dark:hover{
+    background-color: black;
+    cursor: pointer;
+}
+
+.button-container{
+    width: 100%;
+    text-align: right;
+    margin: 20px 0;
+}
+
+.name{
+    font-weight: bold;
+    font-size: 50px;
+    margin-bottom: 40px;
+}
+
+.margin{
+    margin-bottom: 20px;
+}
+
+.value{
+    color: #BCBCBC;
+    font-size: 20px;
+}
+
+.no-margin{
+    margin: 0px;
+}
+
+.right{
+    margin-left: 20px;
+}
+
+.button-parent{
+    margin-top: 30px;
 }

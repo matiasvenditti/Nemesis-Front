@@ -1,12 +1,25 @@
 <app-header></app-header>
 <div *ngIf="product" class="content">
     <div class="main-container">
-      <div class="image-container">
-        <img class="image" [src]="product.image | noImage:'../assets/default.png'">
-      </div>
-  
-      <div class="data-container">
-        <p>{{product | json}}</p>
+      <div class="card">
+        <div class="image-container">
+          <img class="image" [src]="product.image | noImage:'../assets/default.png'">
+        </div>
+    
+        <div class="data-container">
+          <h1 class="name">{{product.name}}</h1>
+          <h2 class="margin">Price</h2>
+          <p class="margin value">${{product.price}}</p>
+          <h2 class="margin">Available in stock</h2>
+          <p class="margin value">{{product.stock}}</p>
+          <h2 class="margin">Category</h2>
+          <p class="margin value">{{product.category.category}}</p>
+          
+          <div class="button-parent">
+            <button class="comment-button light no-margin" type="button" (click)="openModal()">Add to cart</button>
+            <button class="comment-button light no-margin right" type="button" (click)="back()">Return</button>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -14,13 +27,16 @@
       <div class="comments">
         <div class="user-comment" *ngFor="let comment of comments">
           <img class="icon" [src]="comment.user.image | noImage:'../../assets/default.png'">
-          <label class="from">{{comment.user.name}}:</label>
+          <label class="from">{{comment.user.name}}</label>
           <label>{{comment.comment}}</label>
         </div>
       </div>
       <form>
           <textarea [(ngModel)]="message" name="comment" class="comment-text" placeholder="Type your comment"></textarea>
-          <button type="submit" (click)="addComment()">Send Comment</button>
+          <div class="button-container">
+            <button class="comment-button dark" type="submit" (click)="addComment()">Submit Comment</button>
+            <button class="comment-button light" type="button" (click)="clear()">Clear</button>
+          </div>
       </form>
     </div>
 </div>

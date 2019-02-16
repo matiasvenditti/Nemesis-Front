@@ -48,6 +48,7 @@ import { CartModalComponent } from './cart-modal/cart-modal.component';
 import { HistoryComponent } from './history/history.component';
 import { ProductProfileComponent } from './product-profile/product-profile.component';
 import { HeaderComponent } from './header/header.component';
+import { StoreModalComponent } from './store-modal/store-modal.component';
 
 
 var appRoutes = [
@@ -100,7 +101,8 @@ var appRoutes = [
     CartModalComponent,
     HistoryComponent,
     ProductProfileComponent,
-    HeaderComponent
+    HeaderComponent,
+    StoreModalComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -122,7 +124,8 @@ var appRoutes = [
   ],
   bootstrap: [AppComponent],
   entryComponents: [
-    CartModalComponent
+    CartModalComponent,
+    StoreModalComponent
   ]
 })
 export class AppModule { }

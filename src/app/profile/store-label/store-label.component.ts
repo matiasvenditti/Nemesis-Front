@@ -1,11 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ProfileService } from '../../../services/profile.service';
 import { StoreService } from '../../../services/store.service';
 import { Store } from '../../../model/store';
 import { User } from '../../../model/user';
 import { Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
-import { Image } from '../../../model/image';
+import { MatDialog } from '@angular/material';
+import { StoreModalComponent } from '../../../app/store-modal/store-modal.component';
 
 @Component({
   selector: 'app-store-label',
@@ -19,7 +19,7 @@ export class StoreLabelComponent implements OnInit {
   @Input() user: User;
  
 
-  constructor(private storeService: StoreService, private router: Router, private sanitizer: DomSanitizer) { }
+  constructor(private storeService: StoreService, private router: Router, private sanitizer: DomSanitizer, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.storeService.getStore(this.store.id).subscribe((res: Store) => {
@@ -47,10 +47,21 @@ export class StoreLabelComponent implements OnInit {
     
   }
 
-  editStore(){
-    this.router.navigate([`edit/store/${this.store.id}`]);
+  openEditModal(){
+    const dialogRef = this.dialog.open(StoreModalComponent, {
+      width: '500px',
+      data: {
+        store: this.store
+      }
+    })
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 
-
+  enterStore(){  
+    this.router.navigate([`store/${this.store.id}`]);
+  }
 
 }

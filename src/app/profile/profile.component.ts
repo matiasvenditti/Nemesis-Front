@@ -65,10 +65,6 @@ export class ProfileComponent implements OnInit {
     return word.charAt(0).toUpperCase() + word.slice(1);
   }
 
-  enterStore(id: number){  
-    this.router.navigate([`store/${id}`]);
-  }
-
   changeImage(event: any){
     this.user.image = event;
   }

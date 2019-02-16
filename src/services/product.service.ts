@@ -39,7 +39,7 @@ export class ProductService {
       headers: headers
     }
 
-    return this.http.get<Product[]>(`${this.url}/stores/${storeId}/search/${productKey}`);
+    return this.http.get<Product[]>(`${this.url}/search/stores/${storeId}/products/${productKey}`);
   }
 
   searchByCategory(storeId: number, categoryId: number){

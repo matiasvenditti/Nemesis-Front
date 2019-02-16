@@ -3,9 +3,9 @@
   <div class="description">
       <span>{{store.name}}</span>
       <img class="label-button" src="../../../assets/delete.svg" alt="" (click)="removeStore($event)">
-      <!-- <img class="label-button" src="../../../assets/edit.svg" alt="" (click)="editStore()"> -->
+      <img class="label-button" src="../../../assets/edit.svg" alt="" (click)="openEditModal()">
   </div>
-  <img *ngIf="store" class="label-image" [src]="store.image | noImage:'../../../assets/default.png'" alt="">
+  <img *ngIf="store" class="label-image" [src]="store.image | noImage:'../../../assets/default.png'" alt="" (click)="enterStore()">
   
 </div>
 

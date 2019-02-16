@@ -13,7 +13,7 @@
             <button class="file-button dropdown-button">Categories</button>
             <div class="dropdown-content">
                 <ul>
-                    <li *ngFor="let category of categories" (click)="setResult($event)">{{category}}</li>
+                    <li *ngFor="let category of categories" (click)="setResult($event)">{{category.category}}</li>
                 </ul>
             </div>
         </div>

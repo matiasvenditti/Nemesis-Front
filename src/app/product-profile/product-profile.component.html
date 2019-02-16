@@ -11,6 +11,7 @@
     </div>
 
     <div class="comments">
+      <div class="user-comment" *ngFor="let comment of comments">{{comment | json}}</div>
       <form>
           <textarea class="comment-text" placeholder="Type your comment"></textarea>
       </form>

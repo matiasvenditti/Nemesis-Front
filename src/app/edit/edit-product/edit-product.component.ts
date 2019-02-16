@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Product } from '../../../model/product';
 import { ProductService } from '../../../services/product.service';
 import { Location } from '@angular/common';
+import { Category } from '../../../model/category';
+import { CategoryService } from '../../../services/category.service';
 
 @Component({
   selector: 'app-edit-product',
@@ -12,15 +14,15 @@ import { Location } from '@angular/common';
 export class EditProductComponent implements OnInit {
 
   productId: number;
-  categories: string[] = ['Shirts', 'Pants', 'Shorts', 'Shoes', 'Accesories', 'Other'];
+  categories: Category[] = [];
   product: Product;
   
   name: string;
-  category: string;
+  category: Category;
   stock: number;
   price: number;
 
-  constructor(private route: ActivatedRoute, private productService: ProductService, private location: Location) { }
+  constructor(private route: ActivatedRoute, private productService: ProductService, private location: Location, private categoryService: CategoryService) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -32,7 +34,10 @@ export class EditProductComponent implements OnInit {
         this.price = res.price;
         this.loadCategory();
       })
-    })
+    });
+    this.categoryService.getAllCategories().subscribe(res => {
+      this.categories = res;
+    });
   }
 
   setResult(event: any){
@@ -44,7 +49,7 @@ export class EditProductComponent implements OnInit {
 
   loadCategory(){
     let result = document.querySelector('.category-result') as HTMLElement;
-    result.innerHTML = this.category;
+    result.innerHTML = this.category.category;
     result.style.setProperty('display', 'inline-block');
   }
 

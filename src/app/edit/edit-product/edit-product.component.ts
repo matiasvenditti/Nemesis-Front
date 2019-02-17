@@ -41,11 +41,12 @@ export class EditProductComponent implements OnInit {
     });
   }
 
-  setResult(event: any){
+  setResult(category: Category){
+    this.category = category;
+    console.log(event);
     let result = document.querySelector('.category-result') as HTMLElement;
-    result.innerHTML = event.target.innerHTML;
+    result.innerHTML = category.category;
     result.style.setProperty('display', 'inline-block');
-    this.category = event.target.innerHTML;
   }
 
   loadCategory(){
@@ -56,7 +57,6 @@ export class EditProductComponent implements OnInit {
 
   update(){
     let result = new Product(this.productId, this.name, this.price, this.stock, this.category);
-    console.log(result);
     
     this.productService.updateProduct(result).subscribe(() => {
       this.goBack()

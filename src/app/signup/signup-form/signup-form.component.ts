@@ -31,7 +31,7 @@ export class SignupFormComponent implements OnInit {
     this.auth.signUp(this.name, this.surname, this.username, this.email, this.password).subscribe(() => {
       this.auth.postLogIn(this.username, this.password).subscribe((res: Response) => {
         this.auth.logIn(res)
-        localStorage.setItem('username', this.username);
+        sessionStorage.setItem('username', this.username);
         this.router.navigate(['/'])
       })
     });

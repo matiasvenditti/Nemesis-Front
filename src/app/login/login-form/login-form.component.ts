@@ -25,7 +25,7 @@ export class LoginFormComponent{
     this.auth.postLogIn(this.userName, this.password).subscribe((res: Response) => {
       this.snacbkar.openSnackBar('User Successfully Logged In!');
       this.auth.logIn(res);
-      localStorage.setItem('username', this.userName);
+      sessionStorage.setItem('username', this.userName);
       this.router.navigate(['/']);
     })
   }

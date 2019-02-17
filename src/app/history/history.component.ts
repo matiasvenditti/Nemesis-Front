@@ -20,7 +20,7 @@ export class HistoryComponent implements OnInit {
   constructor(private userService: UserService, private activatedRoute: ActivatedRoute) {
     this.activatedRoute.params.subscribe(params => {
       this.userId = params['id'];
-      this.username = localStorage.getItem('username');
+      this.username = sessionStorage.getItem('username');
     })
   }
 

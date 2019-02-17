@@ -23,7 +23,7 @@ export class UserService {
     const options = {
       headers: headers
     }
-    return this.http.get<User>(this.url + `/${localStorage.getItem('username')}`, options);
+    return this.http.get<User>(this.url + `/${sessionStorage.getItem('username')}`, options);
   }
 
   clearCart(userId: number){

@@ -18,6 +18,7 @@ export class StoreResultComponent implements OnInit {
   ngOnInit() {
     this.storeService.getStore(this.store.id).subscribe((res: Store) => { 
       this.store = res;
+      console.log(this.store);
     })
   }
 

@@ -31,15 +31,15 @@ export class AuthenticationService{
     }
 
     isLoggedIn(): boolean{        
-        return localStorage.getItem('token') !== null;
+        return sessionStorage.getItem('token') !== null;
     }
 
     logIn(res: Response){
-        localStorage.setItem('token', Object.values(res)[0]);
+        sessionStorage.setItem('token', Object.values(res)[0]);
     }
 
     logOut(){
-        localStorage.clear();
+        sessionStorage.clear();
         this.router.navigate(['/login']);
     }
 
@@ -59,6 +59,6 @@ export class AuthenticationService{
     }
 
     getToken(){
-        return localStorage.getItem('token');
+        return sessionStorage.getItem('token');
     }
 }

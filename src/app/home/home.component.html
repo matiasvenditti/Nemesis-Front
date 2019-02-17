@@ -25,10 +25,15 @@
   </ul>
 </div>
 <div class="content-container">
-  <div class="results" *ngIf="userSearched">
+  <div class="results">
     <h2>These are the stores that match with your parameters</h2>
     <div class="list">
         <app-store-result *ngFor="let store of resultStores" [store]="store" (click)="enterStore(store.id)"></app-store-result>
+    </div>
+
+    <h2>These are the products that match with your parameters</h2>
+    <div class="list">
+        <app-product-result *ngFor="let product of resultProducts" [product]="product" (click)="enterProduct(product.id)"></app-product-result>
     </div>
   </div>
 

@@ -42,6 +42,17 @@ export class ProductService {
     return this.http.get<Product[]>(`${this.url}/search/stores/${storeId}/products/${productKey}`);
   }
 
+  searchProductHome(productKey: string){
+    const headers = new HttpHeaders()
+    .set('Content-Type', 'application/json')
+
+    const options = {
+      headers: headers
+    }
+
+    return this.http.get<Product[]>(`${this.url}/search/products/${productKey}`);
+  }
+
   searchByCategory(storeId: number, categoryId: number){
     const headers = new HttpHeaders()
     .set('Content-Type', 'application/json')

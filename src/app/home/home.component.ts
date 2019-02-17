@@ -4,6 +4,7 @@ import { AuthenticationService } from '../../services/authentication.service';
 import { Store } from '../../model/store';
 import { StoreService } from '../../services/store.service';
 import { Product } from '../../model/product';
+import { ProductService } from '../../services/product.service';
 
 @Component({
   selector: 'app-home',
@@ -12,13 +13,14 @@ import { Product } from '../../model/product';
 })
 export class HomeComponent implements OnInit {
 
-  resultStores: Store[];
+  resultStores: Store[] = [];
+  resultProducts: Product[] = [];
   userSearched: boolean = false;
   searchValue: string;
   stores: Store[] = [];
   products: Product[] = [];
 
-  constructor(private router: Router, private auth: AuthenticationService, private storeService: StoreService) { }
+  constructor(private router: Router, private auth: AuthenticationService, private storeService: StoreService, private productService: ProductService) { }
 
   ngOnInit() {
     this.storeService.getAllStores().subscribe((res: Store[]) => {
@@ -44,11 +46,23 @@ export class HomeComponent implements OnInit {
     this.auth.logOut();
   }
 
+  search(){
+    this.searchStore();
+    this.searchProduct();
+    this.searchValue = '';
+  }
+
   searchStore(){
     this.storeService.searchStore(this.searchValue).subscribe((res: Store[]) => {
-      this.searchValue = '';
       this.userSearched = true;
       this.resultStores = res;
+    })
+  }
+
+  searchProduct(){
+    this.productService.searchProductHome(this.searchValue).subscribe((res: Product[]) => {
+      this.userSearched = true;
+      this.resultProducts = res;
     })
   }
 
@@ -63,7 +77,7 @@ export class HomeComponent implements OnInit {
 
   handleEvent(event: any){
     if (event.keyCode === 13){
-      this.searchStore();
+      this.search();
     }
   }
 

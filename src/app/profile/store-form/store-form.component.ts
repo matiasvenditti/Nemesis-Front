@@ -6,6 +6,7 @@ import { Store } from '../../../model/store';
 import { StoreService } from '../../../services/store.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Image } from '../../../model/image';
+import { SnackbarService } from '../../../services/snackbar.service';
 
 
 @Component({
@@ -25,13 +26,14 @@ export class StoreFormComponent implements OnInit {
   
   
 
-  constructor(private profileComponent: ProfileComponent, private storeService: StoreService, private sanitizer: DomSanitizer) {}
+  constructor(private profileComponent: ProfileComponent, private storeService: StoreService, private sanitizer: DomSanitizer, private snackbar: SnackbarService) {}
 
   ngOnInit() {
   }
 
   addStore(){
     this.storeService.addStore(this.user.id, this.storeName, this.storeDescription).subscribe((storeResponse: Store) => {
+      this.snackbar.openSnackBar('Store Successfully Created!');
       this.storeService.addStoreImage(this.selectedFile, storeResponse.id).subscribe(res => {
         storeResponse.image = this.imageUrl;
         this.storeEmitter.emit(storeResponse);

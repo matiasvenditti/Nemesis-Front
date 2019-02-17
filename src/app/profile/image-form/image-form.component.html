@@ -10,7 +10,7 @@
         <span class="subtitle">Choose image</span>
         <div class="input-container">
             <input required type="file" accept="image/*" class="file-input" #fileInput (change)="readUrl($event)">
-            <button class="file-button"(click)="fileInput.click()">Upload store image</button>
+            <button class="file-button"(click)="fileInput.click()">Upload user image</button>
             <img *ngIf="imageUrl" [src]="imageUrl" alt="">
         </div>
         <button class="submit-button" type="button" (click)="upload()">Send</button>

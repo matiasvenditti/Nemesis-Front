@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
@@ -49,6 +49,7 @@ import { HistoryComponent } from './history/history.component';
 import { ProductProfileComponent } from './product-profile/product-profile.component';
 import { HeaderComponent } from './header/header.component';
 import { StoreModalComponent } from './store-modal/store-modal.component';
+import { CustomError } from '../services/custom-error';
 
 
 var appRoutes = [
@@ -122,7 +123,8 @@ var appRoutes = [
     PaginationService,
     UserService,
     CategoryService,
-    {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}}
+    {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}},
+    {provide: ErrorHandler, useClass: CustomError}
   ],
   bootstrap: [AppComponent],
   entryComponents: [

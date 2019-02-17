@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthenticationService } from '../../../services/authentication.service';
 import { Router } from '@angular/router';
+import { SnackbarService } from '../../../services/snackbar.service';
 
 @Component({
   selector: 'app-login-form',
@@ -16,12 +17,13 @@ export class LoginFormComponent{
   private password: string;
 
 
-  constructor(private auth: AuthenticationService, private router: Router) {}
+  constructor(private auth: AuthenticationService, private router: Router, private snacbkar: SnackbarService) {}
 
   
 
   logIn(){
     this.auth.postLogIn(this.userName, this.password).subscribe((res: Response) => {
+      this.snacbkar.openSnackBar('User Successfully Logged In!');
       this.auth.logIn(res);
       localStorage.setItem('username', this.userName);
       this.router.navigate(['/']);

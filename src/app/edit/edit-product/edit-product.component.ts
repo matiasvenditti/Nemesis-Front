@@ -5,6 +5,7 @@ import { ProductService } from '../../../services/product.service';
 import { Location } from '@angular/common';
 import { Category } from '../../../model/category';
 import { CategoryService } from '../../../services/category.service';
+import { SnackbarService } from '../../../services/snackbar.service';
 
 @Component({
   selector: 'app-edit-product',
@@ -22,7 +23,7 @@ export class EditProductComponent implements OnInit {
   stock: number;
   price: number;
 
-  constructor(private route: ActivatedRoute, private productService: ProductService, private location: Location, private categoryService: CategoryService) { }
+  constructor(private route: ActivatedRoute, private productService: ProductService, private location: Location, private categoryService: CategoryService, private snackbar: SnackbarService) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -57,7 +58,10 @@ export class EditProductComponent implements OnInit {
     let result = new Product(this.productId, this.name, this.price, this.stock, this.category);
     console.log(result);
     
-    this.productService.updateProduct(result).subscribe(() => this.goBack());
+    this.productService.updateProduct(result).subscribe(() => {
+      this.goBack()
+      this.snackbar.openSnackBar(`Product Updated Successfully!`);
+    });
   }
 
   goBack(){

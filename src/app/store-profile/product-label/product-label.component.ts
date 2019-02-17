@@ -6,6 +6,7 @@ import { User } from '../../../model/user';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { CartModalComponent } from '../../cart-modal/cart-modal.component';
+import { SnackbarService } from '../../../services/snackbar.service';
 
 @Component({
   selector: 'app-product-label',
@@ -22,7 +23,7 @@ export class ProductLabelComponent implements OnInit {
   @Output() emitter = new EventEmitter<Product>();
   @Output() removeProductEmitter = new EventEmitter();
 
-  constructor(private productService: ProductService, private router: Router, private dialog: MatDialog) { }
+  constructor(private productService: ProductService, private router: Router, private dialog: MatDialog, private snackbar: SnackbarService) { }
 
   ngOnInit() {
     this.productService.getProduct(this.product.id).subscribe((resProduct: Product) => {
@@ -32,6 +33,7 @@ export class ProductLabelComponent implements OnInit {
 
   removeProduct(){
     this.productService.removeProduct(this.product.id).subscribe(() => {
+      this.snackbar.openSnackBar(`${this.product.name} Was Deleted Successfully`);
       this.removeFromArray();
       this.removeProductEmitter.emit();
     })
@@ -39,6 +41,7 @@ export class ProductLabelComponent implements OnInit {
 
   addToCart(){
     this.productService.addToCart(this.user.id, this.product).subscribe(() => {
+      this.snackbar.openSnackBar('Product Successfully Added To Cart!');
       this.user.products.push(this.product);
       this.emitter.emit(this.product);
     })
@@ -72,7 +75,7 @@ export class ProductLabelComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      this.snackbar.openSnackBar(`${this.product.name} Successfully Added To Cart!`);
     });
   }
 

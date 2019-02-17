@@ -43,7 +43,7 @@ import { CartFormComponent } from './cart/cart-form/cart-form.component';
 import { NoImagePipe } from './pipes/no-image.pipe';
 import { CategoryService } from '../services/category.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { MatDialogModule } from '@angular/material';
+import { MatDialogModule, MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material';
 import { CartModalComponent } from './cart-modal/cart-modal.component';
 import { HistoryComponent } from './history/history.component';
 import { ProductProfileComponent } from './product-profile/product-profile.component';
@@ -110,7 +110,8 @@ var appRoutes = [
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSnackBarModule
   ],
   providers: [
     AuthGuard,
@@ -120,7 +121,8 @@ var appRoutes = [
     ProductService,
     PaginationService,
     UserService,
-    CategoryService
+    CategoryService,
+    {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}}
   ],
   bootstrap: [AppComponent],
   entryComponents: [

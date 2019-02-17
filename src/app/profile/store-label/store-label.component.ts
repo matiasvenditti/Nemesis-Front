@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatDialog } from '@angular/material';
 import { StoreModalComponent } from '../../../app/store-modal/store-modal.component';
+import { SnackbarService } from '../../../services/snackbar.service';
 
 @Component({
   selector: 'app-store-label',
@@ -19,7 +20,7 @@ export class StoreLabelComponent implements OnInit {
   @Input() user: User;
  
 
-  constructor(private storeService: StoreService, private router: Router, private sanitizer: DomSanitizer, private dialog: MatDialog) { }
+  constructor(private storeService: StoreService, private router: Router, private sanitizer: DomSanitizer, private dialog: MatDialog, private snackbar: SnackbarService) { }
 
   ngOnInit() {
     this.storeService.getStore(this.store.id).subscribe((res: Store) => {
@@ -30,6 +31,7 @@ export class StoreLabelComponent implements OnInit {
   removeStore(event: Event){
     event.stopPropagation();
     this.storeService.removeStore(this.user.id, this.store.id).subscribe(() => {
+      this.snackbar.openSnackBar(`${this.store.name} Was Successfully Deleted`);
       this.removeFromArray();
     })
   }

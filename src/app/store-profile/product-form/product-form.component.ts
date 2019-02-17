@@ -4,6 +4,7 @@ import { ProductService } from '../../../services/product.service';
 import { Product } from '../../../model/product';
 import { Category } from '../../../model/category';
 import { CategoryService } from '../../../services/category.service';
+import { SnackbarService } from '../../../services/snackbar.service';
 
 @Component({
   selector: 'app-product-form',
@@ -25,7 +26,7 @@ export class ProductFormComponent implements OnInit {
   amount: number = 1;
   price: number;
 
-  constructor(private productService: ProductService, private categoryService: CategoryService) {
+  constructor(private productService: ProductService, private categoryService: CategoryService, private snackbar: SnackbarService) {
     this.categoryService.getAllCategories().subscribe((res: Category[]) => {
       this.categories = res;
     })
@@ -52,6 +53,7 @@ export class ProductFormComponent implements OnInit {
   addProduct(){
     console.log(this.category);
     this.productService.addProduct(this.storeId, this.name, this.price, this.amount, this.category).subscribe((productResponse: Product) => {
+      this.snackbar.openSnackBar('Product Succesfully Added!');
       this.productService.addProductImage(this.selectedFile, productResponse.id).subscribe((res) => {
         productResponse.image = this.imageUrl;
         this.addProductEmitter.emit(productResponse);

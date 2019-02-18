@@ -124,7 +124,6 @@ export class ProductService {
       category: product.category,
       stock: product.stock
     }
-    console.log(body);
     
 
     const headers = new HttpHeaders()

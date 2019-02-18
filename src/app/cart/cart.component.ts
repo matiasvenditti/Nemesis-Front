@@ -30,7 +30,6 @@ export class CartComponent implements OnInit {
         this.cartList = cartItemRes;
         this.total = this.getTotal(this.cartList);
         this.purchase = new Purchase(this.user, this.cartList, this.total);
-        console.log(cartItemRes);
       });
     });
   }
@@ -59,7 +58,6 @@ export class CartComponent implements OnInit {
     cartContainer.style.setProperty('display','none');
     this.formVisible = true;
     const purchase: Purchase = new Purchase(this.user, this.cartList, this.total);
-    console.log(purchase);
   }
 
   home(){

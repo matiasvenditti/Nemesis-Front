@@ -40,7 +40,7 @@ export class CartFormComponent implements OnInit {
   }
 
   buy(){
-    let address = (this.radioButtonValue) ? this.address : this.defaultValue;
+    let address = (this.radioButtonValue === 'Address') ? this.address : this.defaultValue;
     const data: PaymentData = new PaymentData(this.name, this.dni, address);
     this.cartService.checkout(this.purchase.user.id, data).subscribe(() => {
       this.router.navigate(['/success']);

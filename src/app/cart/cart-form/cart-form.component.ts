@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { Purchase } from '../../../model/purchase';
 import { CartService } from '../../../services/cart.service';
 import { PurchaseService } from '../../../services/purchase.service';
-import { PaymentData } from 'src/model/payment-data';
+import { PaymentData } from '../../../model/payment-data';
 
 @Component({
   selector: 'app-cart-form',

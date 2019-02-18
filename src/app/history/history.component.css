@@ -7,9 +7,9 @@
     width: 80%;
     /* margin: auto; */
     position: absolute;
-    top: 40%;
+    margin-top: 60px;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
 }
 
 .main-table{

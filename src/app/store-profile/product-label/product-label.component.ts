@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { CartModalComponent } from '../../cart-modal/cart-modal.component';
 import { SnackbarService } from '../../../services/snackbar.service';
+import { AuthenticationService } from '../../../services/authentication.service';
 
 @Component({
   selector: 'app-product-label',
@@ -22,10 +23,12 @@ export class ProductLabelComponent implements OnInit {
   @Input() user: User;
   @Output() emitter = new EventEmitter<Product>();
   @Output() removeProductEmitter = new EventEmitter();
+  isLoggedIn: boolean;
 
-  constructor(private productService: ProductService, private router: Router, private dialog: MatDialog, private snackbar: SnackbarService) { }
+  constructor(private productService: ProductService, private router: Router, private dialog: MatDialog, private snackbar: SnackbarService, private auth: AuthenticationService) { }
 
   ngOnInit() {
+    this.isLoggedIn = this.auth.isLoggedIn();
     this.productService.getProduct(this.product.id).subscribe((resProduct: Product) => {
       this.product = resProduct;
     });

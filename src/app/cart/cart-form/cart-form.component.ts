@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Purchase } from '../../../model/purchase';
 import { CartService } from '../../../services/cart.service';
 import { PurchaseService } from '../../../services/purchase.service';
+import { PaymentData } from 'src/model/payment-data';
 
 @Component({
   selector: 'app-cart-form',
@@ -15,9 +16,10 @@ export class CartFormComponent implements OnInit {
 
   displayAddressInput: boolean = false;
   name: string = '';
-  dni: string = '';
+  dni: number;
   radioButtonValue: string = '';
   address: string = '';
+  defaultValue: string = 'Se retira por el mismo local.';
 
   @Input() purchase: Purchase;
 
@@ -38,7 +40,9 @@ export class CartFormComponent implements OnInit {
   }
 
   buy(){
-    this.cartService.checkout(this.purchase.user.id, this.purchase).subscribe(() => {
+    let address = (this.radioButtonValue) ? this.address : this.defaultValue;
+    const data: PaymentData = new PaymentData(this.name, this.dni, address);
+    this.cartService.checkout(this.purchase.user.id, data).subscribe(() => {
       this.router.navigate(['/success']);
     });
   }

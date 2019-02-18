@@ -9,6 +9,7 @@ import { User } from '../../model/user';
 import { MatDialog } from '@angular/material';
 import { CartModalComponent } from '../cart-modal/cart-modal.component';
 import { Location } from '@angular/common';
+import { AuthenticationService } from '../../services/authentication.service';
 
 @Component({
   selector: 'app-product-profile',
@@ -22,8 +23,11 @@ export class ProductProfileComponent implements OnInit {
   message: string;
   user: User;
 
-  constructor(private productService: ProductService, private activatedRoute: ActivatedRoute, private commentService: CommentService, private userService: UserService, private dialog: MatDialog, private location: Location) {
-    this.getUser();
+  constructor(private productService: ProductService, private activatedRoute: ActivatedRoute, private commentService: CommentService, private userService: UserService, private dialog: MatDialog, private location: Location,
+    private auth: AuthenticationService) {
+    if (this.auth.isLoggedIn()){
+      this.getUser();
+    }
     this.activatedRoute.params.subscribe(params => {
       this.productService.getProduct(params['id']).subscribe((res: Product) => {
         this.product = res;
@@ -68,7 +72,6 @@ export class ProductProfileComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
     });
   }
 

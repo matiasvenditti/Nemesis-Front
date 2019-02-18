@@ -31,7 +31,7 @@
           <label>{{comment.comment}}</label>
         </div>
       </div>
-      <form>
+      <form *ngIf="user">
           <textarea [(ngModel)]="message" name="comment" class="comment-text" placeholder="Type your comment"></textarea>
           <div class="button-container">
             <button class="comment-button dark" type="submit" (click)="addComment()">Submit Comment</button>

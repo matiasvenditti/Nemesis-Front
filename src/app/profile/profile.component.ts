@@ -30,7 +30,6 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this.userService.getUser().subscribe((value: User) => {
-      console.log(value);
       this.user = value;
       this.name = this.capitalize(this.user.name);
       this.storeList = this.user.stores;

@@ -6,7 +6,7 @@ import { Comment } from '../../model/comment';
 import { CommentService } from '../../services/comment.service';
 import { UserService } from '../../services/user.service';
 import { User } from '../../model/user';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { CartModalComponent } from '../cart-modal/cart-modal.component';
 import { Location } from '@angular/common';
 import { AuthenticationService } from '../../services/authentication.service';

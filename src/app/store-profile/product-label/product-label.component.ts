@@ -4,7 +4,7 @@ import { ProductService } from '../../../services/product.service';
 import { Store } from '../../../model/store';
 import { User } from '../../../model/user';
 import { Router } from '@angular/router';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { CartModalComponent } from '../../cart-modal/cart-modal.component';
 import { SnackbarService } from '../../../services/snackbar.service';
 import { AuthenticationService } from '../../../services/authentication.service';

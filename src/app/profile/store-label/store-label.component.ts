@@ -4,7 +4,7 @@ import { Store } from '../../../model/store';
 import { User } from '../../../model/user';
 import { Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { StoreModalComponent } from '../../../app/store-modal/store-modal.component';
 import { SnackbarService } from '../../../services/snackbar.service';
 
